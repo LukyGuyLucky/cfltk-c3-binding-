@@ -5,9 +5,9 @@ cfltk: https://github.com/MoAlyousef/cfltk
 
 A startup execise.windows 64bit.
 
-handl1.c3
-image.c3
-utf-8_test02.c3
+handl1.c3;
+image.c3;
+utf-8_test02.c3;
 
 compile:
 
