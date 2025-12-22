@@ -16,8 +16,8 @@ fn void main()
             box.set_label(str.zstr_tcopy());
             box.redraw();
             win.show();
-            if(fl::event_key()==65293) libc::exit(0);
-
+            //if(fl::event_key()==65293) libc::exit(0);
+            if(fl::event_key()==Fl_Key.FL_KEY_ENTER) libc::exit(0);
             fl::check();
         }
         box.set_label("You pressed Enter\nExit while..."
