@@ -14,7 +14,8 @@ struct Fl_Box{void* data;}
 struct Fl_PNG_Image{void* data;}
 struct Fl_Group{void* data;}
 struct Fl_Pack{void* data;}
-
+struct Fl_Input{void* data;}
+struct Fl_Scrollbar{void* data;}
 
 extern fn Fl_Window* window_new(int,int,int,int,ZString) @extern("Fl_Window_new");
 extern fn void Fl_Window.end(&self) @extern("Fl_Window_end");
@@ -54,6 +55,16 @@ extern fn void Fl_Light_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Light_B
 
 extern fn Fl_Round_Button* round_button_new(int,int,int,int,ZString) @extern("Fl_Round_Button_new");
 extern fn void Fl_Round_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Round_Button_set_type");
+
+extern fn Fl_Input* input_new(int,int,int,int,ZString) @extern("Fl_Input_new");
+extern fn void Fl_Input.set_value(&self,ZString) @extern("Fl_Input_set_value");
+
+extern fn Fl_Scrollbar* scrollbar_new(int,int,int,int,ZString) @extern("Fl_Scrollbar_new");
+extern fn void Fl_Scrollbar.set_type(&self,Fl_ScrollbarType) @extern("Fl_Scrollbar_set_type");
+extern fn void Fl_Scrollbar.set_minimum(&self,double) @extern("Fl_Scrollbar_set_minimum");
+extern fn void Fl_Scrollbar.set_maximum(&self,double) @extern("Fl_Scrollbar_set_maximum");
+extern fn void Fl_Scrollbar.set_value(&self,double) @extern("Fl_Scrollbar_set_value");
+
 
 extern fn Fl_Pack* pack_new(int,int,int,int) @extern("Fl_Pack_new");
 extern fn void Fl_Pack.box(&self,Fl_PackType) @extern("Fl_Pack_box");
