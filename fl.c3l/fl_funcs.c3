@@ -27,7 +27,7 @@ extern fn void Fl_Widget.resize(&self,int,int,int,int) @extern("Fl_Widget_resize
 extern fn Fl_Group* Fl_Widget.parent(&self) @extern("Fl_Widget_parent");
 extern fn void Fl_Widget.delete(&self) @extern("Fl_Widget_delete");
 extern fn void Fl_Widget.copy_label(&self,ZString) @extern("Fl_Widget_copy_label");
-
+extern fn void Fl_Widget.set_type(&self,int) @extern("Fl_Widget_set_type");
 extern fn void Fl_Group.redraw(&sefl) @extern("Fl_Group_redraw");
 
 extern fn Fl_Box* box_new(int,int,int,int,ZString) @extern("Fl_Box_new");
@@ -45,6 +45,7 @@ extern fn Fl_Button* button_new(int,int,int,int,ZString,) @extern("Fl_Button_new
 extern fn void Fl_Button.handle(&self,Cb,Fl_Box*) @extern("Fl_Button_handle");
 extern fn void Fl_Button.set_callback(&self,Cb,void*) @extern("Fl_Button_set_callback");
 extern fn void Fl_Button.set_deletion_callback(&self,Cb,Fl_Button*) @extern("Fl_Button_set_deletion_callback");
+extern fn void Fl_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Button_set_type");
 
 extern fn Fl_Pack* pack_new(int,int,int,int) @extern("Fl_Pack_new");
 extern fn void Fl_Pack.box(&self,Fl_PackType) @extern("Fl_Pack_box");

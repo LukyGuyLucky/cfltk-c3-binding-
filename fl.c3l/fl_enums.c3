@@ -243,7 +243,7 @@ enum Fl_Font:const inline CInt {
     FL_FONT_SCREENBOLD          = 14,
     FL_FONT_ZAPFDINGBATS        = 15,
 }
-enum Fl_Font_Type:const inline CInt {
+enum Fl_FontType:const inline CInt {
     FL_BOLD			=1,
     FL_ITALIC			=2,
     FL_BOLD_ITALIC		=3,
