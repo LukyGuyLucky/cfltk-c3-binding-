@@ -11,6 +11,8 @@ struct Fl_Button{void* data;}
 struct Fl_Box{void* data;}
 struct Fl_PNG_Image{void* data;}
 struct Fl_Group{void* data;}
+struct Fl_Pack{void* data;}
+
 
 extern fn Fl_Window* window_new(int,int,int,int,ZString) @extern("Fl_Window_new");
 extern fn void Fl_Window.end(&self) @extern("Fl_Window_end");
@@ -25,18 +27,29 @@ extern fn void Fl_Widget.resize(&self,int,int,int,int) @extern("Fl_Widget_resize
 extern fn Fl_Group* Fl_Widget.parent(&self) @extern("Fl_Widget_parent");
 extern fn void Fl_Widget.delete(&self) @extern("Fl_Widget_delete");
 extern fn void Fl_Widget.copy_label(&self,ZString) @extern("Fl_Widget_copy_label");
+
 extern fn void Fl_Group.redraw(&sefl) @extern("Fl_Group_redraw");
 
 extern fn Fl_Box* box_new(int,int,int,int,ZString) @extern("Fl_Box_new");
 extern fn void Fl_Box.set_image(&self,Fl_PNG_Image*) @extern("Fl_Box_set_image");
 extern fn void Fl_Box.set_label(&self,ZString) @extern("Fl_Box_set_label");
 extern fn void Fl_Box.handle(&self,Cb,void*) @extern("Fl_Box_handle");
+//extern fn void Fl_Box.copy_label(&self,ZString) @extern("Fl_Box_copy_label");
+extern fn void Fl_Box.box(&sefl,Fl_BoxType) @extern("Fl_Box_box");
+extern fn void Fl_Box.label_font(&self,Fl_Font) @extern("Fl_Box_label_font");
+extern fn void Fl_Box.label_size(&self,int) @extern("Fl_Box_label_size");
+extern fn void Fl_Box.label_type(&self,Fl_LabelType) @extern("Fl_Box_label_type");
+
 
 extern fn Fl_Button* button_new(int,int,int,int,ZString,) @extern("Fl_Button_new");
 extern fn void Fl_Button.handle(&self,Cb,Fl_Box*) @extern("Fl_Button_handle");
 extern fn void Fl_Button.set_callback(&self,Cb,void*) @extern("Fl_Button_set_callback");
 extern fn void Fl_Button.set_deletion_callback(&self,Cb,Fl_Button*) @extern("Fl_Button_set_deletion_callback");
 
+extern fn Fl_Pack* pack_new(int,int,int,int) @extern("Fl_Pack_new");
+extern fn void Fl_Pack.box(&self,Fl_PackType) @extern("Fl_Pack_box");
+extern fn void Fl_Pack.add(&self,Fl_Widget*) @extern("Fl_Pack_add");
+extern fn void Fl_Pack.end(&self) @extern("Fl_Pack_end");
 
 extern fn int run() @extern("Fl_run");
 extern fn void init_all() @extern("Fl_init_all");
@@ -45,6 +58,11 @@ extern fn int lock() @extern("Fl_lock");
 extern fn void set_scheme(ZString) @extern("Fl_set_scheme");
 extern fn void handle(int,Fl_Window*) @extern("Fl_handle");
 extern fn void beep(int) @extern("Fl_beep");
+
+extern fn int event_button() @extern("Fl_event_button");
+extern fn int eventX() @extern("Fl_event_x");
+extern fn int eventY() @extern("Fl_event_y");
+
 extern fn Fl_PNG_Image* png_image_new(ZString) @extern("Fl_PNG_Image_new");
 extern fn void Fl_PNG_Image.scale(&self,int,int,bool,bool) @extern("Fl_PNG_Image_scale");
 
