@@ -12,7 +12,7 @@ struct Fl_Box{void* data;}
 struct Fl_PNG_Image{void* data;}
 struct Fl_Group{void* data;}
 
-extern fn Fl_Window* window_new(int,int,int,int,char*) @extern("Fl_Window_new");
+extern fn Fl_Window* window_new(int,int,int,int,ZString) @extern("Fl_Window_new");
 extern fn void Fl_Window.end(&self) @extern("Fl_Window_end");
 extern fn void Fl_Window.show(&self) @extern("Fl_Window_show");
 extern fn void Fl_Window.set_color(&self,Fl_Color) @extern("Fl_Window_set_color");
@@ -27,12 +27,12 @@ extern fn void Fl_Widget.delete(&self) @extern("Fl_Widget_delete");
 extern fn void Fl_Widget.copy_label(&self,ZString) @extern("Fl_Widget_copy_label");
 extern fn void Fl_Group.redraw(&sefl) @extern("Fl_Group_redraw");
 
-extern fn Fl_Box* box_new(int,int,int,int,char*) @extern("Fl_Box_new");
+extern fn Fl_Box* box_new(int,int,int,int,ZString) @extern("Fl_Box_new");
 extern fn void Fl_Box.set_image(&self,Fl_PNG_Image*) @extern("Fl_Box_set_image");
 extern fn void Fl_Box.set_label(&self,ZString) @extern("Fl_Box_set_label");
 extern fn void Fl_Box.handle(&self,Cb,void*) @extern("Fl_Box_handle");
 
-extern fn Fl_Button* button_new(int,int,int,int,char*,) @extern("Fl_Button_new");
+extern fn Fl_Button* button_new(int,int,int,int,ZString,) @extern("Fl_Button_new");
 extern fn void Fl_Button.handle(&self,Cb,Fl_Box*) @extern("Fl_Button_handle");
 extern fn void Fl_Button.set_callback(&self,Cb,void*) @extern("Fl_Button_set_callback");
 extern fn void Fl_Button.set_deletion_callback(&self,Cb,Fl_Button*) @extern("Fl_Button_set_deletion_callback");
@@ -45,7 +45,7 @@ extern fn int lock() @extern("Fl_lock");
 extern fn void set_scheme(ZString) @extern("Fl_set_scheme");
 extern fn void handle(int,Fl_Window*) @extern("Fl_handle");
 extern fn void beep(int) @extern("Fl_beep");
-extern fn Fl_PNG_Image* png_image_new(char*) @extern("Fl_PNG_Image_new");
+extern fn Fl_PNG_Image* png_image_new(ZString) @extern("Fl_PNG_Image_new");
 extern fn void Fl_PNG_Image.scale(&self,int,int,bool,bool) @extern("Fl_PNG_Image_scale");
 
 alias Custom_handler_callback=fn void(Fl_Widget*,int,void*);
