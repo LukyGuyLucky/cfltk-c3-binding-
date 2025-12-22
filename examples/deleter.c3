@@ -8,10 +8,10 @@ fn void main()
     fl::lock();
     Fl_Window* win=fl::window_new(100,100,400,300,null);
     Fl_Button* btn=fl::button_new(160,210,80,40,"Click Me");
-    btn.set_deletion_callback((Cb)&dcb,btn);
+    btn.set_deletion_callback(&dcb,btn);
     win.end();
     win.show();
-    btn.set_callback((Cb)&cb,null);
+    btn.set_callback(&cb,null);
     
     fl::run();
 }

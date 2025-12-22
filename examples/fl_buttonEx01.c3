@@ -6,7 +6,7 @@ fn void main()
     fl::set_scheme("plastic");
     Fl_Window* win=fl::window_new(100,100,320,200,null);
     Fl_Button* btn=fl::button_new(10,10,320-20,200-20,"push-me!");
-    btn.handle((Cb)&cb,null);
+    btn.handle(&cb,null);
     
     win.end();
     win.show();
