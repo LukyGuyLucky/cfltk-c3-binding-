@@ -8,6 +8,8 @@
 struct Fl_Window{void* data;}
 struct Fl_Widget{void* data;}
 struct Fl_Button{void* data;}
+struct Fl_Light_Button{void* data;}
+struct Fl_Round_Button{void* data;}
 struct Fl_Box{void* data;}
 struct Fl_PNG_Image{void* data;}
 struct Fl_Group{void* data;}
@@ -46,6 +48,12 @@ extern fn void Fl_Button.handle(&self,Cb,Fl_Box*) @extern("Fl_Button_handle");
 extern fn void Fl_Button.set_callback(&self,Cb,void*) @extern("Fl_Button_set_callback");
 extern fn void Fl_Button.set_deletion_callback(&self,Cb,Fl_Button*) @extern("Fl_Button_set_deletion_callback");
 extern fn void Fl_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Button_set_type");
+
+extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
+extern fn void Fl_Light_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Light_Button_set_type");
+
+extern fn Fl_Round_Button* round_button_new(int,int,int,int,ZString) @extern("Fl_Round_Button_new");
+extern fn void Fl_Round_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Round_Button_set_type");
 
 extern fn Fl_Pack* pack_new(int,int,int,int) @extern("Fl_Pack_new");
 extern fn void Fl_Pack.box(&self,Fl_PackType) @extern("Fl_Pack_box");
