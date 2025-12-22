@@ -1,10 +1,10 @@
 cfltk api to c3 wrapper.
 Notes:
-Trying to uses methods other than procedure.eg:
+Trying to uses methods other than functions. eg:
 
 change 
 
-extern fn viud fl_window_set_color(Fl_Window*,fl_Color)  
+extern fn void fl_window_set_color(Fl_Window*,Fl_Color) @extern("Fl_Window_set_color");  
 
 to:
 
