@@ -22,17 +22,27 @@ struct Fl_Wizard{void* data;}
 struct Fl_Multiline_Output{void* data;}
 struct Fl_Menu_Bar{void* data;}
 struct Fl_Menu_Item{void* data;}
+struct Fl_Tree{void* data;}
+struct Fl_Tree_Item{void* data;}
 
 extern fn Fl_Window* window_new(int,int,int,int,ZString) @extern("Fl_Window_new");
+extern fn void Fl_Window.begin(&self) @extern("Fl_Window_begin");
 extern fn void Fl_Window.end(&self) @extern("Fl_Window_end");
 extern fn void Fl_Window.show(&self) @extern("Fl_Window_show");
 extern fn void Fl_Window.set_color(&self,Fl_Color) @extern("Fl_Window_set_color");
+extern fn int Fl_Window.width(&self) @extern("Fl_Window_width");
+extern fn int Fl_Window.heigth(&self) @extern("Fl_Window_height");
+extern fn ZString Fl_Window.label(&self) @extern("Fl_Window_label");
 
 extern fn Fl_Double_Window* double_window_new(int,int,int,int,ZString) @extern("Fl_Double_Window_new");
+extern fn void Fl_Double_Window.begin(&self) @extern("Fl_Double_Window_begin");
 extern fn void Fl_Double_Window.resizable(&self,Fl_Widget*) @extern("Fl_Double_Window_resizable");
 extern fn void Fl_Double_Window.end(&self) @extern("Fl_Double_Window_end");
 extern fn void Fl_Double_Window.show(&self) @extern("Fl_Double_Window_show");
 extern fn void Fl_Double_Window.set_color(&self,Fl_Color) @extern("Fl_Double_Window_set_color");
+extern fn int Fl_Double_Window.width(&self) @extern("Fl_Double_Window_width");
+extern fn int Fl_Double_Window.height(&self) @extern("Fl_Double_Window_height");
+extern fn ZString Fl_Double_Window.label(&self) @extern("Fl_Double_Window_label");
 
 extern fn void Fl_Widget.set_color(&self,Fl_Color) @extern("Fl_Widget_set_color");
 extern fn void Fl_Widget.set_label_color(&self,Fl_Color) @extern("Fl_Widget_set_label_color");
@@ -117,6 +127,20 @@ extern fn Fl_Menu_Item* Fl_Menu_Bar.mvalue(&self) @extern("Fl_Menu_Bar_mvalue");
 
 extern fn ZString Fl_Menu_Item.label(&self) @extern("Fl_Menu_Item_label");
 extern fn int Fl_Menu_Item.value(&self) @extern("Fl_Menu_Item_value");
+
+extern fn Fl_Tree* tree_new(int,int,int,int,ZString) @extern("Fl_Tree_new");
+extern fn int Fl_Tree.set_showroot(&self,int) @extern("Fl_Tree_set_showroot");
+extern fn void Fl_Tree.set_callback(&self,Callback,void* data) @extern("Fl_Tree_set_callback");
+extern fn int Fl_Tree.callback_reason(&self) @extern("Fl_Tree_callback_reason");
+extern fn int Fl_Tree.item_pathname(&self,ZString,int,Fl_Tree_Item*) @extern("Fl_Tree_item_pathname");
+extern fn Fl_Tree_Item* Fl_Tree.add(&self,ZString) @extern("Fl_Tree_add");
+extern fn Fl_Tree_Item* Fl_Tree.callback_item(&self) @extern("Fl_Tree_callback_item");
+extern fn int Fl_Tree.close(&self,ZString,int) @extern("Fl_Tree_close");
+extern fn int Fl_Tree.open(&self,ZString,int) @extern("Fl_Tree_open");
+
+extern fn void Fl_Tree_Item.open(&self) @extern("Fl_Tree_Item_open");
+extern fn void Fl_Tree_Item.close(&self) @extern("Fl_Tree_Item_close");
+extern fn ZString Fl_Tree_Item.label(&self) @extern("Fl_Tree_Item_label");
 
 extern fn Fl_Multiline_Output* multiline_output_new(int,int,int,int,ZString) @extern("Fl_Multiline_Output_new");
 extern fn void Fl_Multiline_Output.set_label_size(&self,int) @extern("Fl_Multiline_Output_set_label_size");
