@@ -24,6 +24,7 @@ struct Fl_Menu_Bar{void* data;}
 struct Fl_Menu_Item{void* data;}
 struct Fl_Tree{void* data;}
 struct Fl_Tree_Item{void* data;}
+struct Fl_Pixmap{void* data;}
 
 extern fn Fl_Window* window_new(int,int,int,int,ZString) @extern("Fl_Window_new");
 extern fn void Fl_Window.begin(&self) @extern("Fl_Window_begin");
@@ -85,6 +86,8 @@ extern fn void Fl_Button.set_callback(&self,Callback,void*) @extern("Fl_Button_s
 extern fn void Fl_Button.set_deletion_callback(&self,Callback,Fl_Button*) @extern("Fl_Button_set_deletion_callback");
 extern fn void Fl_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Button_set_type");
 extern fn void Fl_Button.set_color(&self,Fl_Color) @extern("Fl_Button_set_color");
+extern fn void Fl_Button.set_align(&self,Fl_Align) @extern("Fl_Button_set_align");
+extern fn void Fl_Button.set_image(&self,void*) @extern("Fl_Button_set_image");
 
 extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
 extern fn void Fl_Light_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Light_Button_set_type");
@@ -165,6 +168,7 @@ extern fn ZString event_text() @extern("Fl_event_text");
 
 extern fn Fl_PNG_Image* png_image_new(ZString) @extern("Fl_PNG_Image_new");
 extern fn void Fl_PNG_Image.scale(&self,int,int,bool,bool) @extern("Fl_PNG_Image_scale");
+extern fn Fl_Pixmap* pixmap_new(char**) @extern("Fl_Pixmap_new");
 
 alias Callback=fn void(Fl_Widget*,void*);
 alias Custom_handler_callback=fn void(Fl_Widget*,int,void*);
