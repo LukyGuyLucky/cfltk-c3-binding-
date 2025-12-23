@@ -25,6 +25,7 @@ struct Fl_Menu_Item{void* data;}
 struct Fl_Tree{void* data;}
 struct Fl_Tree_Item{void* data;}
 struct Fl_Pixmap{void* data;}
+struct Fl_Hor_Value_Slider{void* data;}
 
 extern fn Fl_Window* window_new(int,int,int,int,ZString) @extern("Fl_Window_new");
 extern fn void Fl_Window.begin(&self) @extern("Fl_Window_begin");
@@ -48,6 +49,7 @@ extern fn int Fl_Double_Window.height(&self) @extern("Fl_Double_Window_height");
 extern fn ZString Fl_Double_Window.label(&self) @extern("Fl_Double_Window_label");
 extern fn void Fl_Double_Window.draw(&self,Cb,void* data) @extern("Fl_Double_Window_draw");
 extern fn int Fl_Double_Window.shown(&self) @extern("Fl_Double_Window_shown");
+extern fn void Fl_Double_Window.redraw(&self) @extern("Fl_Double_Window_redraw");
 
 extern fn void Fl_Widget.set_color(&self,Fl_Color) @extern("Fl_Widget_set_color");
 extern fn void Fl_Widget.set_label_color(&self,Fl_Color) @extern("Fl_Widget_set_label_color");
@@ -59,6 +61,8 @@ extern fn int Fl_Widget.y(&self) @extern("Fl_Widget_y");
 extern fn void Fl_Widget.resize(&self,int,int,int,int) @extern("Fl_Widget_resize");
 extern fn void Fl_Widget.redraw(&self) @extern("Fl_Widget_redraw");
 extern fn void Fl_Widget.set_icon(&self,void*) @extern("Fl_Widget_set_icon");
+extern fn void* Fl_Widget.user_data(&self) @extern("Fl_Widget_user_data");
+extern fn void* Fl_Widget.window(&self) @extern("Fl_Widget_window");
 //extern fn void Fl_Widget.set_position(&self,int,int) @extern("Fl_Widget_position");
 
 extern fn Fl_Group* Fl_Widget.parent(&self) @extern("Fl_Widget_parent");
@@ -94,6 +98,9 @@ extern fn int Fl_Box.height(&self) @extern("Fl_Box_height");
 //extern fn void Fl_Box.set_position(&self,int,int) @extern("Fl_Box_position");
 extern fn void Fl_Box.set_image(&self,void*) @extern("Fl_Box_set_image");
 extern fn void Fl_Box.resize(&self,int,int,int,int) @extern("Fl_Box_resize");
+extern fn void Fl_Box.set_user_data(&self,void*) @extern("Fl_Box_set_user_data");
+extern fn void Fl_Box.set_callback(&self,Callback,void*) @extern("Fl_Box_set_callback");
+extern fn void Fl_Box.draw(&self,Cb,void*) @extern("Fl_Box_draw");
 
 extern fn Fl_Button* button_new(int,int,int,int,ZString,) @extern("Fl_Button_new");
 extern fn void Fl_Button.handle(&self,Cb,Fl_Box*) @extern("Fl_Button_handle");
@@ -165,6 +172,15 @@ extern fn void Fl_Multiline_Output.set_label_size(&self,int) @extern("Fl_Multili
 extern fn void Fl_Multiline_Output.set_align(&self,Fl_Align) @extern("Fl_Multiline_Output_set_align");
 extern fn void Fl_Multiline_Output.set_value(&sefl,ZString) @extern("Fl_Multiline_Output_set_value");
 
+extern fn Fl_Hor_Value_Slider* hor_value_slider_new(int,int,int,int,ZString) @extern("Fl_Hor_Value_Slider_new");
+extern fn void Fl_Hor_Value_Slider.set_callback(&self,Callback,void*) @extern("Fl_Hor_Value_Slider_set_callback");
+extern fn void Fl_Hor_Value_Slider.set_range(&self,double,double) @extern("Fl_Hor_Value_Slider_set_range");
+extern fn int Fl_Hor_Value_Slider.set_value(&self,double) @extern("Fl_Hor_Value_Slider_set_value");
+extern fn void* Fl_Hor_Value_Slider.user_data(&self) @extern("Fl_Hor_Value_Slider_user_data");
+extern fn double Fl_Hor_Value_Slider.value(&self) @extern("Fl_Hor_Value_Slider_value");
+extern fn void* Fl_Hor_Value_Slider.window(&self) @extern("Fl_Hor_Value_Slider_window");
+
+
 extern fn int run() @extern("Fl_run");
 extern fn void init_all() @extern("Fl_init_all");
 extern fn void register_images() @extern("Fl_register_images");
@@ -217,8 +233,25 @@ extern fn void set_draw_font(int,int) @extern("Fl_set_draw_font");
 extern fn void point(int,int) @extern("Fl_point");
 extern fn void line(int,int,int,int) @extern("Fl_line");
 extern fn void arc(int,int,int,int,double,double) @extern("Fl_arc");
+extern fn void arc_with_radius(double,double,double,double,double) @extern("Fl_arc_with_radius");
+
 extern fn void draw_box(int,int,int,int,int,uint) @extern("Fl_draw_box");
+extern fn void push_matrix() @extern("Fl_push_matrix");
+extern fn void pop_matrix() @extern("Fl_pop_matrix");
+extern fn void scale(double) @extern("Fl_scale");
+extern fn void begin_line() @extern("Fl_begin_line");
+extern fn void end_line() @extern("Fl_end_line");
+extern fn void begin_loop() @extern("Fl_begin_loop");
+extern fn void end_loop() @extern("Fl_end_loop");
+extern fn void begin_polygon() @extern("Fl_begin_polygon");
+extern fn void end_polygon() @extern("Fl_end_polygon");
+extern fn void begin_complex_polygon() @extern("Fl_begin_complex_polygon");
+extern fn void end_complex_polygon() @extern("Fl_end_complex_polygon");
+extern fn void vertex(double,double) @extern("Fl_vertex");
+
+
 alias Callback=fn void(Fl_Widget*,void*);
+alias Custom_draw_callback=fn void(Fl_Widget*,void*);
 alias Custom_handler_callback=fn void(Fl_Widget*,int,void*);
 alias Cb=fn int(Fl_Widget*,int,void*);
 alias Fl_Callback=fn int(Fl_Widget*,int,void*);
