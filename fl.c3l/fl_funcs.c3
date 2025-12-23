@@ -50,8 +50,12 @@ extern fn void Fl_Widget.set_label_color(&self,Fl_Color) @extern("Fl_Widget_set_
 extern fn void Fl_Widget.set_label(&self,ZString) @extern("Fl_Widget_set_label");
 extern fn int Fl_Widget.height(&self) @extern("Fl_Widget_height");
 extern fn int Fl_Widget.width(&self) @extern("Fl_Widget_width");
+extern fn int Fl_Widget.x(&self) @extern("Fl_Widget_x");
+extern fn int Fl_Widget.y(&self) @extern("Fl_Widget_y");
 extern fn void Fl_Widget.resize(&self,int,int,int,int) @extern("Fl_Widget_resize");
 extern fn void Fl_Widget.redraw(&self) @extern("Fl_Widget_redraw");
+extern fn void Fl_Widget.set_icon(&self,void*) @extern("Fl_Widget_set_icon");
+//extern fn void Fl_Widget.set_position(&self,int,int) @extern("Fl_Widget_position");
 
 extern fn Fl_Group* Fl_Widget.parent(&self) @extern("Fl_Widget_parent");
 extern fn void Fl_Widget.delete(&self) @extern("Fl_Widget_delete");
@@ -64,7 +68,7 @@ extern fn void Fl_Group.end(&self) @extern("Fl_Group_end");
 extern fn Fl_Group* group_new(int,int,int,int,ZString) @extern("Fl_Group_new");
 
 extern fn Fl_Box* box_new(int,int,int,int,ZString) @extern("Fl_Box_new");
-extern fn void Fl_Box.set_image(&self,Fl_PNG_Image*) @extern("Fl_Box_set_image");
+//extern fn void Fl_Box.set_image(&self,Fl_PNG_Image*) @extern("Fl_Box_set_image");
 extern fn void Fl_Box.set_label(&self,ZString) @extern("Fl_Box_set_label");
 extern fn void Fl_Box.handle(&self,Cb,void*) @extern("Fl_Box_handle");
 extern fn int Fl_Box.handle_event(&self,int) @extern("Fl_Box_handle_event");
@@ -79,6 +83,13 @@ extern fn void Fl_Box.set_label_size(&self,int) @extern("Fl_Box_set_label_size")
 extern fn void Fl_Box.set_type(&self,Fl_BoxType) @extern("Fl_Box_set_type");
 extern fn void Fl_Box.redraw(&self) @extern("Fl_Box_redraw");
 extern fn void Fl_Box.window(&self) @extern("Fl_Box_window");
+extern fn int Fl_Box.x(&self) @extern("Fl_Box_x");
+extern fn int Fl_Box.y(&self) @extern("Fl_Box_y");
+extern fn int Fl_Box.width(&self) @extern("Fl_Box_width");
+extern fn int Fl_Box.height(&self) @extern("Fl_Box_height");
+//extern fn void Fl_Box.set_position(&self,int,int) @extern("Fl_Box_position");
+extern fn void Fl_Box.set_image(&self,void*) @extern("Fl_Box_set_image");
+extern fn void Fl_Box.resize(&self,int,int,int,int) @extern("Fl_Box_resize");
 
 extern fn Fl_Button* button_new(int,int,int,int,ZString,) @extern("Fl_Button_new");
 extern fn void Fl_Button.handle(&self,Cb,Fl_Box*) @extern("Fl_Button_handle");
@@ -149,6 +160,7 @@ extern fn Fl_Multiline_Output* multiline_output_new(int,int,int,int,ZString) @ex
 extern fn void Fl_Multiline_Output.set_label_size(&self,int) @extern("Fl_Multiline_Output_set_label_size");
 extern fn void Fl_Multiline_Output.set_align(&self,Fl_Align) @extern("Fl_Multiline_Output_set_align");
 extern fn void Fl_Multiline_Output.set_value(&sefl,ZString) @extern("Fl_Multiline_Output_set_value");
+
 extern fn int run() @extern("Fl_run");
 extern fn void init_all() @extern("Fl_init_all");
 extern fn void register_images() @extern("Fl_register_images");
@@ -159,12 +171,25 @@ extern fn void beep(int) @extern("Fl_beep");
 extern fn uint rgb_color(char r,char g,char b) @extern("Fl_rgb_color");
 extern fn int event_button() @extern("Fl_event_button");
 extern fn int eventX() @extern("Fl_event_x");
+extern fn int event_x() @extern("Fl_event_x");
 extern fn int eventY() @extern("Fl_event_y");
+extern fn int event_y() @extern("Fl_event_y");
 extern fn int event_key() @extern("Fl_event_key");
 extern fn int check() @extern("Fl_check");
 extern fn int dnd() @extern("Fl_dnd");
 extern fn void copy(ZString,int,int) @extern("Fl_copy");
 extern fn ZString event_text() @extern("Fl_event_text");
+extern fn void redraw() @extern("Fl_redraw");
+extern fn void set_focus() @extern("Fl_set_focus");
+extern fn int w() @extern("Fl_w");
+extern fn int h() @extern("Fl_h");
+extern fn void foreground(char,char,char) @extern("Fl_foreground");
+extern fn void background(char,char,char) @extern("Fl_background");
+extern fn void background2(char,char,char) @extern("Fl_background2");
+extern fn Fl_Widget* foucus() @extern("Fl_focus");
+extern fn double version() @extern("Fl_version");
+extern fn int load_font(ZString) @extern("Fl_load_font");
+extern fn void load_system_icon() @extern("Fl_laod_system_icon");
 
 extern fn Fl_PNG_Image* png_image_new(ZString) @extern("Fl_PNG_Image_new");
 extern fn void Fl_PNG_Image.scale(&self,int,int,bool,bool) @extern("Fl_PNG_Image_scale");
