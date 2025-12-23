@@ -32,8 +32,10 @@ extern fn void Fl_Window.end(&self) @extern("Fl_Window_end");
 extern fn void Fl_Window.show(&self) @extern("Fl_Window_show");
 extern fn void Fl_Window.set_color(&self,Fl_Color) @extern("Fl_Window_set_color");
 extern fn int Fl_Window.width(&self) @extern("Fl_Window_width");
-extern fn int Fl_Window.heigth(&self) @extern("Fl_Window_height");
+extern fn int Fl_Window.height(&self) @extern("Fl_Window_height");
 extern fn ZString Fl_Window.label(&self) @extern("Fl_Window_label");
+extern fn void Fl_Window.make_current(&self) @extern("Fl_Window_make_current");
+extern fn int Fl_Window.shown(&self) @extern("Fl_Window_shown");
 
 extern fn Fl_Double_Window* double_window_new(int,int,int,int,ZString) @extern("Fl_Double_Window_new");
 extern fn void Fl_Double_Window.begin(&self) @extern("Fl_Double_Window_begin");
@@ -45,7 +47,7 @@ extern fn int Fl_Double_Window.width(&self) @extern("Fl_Double_Window_width");
 extern fn int Fl_Double_Window.height(&self) @extern("Fl_Double_Window_height");
 extern fn ZString Fl_Double_Window.label(&self) @extern("Fl_Double_Window_label");
 extern fn void Fl_Double_Window.draw(&self,Cb,void* data) @extern("Fl_Double_Window_draw");
-
+extern fn int Fl_Double_Window.shown(&self) @extern("Fl_Double_Window_shown");
 
 extern fn void Fl_Widget.set_color(&self,Fl_Color) @extern("Fl_Widget_set_color");
 extern fn void Fl_Widget.set_label_color(&self,Fl_Color) @extern("Fl_Widget_set_label_color");
@@ -193,7 +195,8 @@ extern fn double version() @extern("Fl_version");
 extern fn void set_font(int,int) @extern("Fl_set_font");
 extern fn int load_font(ZString) @extern("Fl_load_font");
 extern fn void load_system_icon() @extern("Fl_laod_system_icon");
-
+extern fn int wait() @extern("Fl_wait");
+extern fn double wait_for(double) @extern("Fl_wait_for");
 extern fn Fl_PNG_Image* png_image_new(ZString) @extern("Fl_PNG_Image_new");
 extern fn void Fl_PNG_Image.scale(&self,int,int,bool,bool) @extern("Fl_PNG_Image_scale");
 extern fn Fl_Pixmap* pixmap_new(char**) @extern("Fl_Pixmap_new");
@@ -211,6 +214,10 @@ extern fn void rectf_with_rgb(int,int,int,int,char,char,char) @extern("Fl_rectf_
 extern fn void draw(ZString,int,int) @extern("Fl_draw");
 extern fn void draw_text_angled(int,ZString,int,int) @extern("Fl_draw_text_angled");
 extern fn void set_draw_font(int,int) @extern("Fl_set_draw_font");
+extern fn void point(int,int) @extern("Fl_point");
+extern fn void line(int,int,int,int) @extern("Fl_line");
+extern fn void arc(int,int,int,int,double,double) @extern("Fl_arc");
+extern fn void draw_box(int,int,int,int,int,uint) @extern("Fl_draw_box");
 alias Callback=fn void(Fl_Widget*,void*);
 alias Custom_handler_callback=fn void(Fl_Widget*,int,void*);
 alias Cb=fn int(Fl_Widget*,int,void*);
