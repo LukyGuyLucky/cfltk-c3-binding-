@@ -44,6 +44,8 @@ extern fn void Fl_Double_Window.set_color(&self,Fl_Color) @extern("Fl_Double_Win
 extern fn int Fl_Double_Window.width(&self) @extern("Fl_Double_Window_width");
 extern fn int Fl_Double_Window.height(&self) @extern("Fl_Double_Window_height");
 extern fn ZString Fl_Double_Window.label(&self) @extern("Fl_Double_Window_label");
+extern fn void Fl_Double_Window.draw(&self,Cb,void* data) @extern("Fl_Double_Window_draw");
+
 
 extern fn void Fl_Widget.set_color(&self,Fl_Color) @extern("Fl_Widget_set_color");
 extern fn void Fl_Widget.set_label_color(&self,Fl_Color) @extern("Fl_Widget_set_label_color");
@@ -188,6 +190,7 @@ extern fn void background(char,char,char) @extern("Fl_background");
 extern fn void background2(char,char,char) @extern("Fl_background2");
 extern fn Fl_Widget* foucus() @extern("Fl_focus");
 extern fn double version() @extern("Fl_version");
+extern fn void set_font(int,int) @extern("Fl_set_font");
 extern fn int load_font(ZString) @extern("Fl_load_font");
 extern fn void load_system_icon() @extern("Fl_laod_system_icon");
 
@@ -195,6 +198,19 @@ extern fn Fl_PNG_Image* png_image_new(ZString) @extern("Fl_PNG_Image_new");
 extern fn void Fl_PNG_Image.scale(&self,int,int,bool,bool) @extern("Fl_PNG_Image_scale");
 extern fn Fl_Pixmap* pixmap_new(char**) @extern("Fl_Pixmap_new");
 
+extern fn void push_clip(int,int,int,int) @extern("Fl_push_clip");
+extern fn void pop_clip() @extern("Fl_pop_clip");
+extern fn void set_color_int(Fl_Color) @extern("Fl_set_color_int");
+extern fn void set_color_rgb(char r,char g,char b) @extern("Fl_set_color_rgb");
+extern fn void rect(int,int,int,int) @extern("Fl_rect");
+extern fn void rectf(int,int,int,int) @extern("Fl_rectf");
+extern fn void rect_with_color(int,int,int,int,Fl_Color) @extern("Fl_rect_with_color");
+extern fn void xyline(int,int,int) @extern("Fl_xyline");
+extern fn void yxline(int,int,int) @extern("Fl_yxline");
+extern fn void rectf_with_rgb(int,int,int,int,char,char,char) @extern("Fl_rectf_with_rgb");
+extern fn void draw(ZString,int,int) @extern("Fl_draw");
+extern fn void draw_text_angled(int,ZString,int,int) @extern("Fl_draw_text_angled");
+extern fn void set_draw_font(int,int) @extern("Fl_set_draw_font");
 alias Callback=fn void(Fl_Widget*,void*);
 alias Custom_handler_callback=fn void(Fl_Widget*,int,void*);
 alias Cb=fn int(Fl_Widget*,int,void*);
