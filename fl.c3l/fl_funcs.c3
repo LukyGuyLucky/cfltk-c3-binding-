@@ -30,6 +30,8 @@ struct Fl_Pixmap{void* data;}
 struct Fl_Hor_Value_Slider{void* data;}
 struct Fl_Chart{void* data;}
 struct Fl_Clock{void* data;}
+struct Fl_Counter{void* data;}
+struct Fl_Simple_Counter{void* data;}
 
 
 extern fn Fl_Window* window_new(int,int,int,int,ZString) @extern("Fl_Window_new");
@@ -44,10 +46,11 @@ extern fn ZString Fl_Window.label(&self) @extern("Fl_Window_label");
 extern fn void Fl_Window.make_current(&self) @extern("Fl_Window_make_current");
 extern fn int Fl_Window.shown(&self) @extern("Fl_Window_shown");
 extern fn void Fl_Window.draw(&self,Cb,void* data) @extern("Fl_Window_draw");
+extern fn void Fl_Window.resizable(&self,void*) @extern("Fl_Window_resizable");
 
 extern fn Fl_Double_Window* double_window_new(int,int,int,int,ZString) @extern("Fl_Double_Window_new");
 extern fn void Fl_Double_Window.begin(&self) @extern("Fl_Double_Window_begin");
-extern fn void Fl_Double_Window.resizable(&self,Fl_Widget*) @extern("Fl_Double_Window_resizable");
+extern fn void Fl_Double_Window.resizable(&self,void*) @extern("Fl_Double_Window_resizable");
 extern fn void Fl_Double_Window.end(&self) @extern("Fl_Double_Window_end");
 extern fn void Fl_Double_Window.show(&self) @extern("Fl_Double_Window_show");
 extern fn void Fl_Double_Window.set_label(&self,ZString) @extern("Fl_Double_Window_set_label");
@@ -123,7 +126,7 @@ extern fn void Fl_Button.set_align(&self,Fl_Align) @extern("Fl_Button_set_align"
 extern fn void Fl_Button.set_image(&self,void*) @extern("Fl_Button_set_image");
 
 extern fn Fl_Clock* clock_new(int,int,int,int,ZString) @extern("Fl_Clock_new");
-
+extern fn void Fl_Clock.set_type(&self,int) @extern("Fl_Clock_set_type");
 
 extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
 extern fn void Fl_Light_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Light_Button_set_type");
@@ -217,6 +220,17 @@ extern fn Fl_Chart* chart_new(int,int,int,int,ZString) @extern("Fl_Chart_new");
 extern fn void Fl_Chart.add(&self,double,ZString,uint) @extern("Fl_Chart_add");
 extern fn void Fl_Chart.set_type(&self,int) @extern("Fl_Chart_set_type");
 
+extern fn Fl_Counter* counter_new(int,int,int,int,ZString) @extern("Fl_Counter_new");
+extern fn void Fl_Counter.set_callback(&self,CallbackVoid,void*) @extern("Fl_Counter_set_callback");
+extern fn ZString Fl_Counter.label(&self) @extern("Fl_Counter_label");
+extern fn void* Fl_Counter.user_data(&self) @extern("Fl_Counter_user_data");
+extern fn double Fl_Counter.value(&self) @extern("Fl_Counter_value");
+
+extern fn Fl_Simple_Counter* simple_counter_new(int,int,int,int,ZString) @extern("Fl_Simple_Counter_new");
+extern fn void Fl_Simple_Counter.set_callback(&self,CallbackVoid,void*) @extern("Fl_Simple_Counter_set_callback");
+extern fn ZString Fl_Simple_Counter.label(&self) @extern("Fl_Simple_Counter_label");
+extern fn void* Fl_Simple_Counter.user_data(&self) @extern("Fl_Simple_Counter_user_data");
+extern fn double Fl_Simple_Counter.value(&self) @extern("Fl_Simple_Counter_value");
 
 extern fn int run() @extern("Fl_run");
 extern fn void init_all() @extern("Fl_init_all");
