@@ -9,9 +9,9 @@ fn void main()
     Fl_Window* win=fl::window_new(100,100,400,200,"013-menubar-simple");
         Fl_Menu_Bar* menu=fl::menu_bar_new(0,0,400,25);
         Callback cb=&menu_callback;
-            menu.add("&File/&Open",Fl_Shortcut.FL_SHORTCUT_CTRL|'F',cb,null,0);
-            menu.add("&File/&Save",0,cb,null,Fl_MenuFlag.FL_MENUFLAG_MENUDIVIDER);
-            menu.add("&File/&Quit", 0, cb,null,0);
+            menu.add("&F文件/&打开",Fl_Shortcut.FL_SHORTCUT_CTRL|'F',cb,null,0);
+            menu.add("&F文件/&保存",0,cb,null,Fl_MenuFlag.FL_MENUFLAG_MENUDIVIDER);
+            menu.add("&F文件/&退出", 0, cb,null,0);
             menu.add("&Edit/&Copy", 0, cb,null,0);
             menu.add("&Edit/&Paste", 0, cb, null, Fl_MenuFlag.FL_MENUFLAG_MENUDIVIDER);
             menu.add("&Edit/Radio 1", 0, cb, null, Fl_MenuFlag.FL_MENUFLAG_RADIO);
@@ -20,7 +20,7 @@ fn void main()
             menu.add("&Edit/Toggle 2", 0, cb, null, Fl_MenuFlag.FL_MENUFLAG_TOGGLE); 
 
             menu.add("&Edit/Toggle 3", 0, cb, null, Fl_MenuFlag.FL_MENUFLAG_TOGGLE | Fl_MenuFlag.FL_MENUFLAG_VALUE);
-            menu.add("&Help/&bing", 0, cb,null,0);
+            menu.add("&H帮助/&bing", 0, cb,null,0);
     win.end();
     win.show();
 
@@ -42,7 +42,7 @@ fn void menu_callback(Fl_Widget* w,void* data)
         }
         if(item.label()=="&bing")
         {
-            io::printn(`fl::open_url("http://www.bing.com")`);
+            fl::open_uri("http://www.bing.com",null,0);
         }
         if(item.label()=="&Quit")
         {
