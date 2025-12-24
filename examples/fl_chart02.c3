@@ -3,6 +3,17 @@ import libc;
 
 fn void main()
 {
+    mem::@report_heap_allocs_in_scope()
+    {
+        main_window().show();
+
+        fl::run();
+    };
+   
+}
+
+fn Fl_Window* main_window()
+{
     int ww=640;
     int hh=480;
     int w=(ww-40)/3;
@@ -24,10 +35,7 @@ fn void main()
         Fl_Chart* chart5=fl::chart_new(30+w*2,30+h*1,w,h,"PIE");
             chart5.set_type(Fl_ChartType.FL_CHARTTYPE_PIE);
             chart5.add_items();
-    win.show();
-
-    fl::run();
-
+    return win;
 }
 fn void Fl_Chart.add_items(&self)
 {
