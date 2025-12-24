@@ -288,6 +288,12 @@ extern fn double wait_for(double) @extern("Fl_wait_for");
 extern fn void set_color(uint,char,char,char) @extern("Fl_set_color");
 extern fn void set_color_with_alpha(uint,char,char,char,char) @extern("Fl_set_color_with_alpha");
 extern fn void set_box_type(int,int) @extern("Fl_set_box_type");
+extern fn int filename_expand(ZString,int,ZString) @extern("Fl_filename_expand");
+extern fn ZString type_name(void*) @extern("Fl_type_name");
+extern fn int open_uri(ZString,ZString,int) @extern("Fl_open_uri");
+extern fn void decode_uri(ZString) @extern("Fl_decode_uri");
+
+
 
 extern fn Fl_PNG_Image* png_image_new(ZString) @extern("Fl_PNG_Image_new");
 extern fn void Fl_PNG_Image.scale(&self,int,int,bool,bool) @extern("Fl_PNG_Image_scale");
