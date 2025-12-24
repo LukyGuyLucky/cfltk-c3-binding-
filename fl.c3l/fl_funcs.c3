@@ -80,6 +80,8 @@ extern fn Fl_Group* Fl_Widget.parent(&self) @extern("Fl_Widget_parent");
 extern fn void Fl_Widget.delete(&self) @extern("Fl_Widget_delete");
 extern fn void Fl_Widget.copy_label(&self,ZString) @extern("Fl_Widget_copy_label");
 extern fn void Fl_Widget.set_type(&self,int) @extern("Fl_Widget_set_type");
+extern fn void Fl_Widget.set_when(&self,int) @extern("Fl_Widget_set_when");
+extern fn int Fl_Widget.when(&self) @extern("Fl_Widget_when");
 
 extern fn void Fl_Group.redraw(&self) @extern("Fl_Group_redraw");
 extern fn void Fl_Group.set_color(&self,int) @extern("Fl_Group_set_color");
@@ -122,8 +124,13 @@ extern fn void Fl_Button.set_callback(&self,Callback,void*) @extern("Fl_Button_s
 extern fn void Fl_Button.set_deletion_callback(&self,Callback,void*) @extern("Fl_Button_set_deletion_callback");
 extern fn void Fl_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Button_set_type");
 extern fn void Fl_Button.set_color(&self,int) @extern("Fl_Button_set_color");
+extern fn void Fl_Button.set_label_color(&self,uint) @extern("Fl_Button_set_label_color");
+extern fn void Fl_Button.set_selection_color(&self,uint) @extern("Fl_Button_set_selection_color");
 extern fn void Fl_Button.set_align(&self,Fl_Align) @extern("Fl_Button_set_align");
 extern fn void Fl_Button.set_image(&self,void*) @extern("Fl_Button_set_image");
+extern fn void Fl_Button.set_when(&self,int) @extern("Fl_Button_set_when");
+extern fn int Fl_Button.when(&self) @extern("Fl_Button_when");
+
 
 extern fn Fl_Clock* clock_new(int,int,int,int,ZString) @extern("Fl_Clock_new");
 extern fn void Fl_Clock.set_type(&self,int) @extern("Fl_Clock_set_type");
@@ -149,10 +156,13 @@ extern fn Fl_Menu_Item* Fl_Choice.menu(&self) @extern("Fl_Choice_menu");
 extern fn void Fl_Choice.set_callback(&self,CallbackVoid,void*) @extern("Fl_Choice_set_callback");
 extern fn Fl_Menu_Item* Fl_Choice.at(&self,int) @extern("Fl_Choice_at");
 extern fn Fl_Menu_Item* Fl_Choice.mvalue(&self) @extern("Fl_Choice_mvalue");
+
 extern fn Fl_Input* input_new(int,int,int,int,ZString) @extern("Fl_Input_new");
 extern fn void Fl_Input.set_value(&self,ZString) @extern("Fl_Input_set_value");
 extern fn ZString Fl_Input.value(&self) @extern("Fl_Input_value");
-
+extern fn void Fl_Input.set_when(&self,int) @extern("Fl_Input_set_when");
+extern fn int Fl_Input.when(&self) @extern("Fl_Input_when");
+extern fn void Fl_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_Input_set_callback");
 extern fn Fl_Scrollbar* scrollbar_new(int,int,int,int,ZString) @extern("Fl_Scrollbar_new");
 extern fn void Fl_Scrollbar.set_type(&self,Fl_ScrollbarType) @extern("Fl_Scrollbar_set_type");
 extern fn void Fl_Scrollbar.set_minimum(&self,double) @extern("Fl_Scrollbar_set_minimum");
@@ -249,6 +259,8 @@ extern fn void set_scheme(ZString) @extern("Fl_set_scheme");
 extern fn void handle(int,Fl_Window*) @extern("Fl_handle");
 extern fn void beep(int) @extern("Fl_beep");
 extern fn uint rgb_color(char r,char g,char b) @extern("Fl_rgb_color");
+extern fn int event() @extern("Fl_event");
+extern fn ZString event_text() @extern("Fl_event_text");
 extern fn int event_button() @extern("Fl_event_button");
 extern fn int eventX() @extern("Fl_event_x");
 extern fn int event_x() @extern("Fl_event_x");
@@ -258,7 +270,7 @@ extern fn int event_key() @extern("Fl_event_key");
 extern fn int check() @extern("Fl_check");
 extern fn int dnd() @extern("Fl_dnd");
 extern fn void copy(ZString,int,int) @extern("Fl_copy");
-extern fn ZString event_text() @extern("Fl_event_text");
+
 extern fn void redraw() @extern("Fl_redraw");
 extern fn void set_focus() @extern("Fl_set_focus");
 extern fn int w() @extern("Fl_w");
