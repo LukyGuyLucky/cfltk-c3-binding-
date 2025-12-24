@@ -225,12 +225,21 @@ extern fn void Fl_Counter.set_callback(&self,CallbackVoid,void*) @extern("Fl_Cou
 extern fn ZString Fl_Counter.label(&self) @extern("Fl_Counter_label");
 extern fn void* Fl_Counter.user_data(&self) @extern("Fl_Counter_user_data");
 extern fn double Fl_Counter.value(&self) @extern("Fl_Counter_value");
+extern fn void Fl_Counter.set_bounds(&self,double,double) @extern("Fl_Counter_set_bounds");
+extern fn void Fl_Counter.set_range(&self,double,double) @extern("Fl_Counter_set_range");
+extern fn void Fl_Counter.set_step(&self,double,int) @extern("Fl_Counter_set_step");
+extern fn void Fl_Counter.set_value(&self,double) @extern("Fl_Counter_set_value");
 
 extern fn Fl_Simple_Counter* simple_counter_new(int,int,int,int,ZString) @extern("Fl_Simple_Counter_new");
 extern fn void Fl_Simple_Counter.set_callback(&self,CallbackVoid,void*) @extern("Fl_Simple_Counter_set_callback");
 extern fn ZString Fl_Simple_Counter.label(&self) @extern("Fl_Simple_Counter_label");
 extern fn void* Fl_Simple_Counter.user_data(&self) @extern("Fl_Simple_Counter_user_data");
 extern fn double Fl_Simple_Counter.value(&self) @extern("Fl_Simple_Counter_value");
+extern fn void Fl_Simple_Counter.set_bounds(&self,double,double) @extern("Fl_Simple_Counter_set_bounds");
+extern fn void Fl_Simple_Counter.set_range(&self,double,double) @extern("Fl_Simple_Counter_set_range");
+extern fn void Fl_Simple_Counter.set_step(&self,double,int) @extern("Fl_Simple_Counter_set_step");
+extern fn void Fl_Simple_Counter.set_value(&self,double) @extern("Fl_Simple_Counter_set_value");
+
 
 extern fn int run() @extern("Fl_run");
 extern fn void init_all() @extern("Fl_init_all");
