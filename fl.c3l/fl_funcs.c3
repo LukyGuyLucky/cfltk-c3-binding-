@@ -29,6 +29,8 @@ struct Fl_Tree_Item{void* data;}
 struct Fl_Pixmap{void* data;}
 struct Fl_Hor_Value_Slider{void* data;}
 struct Fl_Chart{void* data;}
+struct Fl_Clock{void* data;}
+
 
 extern fn Fl_Window* window_new(int,int,int,int,ZString) @extern("Fl_Window_new");
 extern fn void Fl_Window.begin(&self) @extern("Fl_Window_begin");
@@ -119,6 +121,8 @@ extern fn void Fl_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Button_set_ty
 extern fn void Fl_Button.set_color(&self,int) @extern("Fl_Button_set_color");
 extern fn void Fl_Button.set_align(&self,Fl_Align) @extern("Fl_Button_set_align");
 extern fn void Fl_Button.set_image(&self,void*) @extern("Fl_Button_set_image");
+
+extern fn Fl_Clock* clock_new(int,int,int,int,ZString) @extern("Fl_Clock_new");
 
 
 extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
