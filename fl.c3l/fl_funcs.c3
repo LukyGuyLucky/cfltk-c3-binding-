@@ -286,6 +286,11 @@ extern fn void Fl_File_Browser.set_filetype(&self,int) @extern("Fl_File_Browser_
 extern fn ZString Fl_File_Browser.text(&self,int) @extern("Fl_File_Browser_text");
 
 
+struct Fl_Help_View{void* data;}
+extern fn Fl_Help_View* help_view_new(int,int,int,int,ZString) @extern("Fl_Help_View_new");
+extern fn void Fl_Help_View.set_value(&self,ZString) @extern("Fl_Help_View_set_value");
+extern fn void Fl_Help_View.load(&self,ZString) @extern("Fl_Help_View_load");
+
 extern fn int run() @extern("Fl_run");
 extern fn void init_all() @extern("Fl_init_all");
 extern fn void register_images() @extern("Fl_register_images");
