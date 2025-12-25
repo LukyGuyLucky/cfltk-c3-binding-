@@ -32,12 +32,17 @@ struct Fl_Chart{void* data;}
 struct Fl_Clock{void* data;}
 struct Fl_Counter{void* data;}
 struct Fl_Simple_Counter{void* data;}
-
+struct Fl_Grid{void* data;}
 
 extern fn Fl_Window* window_new(int,int,int,int,ZString) @extern("Fl_Window_new");
+extern fn Fl_Window* window_new_wh(int,int,ZString) @extern("Fl_Window_wh");
 extern fn void Fl_Window.begin(&self) @extern("Fl_Window_begin");
 extern fn void Fl_Window.end(&self) @extern("Fl_Window_end");
 extern fn void Fl_Window.show(&self) @extern("Fl_Window_show");
+extern fn void Fl_Window.show_with_args(&self,int argc,ZString[] argv) @extern("Fl_Window_show_with_args");
+extern fn Fl_Window* Fl_Window.find_by_handle(&self,void*) @extern("Fl_Window_find_by_handle");
+extern fn void Fl_Window.size_range(&self,int,int,int,int) @extern("Fl_Window_size_range");
+extern fn void Fl_Window.set_box(&self,int) @extern("Fl_Window_set_box");
 extern fn void Fl_Window.set_color(&self,int) @extern("Fl_Window_set_color");
 extern fn int Fl_Window.width(&self) @extern("Fl_Window_width");
 extern fn int Fl_Window.height(&self) @extern("Fl_Window_height");
@@ -49,10 +54,13 @@ extern fn void Fl_Window.draw(&self,Cb,void* data) @extern("Fl_Window_draw");
 extern fn void Fl_Window.resizable(&self,void*) @extern("Fl_Window_resizable");
 
 extern fn Fl_Double_Window* double_window_new(int,int,int,int,ZString) @extern("Fl_Double_Window_new");
+extern fn Fl_Double_Window* double_window_new_wh(int,int,ZString) @extern("Fl_Double_Window_new_wh");
+extern fn Fl_Double_Window* Fl_Double_Window.find_by_handle(&self,void*) @extern("Fl_Double_Window_find_by_handle");
 extern fn void Fl_Double_Window.begin(&self) @extern("Fl_Double_Window_begin");
 extern fn void Fl_Double_Window.resizable(&self,void*) @extern("Fl_Double_Window_resizable");
 extern fn void Fl_Double_Window.end(&self) @extern("Fl_Double_Window_end");
 extern fn void Fl_Double_Window.show(&self) @extern("Fl_Double_Window_show");
+extern fn void Fl_Double_Window.show_with_args(&self,int argc,ZString[] argv) @extern("Fl_Window_Double_show_with_args");
 extern fn void Fl_Double_Window.set_label(&self,ZString) @extern("Fl_Double_Window_set_label");
 extern fn void Fl_Double_Window.set_color(&self,int) @extern("Fl_Double_Window_set_color");
 extern fn int Fl_Double_Window.width(&self) @extern("Fl_Double_Window_width");
@@ -61,6 +69,7 @@ extern fn ZString Fl_Double_Window.label(&self) @extern("Fl_Double_Window_label"
 extern fn void Fl_Double_Window.draw(&self,Cb,void* data) @extern("Fl_Double_Window_draw");
 extern fn int Fl_Double_Window.shown(&self) @extern("Fl_Double_Window_shown");
 extern fn void Fl_Double_Window.redraw(&self) @extern("Fl_Double_Window_redraw");
+extern fn void Fl_Double_Window.size_range(&self,int,int,int,int) @extern("Fl_Double_Window_size_range");
 
 extern fn void Fl_Widget.set_color(&self,int) @extern("Fl_Widget_set_color");
 extern fn void Fl_Widget.set_label_color(&self,int) @extern("Fl_Widget_set_label_color");
@@ -82,11 +91,22 @@ extern fn void Fl_Widget.copy_label(&self,ZString) @extern("Fl_Widget_copy_label
 extern fn void Fl_Widget.set_type(&self,int) @extern("Fl_Widget_set_type");
 extern fn void Fl_Widget.set_when(&self,int) @extern("Fl_Widget_set_when");
 extern fn int Fl_Widget.when(&self) @extern("Fl_Widget_when");
+extern fn void Fl_Widget.set_box(&self,int) @extern("Fl_Widget_set_box");
+
+
 
 extern fn void Fl_Group.redraw(&self) @extern("Fl_Group_redraw");
 extern fn void Fl_Group.set_color(&self,int) @extern("Fl_Group_set_color");
+extern fn void Fl_Group.begin(&self) @extern("Fl_Group_begin");
 extern fn void Fl_Group.end(&self) @extern("Fl_Group_end");
 extern fn Fl_Group* group_new(int,int,int,int,ZString) @extern("Fl_Group_new");
+extern fn void Fl_Group.add(&self,void*) @extern("Fl_Group_add");
+extern fn void Fl_Group.resizable(&self,void*) @extern("Fl_Group_resizable");
+extern fn void Fl_Group.insert(&self,void*,int) @extern("Fl_Group_insert");
+
+extern fn Fl_Grid* grid_new(int,int,int,int,ZString) @extern("Fl_Grid_new");
+extern fn void Fl_Grid.set_widget(&self,Fl_Widget*,int,int,ushort) @extern("Fl_Grid_set_widget");
+
 
 extern fn Fl_Box* box_new(int,int,int,int,ZString) @extern("Fl_Box_new");
 //extern fn void Fl_Box.set_image(&self,Fl_PNG_Image*) @extern("Fl_Box_set_image");
@@ -116,7 +136,7 @@ extern fn void Fl_Box.set_user_data(&self,void*) @extern("Fl_Box_set_user_data")
 extern fn void Fl_Box.set_callback(&self,Callback,void*) @extern("Fl_Box_set_callback");
 extern fn void Fl_Box.draw(&self,Cb,void*) @extern("Fl_Box_draw");
 extern fn int Fl_Box.get_type(&self) @extern("Fl_Box.get_type");
-extern fn void Fl_Box.set_box(&self,int) @extern("Fl_Box.set_box");
+extern fn void Fl_Box.set_box(&self,int) @extern("Fl_Box_set_box");
 
 extern fn Fl_Button* button_new(int,int,int,int,ZString,) @extern("Fl_Button_new");
 extern fn void Fl_Button.handle(&self,Cb,Fl_Box*) @extern("Fl_Button_handle");
@@ -163,6 +183,11 @@ extern fn ZString Fl_Input.value(&self) @extern("Fl_Input_value");
 extern fn void Fl_Input.set_when(&self,int) @extern("Fl_Input_set_when");
 extern fn int Fl_Input.when(&self) @extern("Fl_Input_when");
 extern fn void Fl_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_Input_set_callback");
+extern fn void Fl_Input.begin(&self) @extern("Fl_Input_begin");
+extern fn void Fl_Input.end(&self) @extern("Fl_Input_end");
+extern fn void Fl_Input.add(&self,void*) @extern("Fl_Input_add");
+
+
 extern fn Fl_Scrollbar* scrollbar_new(int,int,int,int,ZString) @extern("Fl_Scrollbar_new");
 extern fn void Fl_Scrollbar.set_type(&self,Fl_ScrollbarType) @extern("Fl_Scrollbar_set_type");
 extern fn void Fl_Scrollbar.set_minimum(&self,double) @extern("Fl_Scrollbar_set_minimum");
@@ -249,6 +274,16 @@ extern fn void Fl_Simple_Counter.set_bounds(&self,double,double) @extern("Fl_Sim
 extern fn void Fl_Simple_Counter.set_range(&self,double,double) @extern("Fl_Simple_Counter_set_range");
 extern fn void Fl_Simple_Counter.set_step(&self,double,int) @extern("Fl_Simple_Counter_set_step");
 extern fn void Fl_Simple_Counter.set_value(&self,double) @extern("Fl_Simple_Counter_set_value");
+
+struct Fl_File_Browser{void* data;}
+extern fn Fl_File_Browser* file_browser_new(int,int,int,int,ZString) @extern("Fl_File_Browser_new");
+extern fn void Fl_File_Browser.set_has_scrollbar(&self,char) @extern("Fl_File_Browser_set_has_scrollbar");
+extern fn void Fl_File_Browser.set_filter(&self,ZString) @extern("Fl_File_Browser_set_filter");
+extern fn void Fl_File_Browser.load_file(&self,ZString) @extern("Fl_File_Browser_load_file");
+extern fn int Fl_File_Browser.size(&self) @extern("Fl_File_Browser_size");
+extern fn int Fl_File_Browser.value(&self) @extern("Fl_File_Browser_value");
+extern fn void Fl_File_Browser.set_filetype(&self,int) @extern("Fl_File_Browser_set_filetype");
+extern fn ZString Fl_File_Browser.text(&self,int) @extern("Fl_File_Browser_text");
 
 
 extern fn int run() @extern("Fl_run");
