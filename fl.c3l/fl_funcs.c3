@@ -10,9 +10,14 @@ struct Fl_Double_Window{void* data;}
 struct Fl_Widget{void* data;}
 struct Fl_Button{void* data;}
 struct Fl_Check_Button{void* data;}
+struct Fl_Check_Box{void* data;}
 struct Fl_Choice{void* data;}
 struct Fl_Light_Button{void* data;}
 struct Fl_Round_Button{void* data;}
+struct Fl_Radio_Button{void* data;}
+struct Fl_Radio_Round_Button{void* data;}
+struct Fl_Toggle_Button{void* data;}
+
 struct Fl_Box{void* data;}
 struct Fl_PNG_Image{void* data;}
 struct Fl_Group{void* data;}
@@ -92,7 +97,7 @@ extern fn void Fl_Widget.set_type(&self,int) @extern("Fl_Widget_set_type");
 extern fn void Fl_Widget.set_when(&self,int) @extern("Fl_Widget_set_when");
 extern fn int Fl_Widget.when(&self) @extern("Fl_Widget_when");
 extern fn void Fl_Widget.set_box(&self,int) @extern("Fl_Widget_set_box");
-
+//extern fn int Fl_Widget.value(&self) @extern("Fl_Widget_value");
 
 
 extern fn void Fl_Group.redraw(&self) @extern("Fl_Group_redraw");
@@ -150,21 +155,62 @@ extern fn void Fl_Button.set_align(&self,Fl_Align) @extern("Fl_Button_set_align"
 extern fn void Fl_Button.set_image(&self,void*) @extern("Fl_Button_set_image");
 extern fn void Fl_Button.set_when(&self,int) @extern("Fl_Button_set_when");
 extern fn int Fl_Button.when(&self) @extern("Fl_Button_when");
-
-
-extern fn Fl_Clock* clock_new(int,int,int,int,ZString) @extern("Fl_Clock_new");
-extern fn void Fl_Clock.set_type(&self,int) @extern("Fl_Clock_set_type");
+extern fn int Fl_Button.value(&self) @extern("Fl_Button_value");
+extern fn void Fl_Button.set_value(&self,int) @extern("Fl_Button_set_value");
 
 extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
 extern fn void Fl_Light_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Light_Button_set_type");
+extern fn void Fl_Light_Button.set_callback(&self,CallbackVoid,void*) @extern("Fl_Light_Button_set_callback");
+extern fn int Fl_Light_Button.is_toggled(&self) @extern("Fl_Light_Button_is_toggled");
+extern fn void Fl_Light_Button.toggle(&self,int) @extern("Fl_Light_Button_toggle");
+extern fn int Fl_Light_Button.is_on(&self) @extern("Fl_Light_Button_is_on");
+extern fn void Fl_Light_Button.turn_on(&self,int) @extern("Fl_Light_Button_turn_on");
+extern fn int Fl_Light_Button.value(&self) @extern("Fl_Light_Button_value");
+extern fn void Fl_Light_Button.set_value(&self,int) @extern("Fl_Light_Button_set_value");
 
 extern fn Fl_Round_Button* round_button_new(int,int,int,int,ZString) @extern("Fl_Round_Button_new");
 extern fn void Fl_Round_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Round_Button_set_type");
+extern fn void Fl_Round_Button.set_callback(&self,CallbackVoid,void*) @extern("Fl_Round_Button_set_callback");
+extern fn int Fl_Round_Button.is_toggled(&self) @extern("Fl_Round_Button_is_toggled");
+extern fn void Fl_Round_Button.toggle(&self,int) @extern("Fl_Round_Button_toggle");
+extern fn int Fl_Round_Button.value(&self) @extern("Fl_Round_Button_value");
+extern fn void Fl_Round_Button.set_value(&self,int) @extern("Fl_Round_Button_set_value");
+
+
+
+extern fn Fl_Radio_Button* radio_button_new(int,int,int,int,ZString) @extern("Fl_Radio_Button_new");
+extern fn void Fl_Radio_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Radio_Button_set_type");
+extern fn void Fl_Radio_Button.set_callback(&self,CallbackVoid,void*) @extern("Fl_Radio_Button_set_callback");
+extern fn int Fl_Radio_Button.is_toggled(&self) @extern("Fl_Radio_Button_is_toggled");
+extern fn void Fl_Radio_Button.toggle(&self,int) @extern("Fl_Radio_Button_toggle");
+extern fn int Fl_Radio_Button.value(&self) @extern("Fl_Radio_Button_value");
+extern fn void Fl_Radio_Button.set_value(&self,int) @extern("Fl_Radio_Button_set_value");
+
+
+extern fn Fl_Radio_Round_Button* radio_round_button_new(int,int,int,int,ZString) @extern("Fl_Radio_Round_Button_new");
+extern fn void Fl_Radio_Round_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Radioo_Round_Button_set_type");
+extern fn void Fl_Radio_Round_Button.set_callback(&self,CallbackVoid,void*) @extern("Fl_Radio_Round_Button_set_callback");
+extern fn int Fl_Radio_Round_Button.is_toggled(&self) @extern("Fl_Radio_Round_Button_is_toggled");
+extern fn void Fl_Radio_Round_Button.toggle(&self,int) @extern("Fl_Radio_Round_Button_toggle");
+extern fn int Fl_Radio_Round_Button.value(&self) @extern("Fl_Radio_Round_Button_value");
+extern fn void Fl_Radio_Round_Button.set_value(&self,int) @extern("Fl_Radio_Round_Button_set_value");
+
+
+extern fn Fl_Toggle_Button* toggle_button_new(int,int,int,int,ZString) @extern("Fl_Toggle_Button_new");
+extern fn void Fl_Toggle_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Toggle_Button_set_type");
+extern fn void Fl_Toggle_Button.set_callback(&self,CallbackVoid,void*) @extern("Fl_Toggle_Button_set_callback");
+extern fn int Fl_Toggle_Button.is_toggled(&self) @extern("Fl_Toggle_Button_is_toggled");
+extern fn void Fl_Toggle_Button.toggle(&self,int) @extern("Fl_Toggle_Button_toggle");
+extern fn int Fl_Toggle_Button.value(&self) @extern("Fl_Toggle_Button_value");
+extern fn void Fl_Toggle_Button.set_value(&self,int) @extern("Fl_Toggle_Button_set_value");
 
 extern fn Fl_Check_Button* check_button_new(int,int,int,int,ZString) @extern("Fl_Check_Button_new");
 extern fn void Fl_Check_Button.set_callback(&self,Callback,void*) @extern("Fl_Check_Button_set_callback");
 extern fn ZString Fl_Check_Button.label(&self) @extern("Fl_Check_Button_label");
-extern fn ZString Fl_Check_Button.value(&self) @extern("Fl_Check_Button_value");
+extern fn int Fl_Check_Button.value(&self) @extern("Fl_Check_Button_value");
+extern fn void Fl_Check_Button.set_value(&self,int) @extern("Fl_Check_Button_set_value");
+extern fn int Fl_Check_Button.is_checked(&self) @extern("Fl_Check_Button_is_checked");
+extern fn void Fl_Check_Button.set_checked(&self,int) @extern("Fl_Check_Button_set_checked");
 
 extern fn Fl_Choice* choice_new(int,int,int,int,ZString) @extern("Fl_Choice_new");
 extern fn void Fl_Choice.set_value(&self,int) @extern("Fl_Choice_set_value");
@@ -291,6 +337,11 @@ extern fn Fl_Help_View* help_view_new(int,int,int,int,ZString) @extern("Fl_Help_
 extern fn void Fl_Help_View.set_value(&self,ZString) @extern("Fl_Help_View_set_value");
 extern fn void Fl_Help_View.load(&self,ZString) @extern("Fl_Help_View_load");
 
+extern fn Fl_Clock* clock_new(int,int,int,int,ZString) @extern("Fl_Clock_new");
+extern fn void Fl_Clock.set_type(&self,int) @extern("Fl_Clock_set_type");
+
+
+
 extern fn int run() @extern("Fl_run");
 extern fn void init_all() @extern("Fl_init_all");
 extern fn void register_images() @extern("Fl_register_images");
@@ -320,6 +371,7 @@ extern fn void background(char,char,char) @extern("Fl_background");
 extern fn void background2(char,char,char) @extern("Fl_background2");
 extern fn Fl_Widget* foucus() @extern("Fl_focus");
 extern fn double version() @extern("Fl_version");
+extern fn int api_version() @extern("Fl_api_version");
 extern fn void set_font(int,int) @extern("Fl_set_font");
 extern fn int load_font(ZString) @extern("Fl_load_font");
 extern fn void load_system_icon() @extern("Fl_laod_system_icon");
@@ -332,6 +384,12 @@ extern fn int filename_expand(ZString,int,ZString) @extern("Fl_filename_expand")
 extern fn ZString type_name(void*) @extern("Fl_type_name");
 extern fn int open_uri(ZString,ZString,int) @extern("Fl_open_uri");
 extern fn void decode_uri(ZString) @extern("Fl_decode_uri");
+
+
+struct Fl_File_Icon{void* data;}
+extern fn Fl_File_Icon* file_icon_first() @extern("Fl_File_Icon_first");
+extern fn Fl_File_Icon* Fl_File_Icon.next(&self) @extern("Fl_File_Icon_next");
+extern fn void Fl_File_Icon.set_label(&self,Fl_Widget*) @extern("Fl_File_Icon_set_label");
 
 
 extern fn Fl_PNG_Image* png_image_new(ZString) @extern("Fl_PNG_Image_new");
