@@ -231,9 +231,9 @@ extern fn ZString file_chooser(
 
 extern fn int color_chooser(
     ZString,
-    ZString r,
-    ZString g,
-    ZString b,
+    char* r,
+    char* g,
+    char* b,
     int cmode
 ) @extern("Fl_color_chooser");
 
