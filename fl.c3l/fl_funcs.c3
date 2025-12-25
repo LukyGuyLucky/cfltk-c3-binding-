@@ -257,7 +257,7 @@ extern fn void register_images() @extern("Fl_register_images");
 extern fn int lock() @extern("Fl_lock");
 extern fn void set_scheme(ZString) @extern("Fl_set_scheme");
 extern fn void handle(int,Fl_Window*) @extern("Fl_handle");
-extern fn void beep(int) @extern("Fl_beep");
+//extern fn void beep(int) @extern("Fl_beep");
 extern fn uint rgb_color(char r,char g,char b) @extern("Fl_rgb_color");
 extern fn int event() @extern("Fl_event");
 extern fn ZString event_text() @extern("Fl_event_text");
@@ -292,8 +292,8 @@ extern fn int filename_expand(ZString,int,ZString) @extern("Fl_filename_expand")
 extern fn ZString type_name(void*) @extern("Fl_type_name");
 extern fn int open_uri(ZString,ZString,int) @extern("Fl_open_uri");
 extern fn void decode_uri(ZString) @extern("Fl_decode_uri");
-
-
+extern fn void add_timeout(double,Time_callback,void*) @extern("Fl_add_timeout");
+extern fn void repeat_timeout(double,Time_callback,void*) @extern("Fl_repeat_timeout");
 
 extern fn Fl_PNG_Image* png_image_new(ZString) @extern("Fl_PNG_Image_new");
 extern fn void Fl_PNG_Image.scale(&self,int,int,bool,bool) @extern("Fl_PNG_Image_scale");
@@ -342,4 +342,4 @@ alias Fl_Callback=fn int(Fl_Widget*,int,void*);
 alias CallbackVoid=fn void(Fl_Widget*,void*);
 alias CallbackInt=fn int(Fl_Widget*,int,void*);
 
-
+alias Time_callback=fn void(Fl_Terminal*,void*);
