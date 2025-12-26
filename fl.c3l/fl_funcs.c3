@@ -5,39 +5,39 @@
 //alias Fl_Button=void;
 //alias Fl_Box=void;
 //alias Fl_PNG_Image=void;
-struct Fl_Window{void* data;}
-struct Fl_Double_Window{void* data;}
-struct Fl_Widget{void* data;}
-struct Fl_Button{void* data;}
-struct Fl_Check_Button{void* data;}
-struct Fl_Check_Box{void* data;}
-struct Fl_Choice{void* data;}
-struct Fl_Light_Button{void* data;}
-struct Fl_Round_Button{void* data;}
-struct Fl_Radio_Button{void* data;}
-struct Fl_Radio_Round_Button{void* data;}
-struct Fl_Toggle_Button{void* data;}
+struct Fl_Window{void* _data_;}
+struct Fl_Double_Window{void* _data_;}
+struct Fl_Widget{void* _data_;}
+struct Fl_Button{void* _data_;}
+struct Fl_Check_Button{void* _data_;}
+struct Fl_Check_Box{void* _data_;}
+struct Fl_Choice{void* _data_;}
+struct Fl_Light_Button{void* _data_;}
+struct Fl_Round_Button{void* _data_;}
+struct Fl_Radio_Button{void* _data_;}
+struct Fl_Radio_Round_Button{void* _data_;}
+struct Fl_Toggle_Button{void* _data_;}
 
-struct Fl_Box{void* data;}
-struct Fl_PNG_Image{void* data;}
-struct Fl_Group{void* data;}
-struct Fl_Pack{void* data;}
-struct Fl_Input{void* data;}
-struct Fl_Scrollbar{void* data;}
-struct Fl_Tabs{void* data;}
-struct Fl_Wizard{void* data;}
-struct Fl_Multiline_Output{void* data;}
-struct Fl_Menu_Bar{void* data;}
-struct Fl_Menu_Item{void* data;}
-struct Fl_Tree{void* data;}
-struct Fl_Tree_Item{void* data;}
-struct Fl_Pixmap{void* data;}
-struct Fl_Hor_Value_Slider{void* data;}
-struct Fl_Chart{void* data;}
-struct Fl_Clock{void* data;}
-struct Fl_Counter{void* data;}
-struct Fl_Simple_Counter{void* data;}
-struct Fl_Grid{void* data;}
+struct Fl_Box{void* _data_;}
+struct Fl_PNG_Image{void* _data_;}
+struct Fl_Group{void* _data_;}
+struct Fl_Pack{void* _data_;}
+struct Fl_Input{void* _data_;}
+struct Fl_Scrollbar{void* _data_;}
+struct Fl_Tabs{void* _data_;}
+struct Fl_Wizard{void* _data_;}
+struct Fl_Multiline_Output{void* _data_;}
+struct Fl_Menu_Bar{void* _data_;}
+struct Fl_Menu_Item{void* _data_;}
+struct Fl_Tree{void* _data_;}
+struct Fl_Tree_Item{void* _data_;}
+struct Fl_Pixmap{void* _data_;}
+struct Fl_Hor_Value_Slider{void* _data_;}
+struct Fl_Chart{void* _data_;}
+struct Fl_Clock{void* _data_;}
+struct Fl_Counter{void* _data_;}
+struct Fl_Simple_Counter{void* _data_;}
+struct Fl_Grid{void* _data_;}
 
 extern fn Fl_Window* window_new(int,int,int,int,ZString) @extern("Fl_Window_new");
 extern fn Fl_Window* window_new_wh(int,int,ZString) @extern("Fl_Window_wh");
@@ -49,13 +49,14 @@ extern fn Fl_Window* Fl_Window.find_by_handle(&self,void*) @extern("Fl_Window_fi
 extern fn void Fl_Window.size_range(&self,int,int,int,int) @extern("Fl_Window_size_range");
 extern fn void Fl_Window.set_box(&self,int) @extern("Fl_Window_set_box");
 extern fn void Fl_Window.set_color(&self,int) @extern("Fl_Window_set_color");
+extern fn void Fl_Window.set_icon(&self,void*) @extern("Fl_Window_set_icon");
 extern fn int Fl_Window.width(&self) @extern("Fl_Window_width");
 extern fn int Fl_Window.height(&self) @extern("Fl_Window_height");
 extern fn void Fl_Window.set_label(&self,ZString) @extern("Fl_Window_set_label");
 extern fn ZString Fl_Window.label(&self) @extern("Fl_Window_label");
 extern fn void Fl_Window.make_current(&self) @extern("Fl_Window_make_current");
 extern fn int Fl_Window.shown(&self) @extern("Fl_Window_shown");
-extern fn void Fl_Window.draw(&self,Cb,void* data) @extern("Fl_Window_draw");
+extern fn void Fl_Window.draw(&self,Cb,void*) @extern("Fl_Window_draw");
 extern fn void Fl_Window.resizable(&self,void*) @extern("Fl_Window_resizable");
 
 extern fn Fl_Double_Window* double_window_new(int,int,int,int,ZString) @extern("Fl_Double_Window_new");
@@ -68,10 +69,11 @@ extern fn void Fl_Double_Window.show(&self) @extern("Fl_Double_Window_show");
 extern fn void Fl_Double_Window.show_with_args(&self,int argc,ZString[] argv) @extern("Fl_Window_Double_show_with_args");
 extern fn void Fl_Double_Window.set_label(&self,ZString) @extern("Fl_Double_Window_set_label");
 extern fn void Fl_Double_Window.set_color(&self,int) @extern("Fl_Double_Window_set_color");
+extern fn void Fl_Double_Window.set_icon(&self,void*) @extern("Fl_Double_Window_set_icon");
 extern fn int Fl_Double_Window.width(&self) @extern("Fl_Double_Window_width");
 extern fn int Fl_Double_Window.height(&self) @extern("Fl_Double_Window_height");
 extern fn ZString Fl_Double_Window.label(&self) @extern("Fl_Double_Window_label");
-extern fn void Fl_Double_Window.draw(&self,Cb,void* data) @extern("Fl_Double_Window_draw");
+extern fn void Fl_Double_Window.draw(&self,Cb,void*) @extern("Fl_Double_Window_draw");
 extern fn int Fl_Double_Window.shown(&self) @extern("Fl_Double_Window_shown");
 extern fn void Fl_Double_Window.redraw(&self) @extern("Fl_Double_Window_redraw");
 extern fn void Fl_Double_Window.size_range(&self,int,int,int,int) @extern("Fl_Double_Window_size_range");
@@ -98,7 +100,7 @@ extern fn void Fl_Widget.set_when(&self,int) @extern("Fl_Widget_set_when");
 extern fn int Fl_Widget.when(&self) @extern("Fl_Widget_when");
 extern fn void Fl_Widget.set_box(&self,int) @extern("Fl_Widget_set_box");
 //extern fn int Fl_Widget.value(&self) @extern("Fl_Widget_value");
-
+extern fn void Fl_Widget.set_image(&self,void*) @extern("Fl_Widget_set_image");
 
 extern fn void Fl_Group.redraw(&self) @extern("Fl_Group_redraw");
 extern fn void Fl_Group.set_color(&self,int) @extern("Fl_Group_set_color");
@@ -272,7 +274,7 @@ extern fn Fl_Menu_Item* Fl_Menu_Item.at(&self,int) @extern("Fl_Menu_Item_at");
 
 extern fn Fl_Tree* tree_new(int,int,int,int,ZString) @extern("Fl_Tree_new");
 extern fn int Fl_Tree.set_showroot(&self,int) @extern("Fl_Tree_set_showroot");
-extern fn void Fl_Tree.set_callback(&self,Callback,void* data) @extern("Fl_Tree_set_callback");
+extern fn void Fl_Tree.set_callback(&self,Callback,void*) @extern("Fl_Tree_set_callback");
 extern fn int Fl_Tree.callback_reason(&self) @extern("Fl_Tree_callback_reason");
 extern fn int Fl_Tree.item_pathname(&self,ZString,int,Fl_Tree_Item*) @extern("Fl_Tree_item_pathname");
 extern fn Fl_Tree_Item* Fl_Tree.add(&self,ZString) @extern("Fl_Tree_add");
@@ -321,7 +323,7 @@ extern fn void Fl_Simple_Counter.set_range(&self,double,double) @extern("Fl_Simp
 extern fn void Fl_Simple_Counter.set_step(&self,double,int) @extern("Fl_Simple_Counter_set_step");
 extern fn void Fl_Simple_Counter.set_value(&self,double) @extern("Fl_Simple_Counter_set_value");
 
-struct Fl_File_Browser{void* data;}
+struct Fl_File_Browser{void* _data_;}
 extern fn Fl_File_Browser* file_browser_new(int,int,int,int,ZString) @extern("Fl_File_Browser_new");
 extern fn void Fl_File_Browser.set_has_scrollbar(&self,char) @extern("Fl_File_Browser_set_has_scrollbar");
 extern fn void Fl_File_Browser.set_filter(&self,ZString) @extern("Fl_File_Browser_set_filter");
@@ -332,7 +334,7 @@ extern fn void Fl_File_Browser.set_filetype(&self,int) @extern("Fl_File_Browser_
 extern fn ZString Fl_File_Browser.text(&self,int) @extern("Fl_File_Browser_text");
 
 
-struct Fl_Help_View{void* data;}
+struct Fl_Help_View{void* _data_;}
 extern fn Fl_Help_View* help_view_new(int,int,int,int,ZString) @extern("Fl_Help_View_new");
 extern fn void Fl_Help_View.set_value(&self,ZString) @extern("Fl_Help_View_set_value");
 extern fn void Fl_Help_View.load(&self,ZString) @extern("Fl_Help_View_load");
@@ -374,7 +376,7 @@ extern fn double version() @extern("Fl_version");
 extern fn int api_version() @extern("Fl_api_version");
 extern fn void set_font(int,int) @extern("Fl_set_font");
 extern fn int load_font(ZString) @extern("Fl_load_font");
-extern fn void load_system_icon() @extern("Fl_laod_system_icon");
+extern fn void load_system_icons() @extern("Fl_load_system_icons");
 extern fn int wait() @extern("Fl_wait");
 extern fn double wait_for(double) @extern("Fl_wait_for");
 extern fn void set_color(uint,char,char,char) @extern("Fl_set_color");
@@ -386,15 +388,107 @@ extern fn int open_uri(ZString,ZString,int) @extern("Fl_open_uri");
 extern fn void decode_uri(ZString) @extern("Fl_decode_uri");
 
 
-struct Fl_File_Icon{void* data;}
+struct Fl_File_Icon{void* _data_;}
+extern fn Fl_File_Icon* icon_new() @extern("Fl_File_Icon_new");
 extern fn Fl_File_Icon* file_icon_first() @extern("Fl_File_Icon_first");
 extern fn Fl_File_Icon* Fl_File_Icon.next(&self) @extern("Fl_File_Icon_next");
 extern fn void Fl_File_Icon.set_label(&self,Fl_Widget*) @extern("Fl_File_Icon_set_label");
 
+struct Fl_Image{void* __data_;}
+extern fn void Fl_Image.draw(&self,int,int,int,int) @extern("Fl_Image_draw");
+extern fn void Fl_Image.draw_ext(&self,int,int,int,int,int,int) @extern("Fl_Image_draw_ex");
+extern fn int Fl_Image.width(&self) @extern("Fl_Image_width");
+extern fn int Fl_Image.height(&self) @extern("Fl_Image_height");
+extern fn void Fl_Image.delete(&self) @extern("Fl_Image_delete");
+extern fn int Fl_Image.count(&self) @extern("Fl_Image_count");
+extern fn char** Fl_Image.data(&self) @extern("Fl_Image_data");
+extern fn Fl_Image* Fl_Image.copy(&self) @extern("Fl_Image_copy");
+extern fn Fl_Image* Fl_Image.copy_sized(&self) @extern("Fl_Image_copy_sized");
+extern fn void Fl_Image.scale(&self,int,int,int,int) @extern("Fl_Image_scale");
+
+extern fn int Fl_Image.fail(&self) @extern("Fl_Image_fail");
+extern fn int Fl_Image.data_w(&self) @extern("Fl_Image_data_w");
+extern fn int Fl_Image.data_h(&self) @extern("Fl_Image_data_h");
+extern fn int Fl_Image.d(&self) @extern("Fl_Image_d");
+extern fn int Fl_Image.ld(&self) @extern("Fl_Image_ld");
+extern fn void Fl_Image.inactive(&self) @extern("Fl_Image_inactive");
+extern fn Fl_Image* fl_image_from_dyn_ptr(Fl_Image*) @extern("Fl_Image_from_dyn_ptr");
+extern fn void Fl_Image.color_average(&self,uint c,float i) @extern("Fl_Image_color_average");
+extern fn void Fl_Image.desaturate(&self) @extern("Fl_Image_desaturate");
+extern fn void Fl_Image.uncache(&self) @extern("Fl_Image_uncache");
+extern fn void Fl_Image.label_widget(&self,void*) @extern("Fl_Image_label_widget");
+extern fn void Fl_Image.label_menu_item(&self,void*) @extern("Fl_Image_label_menu_item");
+extern fn void image_set_scaling_algorithm(int) @extern("Fl_Image_set_scaling_algorithm");
+extern fn int image_scaling_algorightm() @extern("Fl_Image_scaling_algorithm");
+extern fn void rgb_image_set_algorigthm(int) @extern("Fl_RGB_Image_set_scaling_algorithm");
+extern fn int rgb_image_scaling_algorithm() @extern("Fl_RGB_Image_scaling_algorithm");
+
+struct Fl_JPEG_Image{void* _data_;}
+extern fn Fl_JPEG_Image* jpeg_image_new(ZString) @extern("Fl_JPEG_Image_new");
+extern fn Fl_JPEG_Image* jpeg_image_from(char*) @extern("Fl_JPEG_Image_from");
 
 extern fn Fl_PNG_Image* png_image_new(ZString) @extern("Fl_PNG_Image_new");
 extern fn void Fl_PNG_Image.scale(&self,int,int,bool,bool) @extern("Fl_PNG_Image_scale");
+extern fn Fl_PNG_Image* png_image_from(char*) @extern("Fl_PNG_Image_from");
+
+
+struct Fl_SVG_Image{void* data;}
+extern fn Fl_SVG_Image* svg_image_new(ZString) @extern("Fl_SVG_Image_new");
+extern fn Fl_SVG_Image* svg_image_from(char*) @extern("Fl_SVG_Image_from");
+extern fn void Fl_SVG_Image.normalize(&self) @extern("Fl_SVG_Image_normalize");
+
+struct Fl_BMP_Image{void* _data_;}
+extern fn Fl_BMP_Image* bmp_image_new(ZString) @extern("Fl_BMP_Image_new");
+extern fn Fl_BMP_Image* bmp_image_from(char*,long) @extern("Fl_BMP_Image_from");
+
+struct Fl_GIF_Image{void* _data_;}
+extern fn Fl_GIF_Image* gif_image_new(ZString) @extern("Fl_GIF_Image_new");
+extern fn Fl_GIF_Image* gif_image_form(char*,ulong) @extern("Fl_GIF_Image_from");
+
+struct Fl_Anim_GIF_Image{void* _data_;}
+extern fn Fl_Anim_GIF_Image* anim_gif_image_new(ZString,void*,ushort) @extern("Fl_Anim_GIF_Image_new");
+extern fn Fl_Anim_GIF_Image* anim_gif_image_from(ZString,char*,ulong,void*,ushort) @extern("Fl_Anim_GIF_Image_from");
+extern fn double Fl_Anim_GIF_Image.delay(&self,int) @extern("Fl_Anim_GIF_Image_delay");
+extern fn void Fl_Anim_GIF_Image.set_delay(&self,int,double) @extern("Fl_Anim_GIF_Image_set_delay");
+extern fn int Fl_Anim_GIF_Image.is_animated(&self) @extern("Fl_Anim_GIF_Image_is_animated");
+extern fn void Fl_Anim_GIF_Image.set_speed(&self,double) @extern("Fl_Anim_GIF_Image_set_speed");
+extern fn int Fl_Anim_GIF_Image.start(&self) @extern("Fl_Anim_GIF_Image_start");
+extern fn int Fl_Anim_GIF_Image.stop(&self) @extern("Fl_Anim_GIF_Image_stop");
+extern fn int Fl_Anim_GIF_Image.next(&self) @extern("Fl_Anim_GIF_Image_next");
+extern fn int Fl_Anim_GIF_Image.playing(&self) @extern("Fl_Anim_GIF_Image_playing");
+
+
 extern fn Fl_Pixmap* pixmap_new(char**) @extern("Fl_Pixmap_new");
+
+struct Fl_XPM_Image{void* _data_;}
+extern fn Fl_XPM_Image* xpm_image_new(ZString) @extern("Fl_XPM_Image_new");
+
+struct Fl_XBM_Image{void* _data_;}
+extern fn Fl_XBM_Image* xbm_image_new(ZString) @extern("Fl_XBM_Image_new");
+
+struct Fl_PNM_Image{void* _data_;}
+extern fn Fl_PNM_Image* pnm_image_new(ZString) @extern("Fl_PNM_Image_new");
+
+struct Fl_Tiled_Image{void* _data_;}
+extern fn Fl_Tiled_Image* tiled_image_new(ZString) @extern("Fl_Tiled_Image_new");
+
+struct Fl_RGB_Image{void* _data_;}
+extern fn Fl_RGB_Image* rgb_image_new(ZString) @extern("Fl_RGB_Image_new");
+extern fn Fl_RGB_Image* rgb_image_from_data(char*,int,int,int,int) @extern("Fl_RGB_Image_from_data");
+extern fn Fl_RGB_Image* rgb_image_from_pixmap(Fl_Pixmap*) @extern("Fl_RGB_Image_from_pixmap");
+
+struct Fl_Shared_Image{void* _data_;}
+extern fn Fl_Shared_Image* shared_image_get(ZString,int,int) @extern("Fl_Shared_Image_get");
+extern fn Fl_Shared_Image* shared_image_from_rgb(Fl_RGB_Image*,int) @extern("Fl_Shared_Image_from_rgb");
+
+struct Fl_ICO_Image{void* _data_;}
+extern fn Fl_ICO_Image* ico_image_new(ZString,int) @extern("Fl_ICO_Image_new");
+extern fn Fl_ICO_Image* ico_image_from_data(char*,ulong,int) @extern("Fl_ICO_Image_from_data");
+extern fn void* ico_image_icondirentry(Fl_ICO_Image*,ulong*) @extern("Fl_ICO_Image_icondirentry");
+
+
+
+
 
 extern fn void push_clip(int,int,int,int) @extern("Fl_push_clip");
 extern fn void pop_clip() @extern("Fl_pop_clip");
