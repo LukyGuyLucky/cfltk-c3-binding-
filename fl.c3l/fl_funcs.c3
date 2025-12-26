@@ -234,6 +234,71 @@ extern fn void Fl_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_Input
 extern fn void Fl_Input.begin(&self) @extern("Fl_Input_begin");
 extern fn void Fl_Input.end(&self) @extern("Fl_Input_end");
 extern fn void Fl_Input.add(&self,void*) @extern("Fl_Input_add");
+extern fn void Fl_Input.set_label_size(&self,int) @extern("Fl_Input_set_label_size");
+extern fn void Fl_Input.set_align(&self,Fl_Align) @extern("Fl_Input_set_align");
+
+struct Fl_Int_Input{void* _data_;}
+extern fn Fl_Int_Input* int_input_new(int,int,int,int,ZString) @extern("Fl_Int_Input_new");
+extern fn void Fl_Int_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_Int_Input_set_callback");
+extern fn void Fl_Int_Input.set_when(&self,int) @extern("Fl_Int_Input_set_when");
+extern fn void Fl_Int_Input.set_value(&sefl,ZString) @extern("Fl_Int_Input_set_value");
+extern fn ZString Fl_Int_Input.value(&self) @extern("Fl_Int_Input_value");
+extern fn void Fl_Int_Input.set_label_size(&self,int) @extern("Fl_Int_Input_set_label_size");
+extern fn void Fl_Int_Input.set_align(&self,Fl_Align) @extern("Fl_Int_Input_set_align");
+
+struct Fl_Float_Input{void* _data_;}
+extern fn Fl_Float_Input* float_input_new(int,int,int,int,ZString) @extern("Fl_Float_Input_new");
+extern fn void Fl_Float_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_Float_Input_set_callback");
+extern fn void Fl_Float_Input.set_when(&self,int) @extern("Fl_Float_Input_set_when");
+extern fn ZString Fl_Float_Input.value(&self) @extern("Fl_Float_Input_value");
+extern fn void Fl_Float_Input.set_value(&sefl,ZString) @extern("Fl_Float_Input_set_value");
+extern fn void Fl_Float_Input.set_label_size(&self,int) @extern("Fl_Float_Input_set_label_size");
+extern fn void Fl_Float_Input.set_align(&self,Fl_Align) @extern("Fl_Float_Input_set_align");
+
+struct Fl_Multiline_Input{void* _data_;}
+extern fn Fl_Multiline_Input* multiline_input_new(int,int,int,int,ZString) @extern("Fl_Multiline_Input_new");
+extern fn void Fl_Multiline_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_Multiline_Input_set_callback");
+extern fn void Fl_Multiline_Input.set_when(&self,int) @extern("Fl_Multiline_Input_set_when");
+extern fn void Fl_Multiline_Input.set_value(&sefl,ZString) @extern("Fl_Multiline_input_set_value");
+extern fn ZString Fl_Multiline_Input.value(&self) @extern("Fl_Multiline_Input_value");
+extern fn void Fl_Multiline_Input.set_label_size(&self,int) @extern("Fl_Multiline_Input_set_label_size");
+extern fn void Fl_Multiline_Input.set_align(&self,Fl_Align) @extern("Fl_Multiline_Input_set_align");
+
+struct Fl_Secret_Input{void* _data_;}
+extern fn Fl_Secret_Input* secret_input_new(int,int,int,int,ZString) @extern("Fl_Secret_Input_new");
+extern fn void Fl_Secret_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_Secret_Input_set_callback");
+extern fn void Fl_Secret_Input.set_when(&self,int) @extern("Fl_Secret_Input_set_when");
+extern fn void Fl_Secret_Input.set_value(&sefl,ZString) @extern("Fl_Secret_Input_set_value");
+extern fn ZString Fl_Secret_Input.value(&self) @extern("Fl_Secret_Input_value");
+extern fn void Fl_Secret_Input.set_label_size(&self,int) @extern("Fl_Secret_Input_set_label_size");
+extern fn void Fl_Secret_Input.set_align(&self,Fl_Align) @extern("Fl_Secret_Input_set_align");
+
+struct Fl_File_Input{void* _data_;}
+extern fn Fl_File_Input* file_input_new(int,int,int,int,ZString) @extern("Fl_File_Input_new");
+extern fn void Fl_File_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_File_Input_set_callback");
+extern fn void Fl_File_Input.set_when(&self,int) @extern("Fl_Secret_Input_set_when");
+extern fn void Fl_File_Input.set_value(&sefl,ZString) @extern("Fl_File_Input_set_value");
+extern fn ZString Fl_File_Input.value(&self) @extern("Fl_File_Input_value");
+extern fn void Fl_File_Input.set_label_size(&self,int) @extern("Fl_File_Input_set_label_size");
+extern fn void Fl_File_Input.set_align(&self,Fl_Align) @extern("Fl_File_Input_set_align");
+
+extern fn Fl_Multiline_Output* multiline_output_new(int,int,int,int,ZString) @extern("Fl_Multiline_Output_new");
+extern fn void Fl_Multiline_Output.set_label_size(&self,int) @extern("Fl_Multiline_Output_set_label_size");
+extern fn void Fl_Multiline_Output.set_align(&self,Fl_Align) @extern("Fl_Multiline_Output_set_align");
+extern fn void Fl_Multiline_Output.set_value(&sefl,ZString) @extern("Fl_Multiline_Output_set_value");
+extern fn void Fl_Multiline_Output.set_callback(&sefl,CallbackVoid,void*) @extern("Fl_Multiline_Output_set_callback");
+extern fn void Fl_Multiline_Output.set_when(&self,int) @extern("Fl_Multiline_Output_set_when");
+extern fn ZString Fl_Multiline_Output.value(&self) @extern("Fl_Multiline_Output_value");
+
+
+struct Fl_Output{void* _data_;}
+extern fn Fl_Output* output_new(int,int,int,int,ZString) @extern("Fl_Output_new");
+extern fn void Fl_Output.set_label_size(&self,int) @extern("Fl_Output_set_label_size");
+extern fn void Fl_Output.set_align(&self,Fl_Align) @extern("Fl_Output_set_align");
+extern fn void Fl_Output.set_value(&sefl,ZString) @extern("Fl_Output_set_value");
+extern fn void Fl_Output.set_callback(&sefl,CallbackVoid,void*) @extern("Fl_Output_set_callback");
+extern fn void Fl_Output.set_when(&self,int) @extern("Fl_Output_set_when");
+extern fn ZString Fl_Output.value(&self) @extern("Fl_Output_value");
 
 
 extern fn Fl_Scrollbar* scrollbar_new(int,int,int,int,ZString) @extern("Fl_Scrollbar_new");
@@ -286,10 +351,7 @@ extern fn void Fl_Tree_Item.open(&self) @extern("Fl_Tree_Item_open");
 extern fn void Fl_Tree_Item.close(&self) @extern("Fl_Tree_Item_close");
 extern fn ZString Fl_Tree_Item.label(&self) @extern("Fl_Tree_Item_label");
 
-extern fn Fl_Multiline_Output* multiline_output_new(int,int,int,int,ZString) @extern("Fl_Multiline_Output_new");
-extern fn void Fl_Multiline_Output.set_label_size(&self,int) @extern("Fl_Multiline_Output_set_label_size");
-extern fn void Fl_Multiline_Output.set_align(&self,Fl_Align) @extern("Fl_Multiline_Output_set_align");
-extern fn void Fl_Multiline_Output.set_value(&sefl,ZString) @extern("Fl_Multiline_Output_set_value");
+
 
 extern fn Fl_Hor_Value_Slider* hor_value_slider_new(int,int,int,int,ZString) @extern("Fl_Hor_Value_Slider_new");
 extern fn void Fl_Hor_Value_Slider.set_callback(&self,Callback,void*) @extern("Fl_Hor_Value_Slider_set_callback");
