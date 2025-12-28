@@ -44,11 +44,13 @@ extern fn Fl_Window* window_new_wh(int,int,ZString) @extern("Fl_Window_wh");
 extern fn void Fl_Window.begin(&self) @extern("Fl_Window_begin");
 extern fn void Fl_Window.end(&self) @extern("Fl_Window_end");
 extern fn void Fl_Window.show(&self) @extern("Fl_Window_show");
+extern fn void Fl_Window.hide(&self) @extern("Fl_Window_hide");
 extern fn void Fl_Window.show_with_args(&self,int argc,ZString[] argv) @extern("Fl_Window_show_with_args");
 extern fn Fl_Window* Fl_Window.find_by_handle(&self,void*) @extern("Fl_Window_find_by_handle");
 extern fn void Fl_Window.size_range(&self,int,int,int,int) @extern("Fl_Window_size_range");
 extern fn void Fl_Window.set_box(&self,int) @extern("Fl_Window_set_box");
 extern fn void Fl_Window.set_color(&self,int) @extern("Fl_Window_set_color");
+extern fn void Fl_Window.set_selection_color(&self,uint) @extern("Fl_Window.set_selection_color");
 extern fn void Fl_Window.set_icon(&self,void*) @extern("Fl_Window_set_icon");
 extern fn int Fl_Window.width(&self) @extern("Fl_Window_width");
 extern fn int Fl_Window.height(&self) @extern("Fl_Window_height");
@@ -66,9 +68,11 @@ extern fn void Fl_Double_Window.begin(&self) @extern("Fl_Double_Window_begin");
 extern fn void Fl_Double_Window.resizable(&self,void*) @extern("Fl_Double_Window_resizable");
 extern fn void Fl_Double_Window.end(&self) @extern("Fl_Double_Window_end");
 extern fn void Fl_Double_Window.show(&self) @extern("Fl_Double_Window_show");
+extern fn void Fl_Double_Window.hide(&self) @extern("Fl_Double_Window_hide");
 extern fn void Fl_Double_Window.show_with_args(&self,int argc,ZString[] argv) @extern("Fl_Window_Double_show_with_args");
 extern fn void Fl_Double_Window.set_label(&self,ZString) @extern("Fl_Double_Window_set_label");
 extern fn void Fl_Double_Window.set_color(&self,int) @extern("Fl_Double_Window_set_color");
+extern fn void Fl_Double_Window.set_selection_color(&self,uint) @extern("Fl_Double_Window.set_selection_color");
 extern fn void Fl_Double_Window.set_icon(&self,void*) @extern("Fl_Double_Window_set_icon");
 extern fn int Fl_Double_Window.width(&self) @extern("Fl_Double_Window_width");
 extern fn int Fl_Double_Window.height(&self) @extern("Fl_Double_Window_height");
@@ -79,6 +83,7 @@ extern fn void Fl_Double_Window.redraw(&self) @extern("Fl_Double_Window_redraw")
 extern fn void Fl_Double_Window.size_range(&self,int,int,int,int) @extern("Fl_Double_Window_size_range");
 
 extern fn void Fl_Widget.set_color(&self,int) @extern("Fl_Widget_set_color");
+extern fn void Fl_Widget.set_selection_color(&self,uint) @extern("Fl_Widget.set_selection_color");
 extern fn void Fl_Widget.set_label_color(&self,int) @extern("Fl_Widget_set_label_color");
 extern fn void Fl_Widget.set_label(&self,ZString) @extern("Fl_Widget_set_label");
 extern fn int Fl_Widget.height(&self) @extern("Fl_Widget_height");
@@ -327,15 +332,23 @@ extern fn void Fl_Wizard.prev(&self) @extern("Fl_Wizard_prev");
 
 extern fn Fl_Menu_Bar* menu_bar_new(int,int,int,int) @extern("Fl_Menu_Bar_new");
 extern fn int Fl_Menu_Bar.add(&self,ZString,int,Callback,void*,int) @extern("Fl_Menu_Bar_add");
+extern fn int Fl_Menu_Bar.insert(&self,int,ZString,int,CallbackVoid,void*,int) @extern("Fl_Menu_Bar_insert");
+extern fn void Fl_Menu_Bar.set_menu(&self,Fl_Menu_Item*) @extern("Fl_Menu_Bar_set_menu");
 extern fn ZString Fl_Menu_Bar.text(&self) @extern("Fl_Menu_Bar_text");
 extern fn int Fl_Menu_Bar.item_pathname(&self,ZString,int,Fl_Menu_Item*) @extern("Fl_Menu_Bar_item_pathname");
 extern fn Fl_Menu_Item* Fl_Menu_Bar.mvalue(&self) @extern("Fl_Menu_Bar_mvalue");
 extern fn Fl_Menu_Item* Fl_Menu_Bar.at(&self,int) @extern("Fl_Menu_Bar_at");
 
+extern fn Fl_Menu_Item* menu_item_new(ZString[],int) @extern("Fl_Menu_Item_new");
+extern fn Fl_Menu_Item* menu_item_new2(ZString[],int*,CallbackVoid*,int*,int*,int*,int*,uint*,int) @extern("Fl_Menu_Item_new2");
+
 extern fn ZString Fl_Menu_Item.label(&self) @extern("Fl_Menu_Item_label");
 extern fn ZString Fl_Menu_Item.text(&self) @extern("Fl_Menu_Item_text");
 extern fn int Fl_Menu_Item.value(&self) @extern("Fl_Menu_Item_value");
 extern fn Fl_Menu_Item* Fl_Menu_Item.at(&self,int) @extern("Fl_Menu_Item_at");
+extern fn void Fl_Menu_Item.add_image(&self,void*,int) @extern("Fl_Menu_Item_add_image");
+extern fn void Fl_Menu_Item.set_callback(&self,CallbackVoid,void*) @extern("Fl_Menu_Item_set_callback");
+
 
 extern fn Fl_Tree* tree_new(int,int,int,int,ZString) @extern("Fl_Tree_new");
 extern fn int Fl_Tree.set_showroot(&self,int) @extern("Fl_Tree_set_showroot");
@@ -448,7 +461,8 @@ extern fn int filename_expand(ZString,int,ZString) @extern("Fl_filename_expand")
 extern fn ZString type_name(void*) @extern("Fl_type_name");
 extern fn int open_uri(ZString,ZString,int) @extern("Fl_open_uri");
 extern fn void decode_uri(ZString) @extern("Fl_decode_uri");
-
+extern fn void repeat_timeout(double,VoidCallback,void*) @extern("Fl_repeat_timeout");
+extern fn void add_timeout(double,VoidCallback,void*) @extern("Fl_add_timeout");
 
 struct Fl_File_Icon{void* _data_;}
 extern fn Fl_File_Icon* icon_new() @extern("Fl_File_Icon_new");
@@ -548,7 +562,16 @@ extern fn Fl_ICO_Image* ico_image_new(ZString,int) @extern("Fl_ICO_Image_new");
 extern fn Fl_ICO_Image* ico_image_from_data(char*,ulong,int) @extern("Fl_ICO_Image_from_data");
 extern fn void* ico_image_icondirentry(Fl_ICO_Image*,ulong*) @extern("Fl_ICO_Image_icondirentry");
 
-
+struct Fl_Progress{void* _data_;}
+extern fn Fl_Progress* progress_new(int,int,int,int,ZString) @extern("Fl_Progress_new");
+extern fn double Fl_Progress.minimum(&self) @extern("Fl_Progress_minimum");
+extern fn void Fl_Progress.set_minimum(&self,double) @extern("Fl_Progress_set_minimum");
+extern fn double Fl_Progress.maximum(&self) @extern("Fl_Progress_maximum");
+extern fn void Fl_Progress.set_maximum(&self,double) @extern("Fl_Progress_set_maximum");
+extern fn double Fl_Progress.value(&self) @extern("Fl_Progress_value");
+extern fn void Fl_Progress.set_value(&self,double) @extern("Fl_Progress_set_value");
+extern fn void Fl_Progress.set_selection_color(&self,uint) @extern("Fl_Progress_set_selection_color");
+extern fn void Fl_Progress.set_label(&self,ZString) @extern("Fl_Progress_set_label");
 
 
 
@@ -586,7 +609,7 @@ extern fn void begin_complex_polygon() @extern("Fl_begin_complex_polygon");
 extern fn void end_complex_polygon() @extern("Fl_end_complex_polygon");
 extern fn void vertex(double,double) @extern("Fl_vertex");
 
-
+alias VoidCallback=fn void(void*);
 alias Callback=fn void(Fl_Widget*,void*);
 alias Custom_draw_callback=fn void(Fl_Widget*,void*);
 alias Custom_handler_callback=fn void(Fl_Widget*,int,void*);
