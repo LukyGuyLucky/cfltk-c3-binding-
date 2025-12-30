@@ -60,6 +60,9 @@ extern fn void Fl_Window.make_current(&self) @extern("Fl_Window_make_current");
 extern fn int Fl_Window.shown(&self) @extern("Fl_Window_shown");
 extern fn void Fl_Window.draw(&self,Cb,void*) @extern("Fl_Window_draw");
 extern fn void Fl_Window.resizable(&self,void*) @extern("Fl_Window_resizable");
+extern fn void Fl_Window.set_callback(&self,CallbackVoid,void*) @extern("Fl_Window_set_callback");
+extern fn void Fl_Window.handle(&self,Custom_handler_callback,void*) @extern("Fl_Window_handle");
+
 
 extern fn Fl_Double_Window* double_window_new(int,int,int,int,ZString) @extern("Fl_Double_Window_new");
 extern fn Fl_Double_Window* double_window_new_wh(int,int,ZString) @extern("Fl_Double_Window_new_wh");
@@ -81,6 +84,8 @@ extern fn void Fl_Double_Window.draw(&self,Cb,void*) @extern("Fl_Double_Window_d
 extern fn int Fl_Double_Window.shown(&self) @extern("Fl_Double_Window_shown");
 extern fn void Fl_Double_Window.redraw(&self) @extern("Fl_Double_Window_redraw");
 extern fn void Fl_Double_Window.size_range(&self,int,int,int,int) @extern("Fl_Double_Window_size_range");
+extern fn void Fl_Double_Window.set_callback(&self,CallbackVoid,void*) @extern("Fl_Window_set_callback");
+
 
 extern fn void Fl_Widget.set_color(&self,int) @extern("Fl_Widget_set_color");
 extern fn void Fl_Widget.set_selection_color(&self,uint) @extern("Fl_Widget.set_selection_color");
@@ -106,6 +111,7 @@ extern fn int Fl_Widget.when(&self) @extern("Fl_Widget_when");
 extern fn void Fl_Widget.set_box(&self,int) @extern("Fl_Widget_set_box");
 //extern fn int Fl_Widget.value(&self) @extern("Fl_Widget_value");
 extern fn void Fl_Widget.set_image(&self,void*) @extern("Fl_Widget_set_image");
+extern fn void Fl_Widget.set_callback(&self,CallbackVoid,void*) @extern("Fl_Widget_set_callback");
 
 extern fn Fl_Group* group_current() @extern("Fl_Group_current");
 extern fn void group_set_current(Fl_Group*) @extern("Fl_Group_set_current");
@@ -243,7 +249,8 @@ extern fn void Fl_Tile.move_intersection(&self,int,int,int,int) @extern("Fl_Til_
 extern fn void Fl_Tile.size_range_by_index(&self,int,int,int,int,int) @extern("Fl_Tile_size_range_by_index");
 extern fn void Fl_Tile.size_range_by_child(&self,Fl_Widget*,int,int,int,int) @extern("Fl_Tile_size_range_by_child");
 
-
+extern fn void Fl_Tile.begin(&self) @extern("Fl_Tile_begin");
+extern fn void Fl_Tile.end(&self) @extern("Fl_Tile_end");
 extern fn void Fl_Tile.set_label(&self,ZString) @extern("Fl_Tile_set_label");
 extern fn void Fl_Tile.handle(&self,Cb,void*) @extern("Fl_Tile_handle");
 extern fn int Fl_Tile.handle_event(&self,int) @extern("Fl_Tile_handle_event");
@@ -362,6 +369,7 @@ extern fn int Fl_Button.when(&self) @extern("Fl_Button_when");
 extern fn int Fl_Button.value(&self) @extern("Fl_Button_value");
 extern fn void Fl_Button.set_value(&self,int) @extern("Fl_Button_set_value");
 extern fn ZString Fl_Button.label(&self) @extern("Fl_Button_label");
+extern fn void Fl_Button.set_label(&self,ZString) @extern("Fl_Button_set_label");
 
 extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
 extern fn void Fl_Light_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Light_Button_set_type");
@@ -613,8 +621,8 @@ extern fn void Fl_Help_View.load(&self,ZString) @extern("Fl_Help_View_load");
 
 extern fn Fl_Clock* clock_new(int,int,int,int,ZString) @extern("Fl_Clock_new");
 extern fn void Fl_Clock.set_type(&self,int) @extern("Fl_Clock_set_type");
-
-
+extern fn void Fl_Clock.set_box(&self,int) @extern("Fl_Clock_set_box");
+extern fn int Fl_Clock.box(&self) @extern("Fl_Clock_box");
 
 extern fn int run() @extern("Fl_run");
 extern fn void init_all() @extern("Fl_init_all");
@@ -635,6 +643,7 @@ extern fn int event_key() @extern("Fl_event_key");
 extern fn int check() @extern("Fl_check");
 extern fn int dnd() @extern("Fl_dnd");
 extern fn void copy(ZString,int,int) @extern("Fl_copy");
+extern fn void delete_widget(Fl_Widget*) @extern("Fl_delete_widget");
 
 extern fn void redraw() @extern("Fl_redraw");
 extern fn void set_focus() @extern("Fl_set_focus");
