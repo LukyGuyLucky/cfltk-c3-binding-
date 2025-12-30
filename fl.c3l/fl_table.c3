@@ -5,6 +5,10 @@ struct Fl_Table_Row{void* _data_;}
 extern fn Fl_Table* table_new(int,int,int,int,ZString) @extern("Fl_Table_new");
 extern fn Fl_Table_Row* table_row_new(int,int,int,ZString) @extern("Fl_Table_Row_new");
 
+extern fn void Fl_Table.begin(&self) @extern("Fl_Table_begin");
+extern fn void Fl_Table.end(&self) @extern("Fl_Table_end");
+extern fn void Fl_Table.add(&self,void*) @extern("Fl_Table_add");
+
 extern fn void Fl_Table.set_color(&self,int) @extern("Fl_Table_set_color");
 extern fn void Fl_Table.set_selection_color(&self,uint) @extern("Fl_Table.set_selection_color");
 extern fn void Fl_Table.set_label_color(&self,int) @extern("Fl_Table_set_label_color");
@@ -85,7 +89,7 @@ extern fn void Fl_Table.set_row_height(&self,int,int) @extern("Fl_Table_set_row_
 extern fn int Fl_Table.row_height(&self,int) @extern("Fl_Table_row_height");
 extern fn void Fl_Table.set_col_width(&self,int) @extern("Fl_Table_set_col_width");
 extern fn void Fl_Table.col_width(&self) @extern("Fl_Table_col_width");
-extern fn void Fl_Table.set_row_heigth_all(&self,int) @extern("Fl_Table_set_row_height_all");
+extern fn void Fl_Table.set_row_height_all(&self,int) @extern("Fl_Table_set_row_height_all");
 extern fn void Fl_Table.set_col_width_all(&self,int) @extern("Fl_Table_set_col_width_all");
 extern fn void Fl_Table.set_row_position(&self,int) @extern("Fl_Table_set_row_position");
 extern fn void Fl_Table.set_col_position(&self,int) @extern("Fl_Table_set_col_position");

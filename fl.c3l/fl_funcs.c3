@@ -274,6 +274,8 @@ extern fn void Fl_Tile.set_box(&self,int) @extern("Fl_Tile_set_box");
 
 //struct Fl_Tabs{void* _data_;}
 extern fn Fl_Tabs* tabs_new(int,int,int,int,ZString) @extern("Fl_Tabs_new");
+//extern fn Fl_Tabs* tabs_new(int,int,int,int) @extern("Fl_Tabs_new");
+extern fn void Fl_Tabs.set_label(&self,ZString) @extern("Fl_Tabs_set_label");
 extern fn Fl_Widget* Fl_Tabs.value(&self) @extern("Fl_Tabs_value");
 extern fn int Fl_Tabs.set_value(&self,Fl_Widget*) @extern("Fl_Tabs_set_value");
 extern fn Fl_Widget* Fl_Tabs.push(&self) @extern("Fl_Tabs_push");
@@ -282,9 +284,10 @@ extern fn void Fl_Tabs.client_area(&self,int*,int*,int*,int*) @extern("Fl_Tabs_c
 extern fn void Fl_Tabs.set_tab_align(&self,int) @extern("Fl_Tabs_set_tab_align");
 extern fn int Fl_Tabs.tag_align(&self) @extern("Fl_Tabs_tab_align");
 extern fn void Fl_Tabs.handle_overflow(&self,int) @extern("Fl_Tabs_handle_overflow");
+extern fn void Fl_Tabs.begin(&self) @extern("Fl_Tabs_begin");
+extern fn void Fl_Tabs.end(&self) @extern("Fl_Tabs_end");
 
-
-//extern fn void Fl_Tabs.set_label(&self,ZString) @extern("Fl_Tabs_set_label");
+extern fn ZString Fl_Tabs.label(&self) @extern("Fl_Tabs_label");
 extern fn void Fl_Tabs.handle(&self,Cb,void*) @extern("Fl_Tabs_handle");
 extern fn int Fl_Tabs.handle_event(&self,int) @extern("Fl_Tabs_handle_event");
 //extern fn void Fl_Tabs.copy_label(&self,ZString) @extern("Fl_Tabs_copy_label");
@@ -358,6 +361,7 @@ extern fn void Fl_Button.set_when(&self,int) @extern("Fl_Button_set_when");
 extern fn int Fl_Button.when(&self) @extern("Fl_Button_when");
 extern fn int Fl_Button.value(&self) @extern("Fl_Button_value");
 extern fn void Fl_Button.set_value(&self,int) @extern("Fl_Button_set_value");
+extern fn ZString Fl_Button.label(&self) @extern("Fl_Button_label");
 
 extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
 extern fn void Fl_Light_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Light_Button_set_type");
@@ -516,9 +520,7 @@ extern fn void Fl_Pack.add(&self,Fl_Widget*) @extern("Fl_Pack_add");
 extern fn void Fl_Pack.begin(&self) @extern("Fl_Pack_begin");
 extern fn void Fl_Pack.end(&self) @extern("Fl_Pack_end");
 
-//extern fn Fl_Tabs* tabs_new(int,int,int,int) @extern("Fl_Tabs_new");
-extern fn void Fl_Tabs.end(&self) @extern("Fl_Tabs_end");
-extern fn void Fl_Tabs.set_label(&self,ZString) @extern("Fl_Tabs_set_label");
+
 
 extern fn Fl_Wizard* wizard_new(int,int,int,int) @extern("Fl_Wizard_new");
 extern fn void Fl_Wizard.end(&self) @extern("Fl_Wizard_end");
