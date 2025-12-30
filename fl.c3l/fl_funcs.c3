@@ -107,17 +107,211 @@ extern fn void Fl_Widget.set_box(&self,int) @extern("Fl_Widget_set_box");
 //extern fn int Fl_Widget.value(&self) @extern("Fl_Widget_value");
 extern fn void Fl_Widget.set_image(&self,void*) @extern("Fl_Widget_set_image");
 
-extern fn void Fl_Group.redraw(&self) @extern("Fl_Group_redraw");
+extern fn Fl_Group* group_current() @extern("Fl_Group_current");
+extern fn void group_set_current(Fl_Group*) @extern("Fl_Group_set_current");
+
+extern fn Fl_Group* group_new(int,int,int,int,ZString) @extern("Fl_Group_new");
 extern fn void Fl_Group.set_color(&self,int) @extern("Fl_Group_set_color");
+extern fn void Fl_Group.set_selection_color(&self,uint) @extern("Fl_Group.set_selection_color");
+extern fn void Fl_Group.set_label_color(&self,int) @extern("Fl_Group_set_label_color");
+extern fn void Fl_Group.set_label(&self,ZString) @extern("Fl_Group_set_label");
+extern fn int Fl_Group.height(&self) @extern("Fl_Group_height");
+extern fn int Fl_Group.width(&self) @extern("Fl_Group_width");
+extern fn int Fl_Group.x(&self) @extern("Fl_Group_x");
+extern fn int Fl_Group.y(&self) @extern("Fl_Group_y");
+extern fn void Fl_Group.resize(&self,int,int,int,int) @extern("Fl_Group_resize");
+extern fn void Fl_Group.redraw(&self) @extern("Fl_Group_redraw");
+extern fn void Fl_Group.set_icon(&self,void*) @extern("Fl_Group_set_icon");
+extern fn void* Fl_Group.user_data(&self) @extern("Fl_Group_user_data");
+extern fn void* Fl_Group.window(&self) @extern("Fl_Group_window");
+//extern fn ZString Fl_Group.value(&self) @extern("Fl_Group_value");
+extern fn ZString Fl_Group.label(&self) @extern("Fl_Group_label");
+extern fn Fl_Group* Fl_Group.parent(&self) @extern("Fl_Group_parent");
+extern fn void Fl_Group.delete(&self) @extern("Fl_Group_delete");
+extern fn void Fl_Group.copy_label(&self,ZString) @extern("Fl_Group_copy_label");
+extern fn void Fl_Group.set_type(&self,int) @extern("Fl_Group_set_type");
+extern fn void Fl_Group.set_when(&self,int) @extern("Fl_Group_set_when");
+extern fn int Fl_Group.when(&self) @extern("Fl_Group_when");
+extern fn void Fl_Group.set_box(&self,int) @extern("Fl_Group_set_box");
+//extern fn int Fl_Group.value(&self) @extern("Fl_Group_value");
+extern fn void Fl_Group.set_image(&self,void*) @extern("Fl_Group_set_image");
+
+//extern fn void Fl_Group.redraw(&self) @extern("Fl_Group_redraw");
+//extern fn void Fl_Group.set_color(&self,int) @extern("Fl_Group_set_color");
 extern fn void Fl_Group.begin(&self) @extern("Fl_Group_begin");
 extern fn void Fl_Group.end(&self) @extern("Fl_Group_end");
-extern fn Fl_Group* group_new(int,int,int,int,ZString) @extern("Fl_Group_new");
+//extern fn Fl_Group* group_new(int,int,int,int,ZString) @extern("Fl_Group_new");
 extern fn void Fl_Group.add(&self,void*) @extern("Fl_Group_add");
 extern fn void Fl_Group.resizable(&self,void*) @extern("Fl_Group_resizable");
 extern fn void Fl_Group.insert(&self,void*,int) @extern("Fl_Group_insert");
 
 extern fn Fl_Grid* grid_new(int,int,int,int,ZString) @extern("Fl_Grid_new");
-extern fn void Fl_Grid.set_widget(&self,Fl_Widget*,int,int,ushort) @extern("Fl_Grid_set_widget");
+extern fn void* Fl_Grid.set_widget(&self,Fl_Widget*,int,int,ushort) @extern("Fl_Grid_set_widget");
+extern fn void Fl_Grid.set_layout(&self,int,int,int,int) @extern("Fl_Grid_set_layout");
+extern fn void Fl_Grid.layout(&self) @extern("Fl_Grid_layout");
+extern fn void Fl_Grid.clear_layout(&self) @extern("Fl_Grid_clear_layout");
+extern fn void Fl_Grid.set_need_layout(&self,int) @extern("Fl_Grid_set_need_layout");
+extern fn int Fl_Grid.need_layout(&self) @extern("Fl_Grid_need_layout");
+extern fn void Fl_Grid.set_gap(&self,int,int) @extern("Fl_Grid_set_gap");
+extern fn void* Fl_Grid.set_widget_ext(&self,Fl_Widget*,int,int,int,int,uint) @extern("Fl_Grid_set_widget_ext");
+extern fn void Fl_Grid.set_col_width(&self,int,int) @extern("Fl_Grid_set_col_width");
+extern fn void Fl_Grid.set_col_weight(&self,int,int) @extern("Fl_Grid_set_col_weight");
+extern fn void Fl_Grid.set_col_gap(&self,int,int) @extern("Fl_Grid_set_col_gap");
+extern fn void Fl_Grid.set_row_height(&self,int,int) @extern("Fl_Grid_set_row_height");
+extern fn void Fl_Grid.set_row_weight(&self,int,int) @extern("Fl_Grid.set_row_weight");
+extern fn void Fl_Grid.set_row_gap(&self,int,int) @extern("Fl_Grid_set_row_weight");
+extern fn void Fl_Grid.show_grid(&self,int) @extern("Fl_Grid_show_grid");
+extern fn void Fl_Grid.show_grid_with_color(&self,int,uint) @extern("Fl_Grid_show_grid_with_color");
+extern fn void Fl_Grid.debug(&self,int) @extern("Fl_Grid_debug");
+
+struct Fl_Flex{void* _data_;}
+extern fn Fl_Flex* flex_new(int,int,int,int,ZString) @extern("Fl_Flex_new");
+extern fn void Fl_Flex.set_size(&self,Fl_Widget*,int) @extern("Fl_Flex_set_size");
+extern fn void Fl_Flex.set_margin(&self,int) @extern("Fl_Flex_set_margin");
+extern fn int Fl_Flex.margin(&self) @extern("Fl_Flex_margin");
+extern fn void Fl_Flex.set_pad(&self,int) @extern("Fl_Flex_set_pad");
+extern fn int Fl_Flex.pad(&self) @extern("Fl_Flex_pad");
+extern fn void Fl_Flex.set_margins(&self,int,int,int,int) @extern("Fl_Flex_set_margins");
+
+extern fn void Fl_Flex.set_label(&self,ZString) @extern("Fl_Flex_set_label");
+extern fn void Fl_Flex.handle(&self,Cb,void*) @extern("Fl_Flex_handle");
+extern fn int Fl_Flex.handle_event(&self,int) @extern("Fl_Flex_handle_event");
+//extern fn void Fl_Flex.copy_label(&self,ZString) @extern("Fl_Flex_copy_label");
+extern fn void Fl_Flex.box(&sefl,Fl_FlexType) @extern("Fl_Flex_box");
+extern fn void Fl_Flex.label_font(&self,Fl_Font) @extern("Fl_Flex_label_font");
+extern fn void Fl_Flex.label_size(&self,int) @extern("Fl_Flex_label_size");
+extern fn void Fl_Flex.set_label_type(&self,int) @extern("Fl_Flex_set_label_type");
+extern fn int Fl_Flex.label_type(&self,Fl_LabelType) @extern("Fl_Flex_label_type");
+extern fn void Fl_Flex.set_color(&self,int) @extern("Fl_Flex_set_color");
+extern fn void Fl_Flex.set_label_color(&self,int) @extern("Fl_Flex_set_label_color");
+extern fn void Fl_Flex.set_label_size(&self,int) @extern("Fl_Flex_set_label_size");
+extern fn void Fl_Flex.set_type(&self,int) @extern("Fl_Flex_set_type");
+extern fn void Fl_Flex.redraw(&self) @extern("Fl_Flex_redraw");
+extern fn void Fl_Flex.window(&self) @extern("Fl_Flex_window");
+extern fn int Fl_Flex.x(&self) @extern("Fl_Flex_x");
+extern fn int Fl_Flex.y(&self) @extern("Fl_Flex_y");
+extern fn int Fl_Flex.width(&self) @extern("Fl_Flex_width");
+extern fn int Fl_Flex.height(&self) @extern("Fl_Flex_height");
+//extern fn void Fl_Flex.set_position(&self,int,int) @extern("Fl_Flex_position");
+extern fn void Fl_Flex.set_image(&self,void*) @extern("Fl_Flex_set_image");
+extern fn void Fl_Flex.resize(&self,int,int,int,int) @extern("Fl_Flex_resize");
+extern fn void Fl_Flex.set_user_data(&self,void*) @extern("Fl_Flex_set_user_data");
+extern fn void Fl_Flex.set_callback(&self,Callback,void*) @extern("Fl_Flex_set_callback");
+extern fn void Fl_Flex.draw(&self,Cb,void*) @extern("Fl_Flex_draw");
+extern fn int Fl_Flex.get_type(&self) @extern("Fl_Flex.get_type");
+extern fn void Fl_Flex.set_box(&self,int) @extern("Fl_Flex_set_box");
+
+
+struct Fl_Color_Chooser{void* _data_;}
+extern fn Fl_Color_Chooser* color_chooser_new(int,int,int,int,ZString) @extern("Fl_Color_Chooser_new");
+extern fn double Fl_Color_Chooser.r(&self) @extern("Fl_Color_Chooser_r");
+extern fn double Fl_Color_Chooser.g(&self) @extern("Fl_Color_Chooser_g");
+extern fn double Fl_Color_Chooser.b(&self) @extern("Fl_Color_Chooser_b");
+extern fn int Fl_Color_Chooser.set_rgb(&self,double,double,double) @extern("Fl_Color_Chooser_set_rgb");
+
+extern fn void Fl_Color_Chooser.set_label(&self,ZString) @extern("Fl_Color_Chooser_set_label");
+extern fn void Fl_Color_Chooser.handle(&self,Cb,void*) @extern("Fl_Color_Chooser_handle");
+extern fn int Fl_Color_Chooser.handle_event(&self,int) @extern("Fl_Color_Chooser_handle_event");
+//extern fn void Fl_Color_Chooser.copy_label(&self,ZString) @extern("Fl_Color_Chooser_copy_label");
+extern fn void Fl_Color_Chooser.box(&sefl,Fl_BoxType) @extern("Fl_Color_Chooser_box");
+extern fn void Fl_Color_Chooser.label_font(&self,Fl_Font) @extern("Fl_Color_Chooser_label_font");
+extern fn void Fl_Color_Chooser.label_size(&self,int) @extern("Fl_Color_Chooser_label_size");
+extern fn void Fl_Color_Chooser.set_label_type(&self,int) @extern("Fl_Color_Chooser_set_label_type");
+extern fn int Fl_Color_Chooser.label_type(&self,Fl_LabelType) @extern("Fl_Color_Chooser_label_type");
+extern fn void Fl_Color_Chooser.set_color(&self,int) @extern("Fl_Color_Chooser_set_color");
+extern fn void Fl_Color_Chooser.set_label_color(&self,int) @extern("Fl_Color_Chooser_set_label_color");
+extern fn void Fl_Color_Chooser.set_label_size(&self,int) @extern("Fl_Color_Chooser_set_label_size");
+extern fn void Fl_Color_Chooser.set_type(&self,int) @extern("Fl_Color_Chooser_set_type");
+extern fn void Fl_Color_Chooser.redraw(&self) @extern("Fl_Color_Chooser_redraw");
+extern fn void Fl_Color_Chooser.window(&self) @extern("Fl_Color_Chooser_window");
+extern fn int Fl_Color_Chooser.x(&self) @extern("Fl_Color_Chooser_x");
+extern fn int Fl_Color_Chooser.y(&self) @extern("Fl_Color_Chooser_y");
+extern fn int Fl_Color_Chooser.width(&self) @extern("Fl_Color_Chooser_width");
+extern fn int Fl_Color_Chooser.height(&self) @extern("Fl_Color_Chooser_height");
+//extern fn void Fl_Color_Chooser.set_position(&self,int,int) @extern("Fl_Color_Chooser_position");
+extern fn void Fl_Color_Chooser.set_image(&self,void*) @extern("Fl_Color_Chooser_set_image");
+extern fn void Fl_Color_Chooser.resize(&self,int,int,int,int) @extern("Fl_Color_Chooser_resize");
+extern fn void Fl_Color_Chooser.set_user_data(&self,void*) @extern("Fl_Color_Chooser_set_user_data");
+extern fn void Fl_Color_Chooser.set_callback(&self,Callback,void*) @extern("Fl_Color_Chooser_set_callback");
+extern fn void Fl_Color_Chooser.draw(&self,Cb,void*) @extern("Fl_Color_Chooser_draw");
+extern fn int Fl_Color_Chooser.get_type(&self) @extern("Fl_Color_Chooser.get_type");
+extern fn void Fl_Color_Chooser.set_box(&self,int) @extern("Fl_Color_Chooser_set_box");
+
+struct Fl_Tile{void* _data_;}
+extern fn Fl_Tile* tile_new(int,int,int,int,ZString) @extern("Fl_Tile_new");
+extern fn void Fl_Tile.move_intersection(&self,int,int,int,int) @extern("Fl_Til_move_intersection");
+extern fn void Fl_Tile.size_range_by_index(&self,int,int,int,int,int) @extern("Fl_Tile_size_range_by_index");
+extern fn void Fl_Tile.size_range_by_child(&self,Fl_Widget*,int,int,int,int) @extern("Fl_Tile_size_range_by_child");
+
+
+extern fn void Fl_Tile.set_label(&self,ZString) @extern("Fl_Tile_set_label");
+extern fn void Fl_Tile.handle(&self,Cb,void*) @extern("Fl_Tile_handle");
+extern fn int Fl_Tile.handle_event(&self,int) @extern("Fl_Tile_handle_event");
+//extern fn void Fl_Tile.copy_label(&self,ZString) @extern("Fl_Tile_copy_label");
+extern fn void Fl_Tile.box(&sefl,Fl_BoxType) @extern("Fl_Tile_box");
+extern fn void Fl_Tile.label_font(&self,Fl_Font) @extern("Fl_Tile_label_font");
+extern fn void Fl_Tile.label_size(&self,int) @extern("Fl_Tile_label_size");
+extern fn void Fl_Tile.set_label_type(&self,int) @extern("Fl_Tile_set_label_type");
+extern fn int Fl_Tile.label_type(&self,Fl_LabelType) @extern("Fl_Tile_label_type");
+extern fn void Fl_Tile.set_color(&self,int) @extern("Fl_Tile_set_color");
+extern fn void Fl_Tile.set_label_color(&self,int) @extern("Fl_Tile_set_label_color");
+extern fn void Fl_Tile.set_label_size(&self,int) @extern("Fl_Tile_set_label_size");
+extern fn void Fl_Tile.set_type(&self,int) @extern("Fl_Tile_set_type");
+extern fn void Fl_Tile.redraw(&self) @extern("Fl_Tile_redraw");
+extern fn void Fl_Tile.window(&self) @extern("Fl_Tile_window");
+extern fn int Fl_Tile.x(&self) @extern("Fl_Tile_x");
+extern fn int Fl_Tile.y(&self) @extern("Fl_Tile_y");
+extern fn int Fl_Tile.width(&self) @extern("Fl_Tile_width");
+extern fn int Fl_Tile.height(&self) @extern("Fl_Tile_height");
+//extern fn void Fl_Tile.set_position(&self,int,int) @extern("Fl_Tile_position");
+extern fn void Fl_Tile.set_image(&self,void*) @extern("Fl_Tile_set_image");
+extern fn void Fl_Tile.resize(&self,int,int,int,int) @extern("Fl_Tile_resize");
+extern fn void Fl_Tile.set_user_data(&self,void*) @extern("Fl_Tile_set_user_data");
+extern fn void Fl_Tile.set_callback(&self,Callback,void*) @extern("Fl_Tile_set_callback");
+extern fn void Fl_Tile.draw(&self,Cb,void*) @extern("Fl_Tile_draw");
+extern fn int Fl_Tile.get_type(&self) @extern("Fl_Tile.get_type");
+extern fn void Fl_Tile.set_box(&self,int) @extern("Fl_Tile_set_box");
+
+//struct Fl_Tabs{void* _data_;}
+extern fn Fl_Tabs* tabs_new(int,int,int,int,ZString) @extern("Fl_Tabs_new");
+extern fn Fl_Widget* Fl_Tabs.value(&self) @extern("Fl_Tabs_value");
+extern fn int Fl_Tabs.set_value(&self,Fl_Widget*) @extern("Fl_Tabs_set_value");
+extern fn Fl_Widget* Fl_Tabs.push(&self) @extern("Fl_Tabs_push");
+extern fn int Fl_Tabs.set_push(&self,Fl_Widget*) @extern("Fl_Tabs_set_push");
+extern fn void Fl_Tabs.client_area(&self,int*,int*,int*,int*) @extern("Fl_Tabs_client_area");
+extern fn void Fl_Tabs.set_tab_align(&self,int) @extern("Fl_Tabs_set_tab_align");
+extern fn int Fl_Tabs.tag_align(&self) @extern("Fl_Tabs_tab_align");
+extern fn void Fl_Tabs.handle_overflow(&self,int) @extern("Fl_Tabs_handle_overflow");
+
+
+//extern fn void Fl_Tabs.set_label(&self,ZString) @extern("Fl_Tabs_set_label");
+extern fn void Fl_Tabs.handle(&self,Cb,void*) @extern("Fl_Tabs_handle");
+extern fn int Fl_Tabs.handle_event(&self,int) @extern("Fl_Tabs_handle_event");
+//extern fn void Fl_Tabs.copy_label(&self,ZString) @extern("Fl_Tabs_copy_label");
+extern fn void Fl_Tabs.box(&self,Fl_BoxType) @extern("Fl_Tabs_box");
+extern fn void Fl_Tabs.label_font(&self,Fl_Font) @extern("Fl_Tabs_label_font");
+extern fn void Fl_Tabs.label_size(&self,int) @extern("Fl_Tabs_label_size");
+extern fn void Fl_Tabs.set_label_type(&self,int) @extern("Fl_Tabs_set_label_type");
+extern fn int Fl_Tabs.label_type(&self,Fl_LabelType) @extern("Fl_Tabs_label_type");
+extern fn void Fl_Tabs.set_color(&self,int) @extern("Fl_Tabs_set_color");
+extern fn void Fl_Tabs.set_label_color(&self,int) @extern("Fl_Tabs_set_label_color");
+extern fn void Fl_Tabs.set_label_size(&self,int) @extern("Fl_Tabs_set_label_size");
+extern fn void Fl_Tabs.set_type(&self,int) @extern("Fl_Tabs_set_type");
+extern fn void Fl_Tabs.redraw(&self) @extern("Fl_Tabs_redraw");
+extern fn void Fl_Tabs.window(&self) @extern("Fl_Tabs_window");
+extern fn int Fl_Tabs.x(&self) @extern("Fl_Tabs_x");
+extern fn int Fl_Tabs.y(&self) @extern("Fl_Tabs_y");
+extern fn int Fl_Tabs.width(&self) @extern("Fl_Tabs_width");
+extern fn int Fl_Tabs.height(&self) @extern("Fl_Tabs_height");
+//extern fn void Fl_Tabs.set_position(&self,int,int) @extern("Fl_Tabs_position");
+extern fn void Fl_Tabs.set_image(&self,void*) @extern("Fl_Tabs_set_image");
+extern fn void Fl_Tabs.resize(&self,int,int,int,int) @extern("Fl_Tabs_resize");
+extern fn void Fl_Tabs.set_user_data(&self,void*) @extern("Fl_Tabs_set_user_data");
+extern fn void Fl_Tabs.set_callback(&self,Callback,void*) @extern("Fl_Tabs_set_callback");
+extern fn void Fl_Tabs.draw(&self,Cb,void*) @extern("Fl_Tabs_draw");
+extern fn int Fl_Tabs.get_type(&self) @extern("Fl_Tabs.get_type");
+extern fn void Fl_Tabs.set_box(&self,int) @extern("Fl_Tabs_set_box");
+
 
 
 extern fn Fl_Box* box_new(int,int,int,int,ZString) @extern("Fl_Box_new");
@@ -319,9 +513,10 @@ extern fn Fl_Color Fl_Scrollbar.color(&self) @extern("Fl_Scrollbar_color");
 extern fn Fl_Pack* pack_new(int,int,int,int) @extern("Fl_Pack_new");
 extern fn void Fl_Pack.box(&self,Fl_PackType) @extern("Fl_Pack_box");
 extern fn void Fl_Pack.add(&self,Fl_Widget*) @extern("Fl_Pack_add");
+extern fn void Fl_Pack.begin(&self) @extern("Fl_Pack_begin");
 extern fn void Fl_Pack.end(&self) @extern("Fl_Pack_end");
 
-extern fn Fl_Tabs* tabs_new(int,int,int,int) @extern("Fl_Tabs_new");
+//extern fn Fl_Tabs* tabs_new(int,int,int,int) @extern("Fl_Tabs_new");
 extern fn void Fl_Tabs.end(&self) @extern("Fl_Tabs_end");
 extern fn void Fl_Tabs.set_label(&self,ZString) @extern("Fl_Tabs_set_label");
 
