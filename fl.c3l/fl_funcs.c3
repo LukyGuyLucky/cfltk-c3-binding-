@@ -669,6 +669,8 @@ extern fn int open_uri(ZString,ZString,int) @extern("Fl_open_uri");
 extern fn void decode_uri(ZString) @extern("Fl_decode_uri");
 extern fn void repeat_timeout(double,VoidCallback,void*) @extern("Fl_repeat_timeout");
 extern fn void add_timeout(double,VoidCallback,void*) @extern("Fl_add_timeout");
+extern fn void flush() @extern("Fl_flush");
+
 
 struct Fl_File_Icon{void* _data_;}
 extern fn Fl_File_Icon* icon_new() @extern("Fl_File_Icon_new");
