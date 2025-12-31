@@ -57,11 +57,19 @@ extern fn int Fl_Window.height(&self) @extern("Fl_Window_height");
 extern fn void Fl_Window.set_label(&self,ZString) @extern("Fl_Window_set_label");
 extern fn ZString Fl_Window.label(&self) @extern("Fl_Window_label");
 extern fn void Fl_Window.make_current(&self) @extern("Fl_Window_make_current");
-extern fn int Fl_Window.shown(&self) @extern("Fl_Window_shown");
 extern fn void Fl_Window.draw(&self,Cb,void*) @extern("Fl_Window_draw");
 extern fn void Fl_Window.resizable(&self,void*) @extern("Fl_Window_resizable");
 extern fn void Fl_Window.set_callback(&self,CallbackVoid,void*) @extern("Fl_Window_set_callback");
 extern fn void Fl_Window.handle(&self,Custom_handler_callback,void*) @extern("Fl_Window_handle");
+extern fn void Fl_Window.set_visible_focus(&self) @extern("Fl_Window_set_visible_focus");
+extern fn void Fl_Window.visible_focus(&self,int) @extern("Fl_Window_visible_focus");
+extern fn int Fl_Window.has_visiable_focus(&self) @extern("Fl_Window_has_visiable_focus");
+extern fn int Fl_Window.shown(&self) @extern("Fl_Window_shown");
+extern fn int Fl_Window.visible(&self) @extern("Fl_Window_visible");
+extern fn void Fl_Window.activate(&self) @extern("Fl_Window_activate");
+extern fn void Fl_Window.deactivate(&self) @extern("Fl_Window_deactivate");
+extern fn uint Fl_Window.active(&self) @extern("Fl_Window_active");
+
 
 
 extern fn Fl_Double_Window* double_window_new(int,int,int,int,ZString) @extern("Fl_Double_Window_new");
@@ -647,6 +655,8 @@ extern fn void delete_widget(Fl_Widget*) @extern("Fl_delete_widget");
 
 extern fn void redraw() @extern("Fl_redraw");
 extern fn void set_focus() @extern("Fl_set_focus");
+extern fn void set_visible_focus(int) @extern("Fl_set_visible_focus");
+extern fn int visible_focus() @extern("Fl_visible_focus");
 extern fn int w() @extern("Fl_w");
 extern fn int h() @extern("Fl_h");
 extern fn void foreground(char,char,char) @extern("Fl_foreground");
