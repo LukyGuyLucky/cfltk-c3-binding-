@@ -73,7 +73,7 @@ extern fn uint Fl_Window.active(&self) @extern("Fl_Window_active");
 extern fn void* Fl_Window.user_data(&self) @extern("Fl_Window_user_data");
 extern fn void Fl_Window.set_user_data(&self,void*) @extern("Fl_Window_set_user_data");
 extern fn void Fl_Window.redraw(&self) @extern("Fl_Window_redraw");
-
+extern fn void Fl_Window.set_tooltip(&self,ZString) @extern("Fl_Window_set_tooltip");
 
 extern fn Fl_Double_Window* double_window_new(int,int,int,int,ZString) @extern("Fl_Double_Window_new");
 extern fn Fl_Double_Window* double_window_new_wh(int,int,ZString) @extern("Fl_Double_Window_new_wh");
@@ -99,6 +99,9 @@ extern fn void Fl_Double_Window.set_callback(&self,CallbackVoid,void*) @extern("
 extern fn void Fl_Double_Window.handle(&self,CallbackInt,void*) @extern("Fl_Double_Window_handle");
 extern fn void* Fl_Double_Window.user_data(&self) @extern("Fl_Double_Window_user_data");
 extern fn void Fl_Double_Window.set_user_data(&self,void*) @extern("Fl_Double_Window_set_user_data");
+extern fn void Fl_Double_Window.set_tooltip(&self,ZString) @extern("Fl_Double_Window_set_tooltip");
+
+
 
 extern fn void Fl_Widget.set_color(&self,int) @extern("Fl_Widget_set_color");
 extern fn void Fl_Widget.set_selection_color(&self,uint) @extern("Fl_Widget.set_selection_color");
@@ -126,9 +129,11 @@ extern fn void Fl_Widget.set_box(&self,int) @extern("Fl_Widget_set_box");
 //extern fn int Fl_Widget.value(&self) @extern("Fl_Widget_value");
 extern fn void Fl_Widget.set_image(&self,void*) @extern("Fl_Widget_set_image");
 extern fn void Fl_Widget.set_callback(&self,CallbackVoid,void*) @extern("Fl_Widget_set_callback");
+extern fn void* Fl_Widget.as_window(&self) @extern("Fl_Widget_as_window");
 
-
-
+/*******************************************************************************/
+extern fn void Fl_Widget.set_tooltip(&self,ZString) @extern("Fl_Widget_set_tooltip");
+/*******************************************************************************/
 
 extern fn Fl_Group* group_current() @extern("Fl_Group_current");
 extern fn void group_set_current(Fl_Group*) @extern("Fl_Group_set_current");
@@ -349,6 +354,7 @@ extern fn int Fl_Box.handle_event(&self,int) @extern("Fl_Box_handle_event");
 //extern fn void Fl_Box.copy_label(&self,ZString) @extern("Fl_Box_copy_label");
 extern fn void Fl_Box.box(&sefl,Fl_BoxType) @extern("Fl_Box_box");
 extern fn void Fl_Box.label_font(&self,Fl_Font) @extern("Fl_Box_label_font");
+extern fn void Fl_Box.set_label_font(&self,int) @extern("Fl_Box_set_label_font");
 extern fn void Fl_Box.label_size(&self,int) @extern("Fl_Box_label_size");
 extern fn void Fl_Box.set_label_type(&self,int) @extern("Fl_Box_set_label_type");
 extern fn int Fl_Box.label_type(&self,Fl_LabelType) @extern("Fl_Box_label_type");
@@ -372,6 +378,9 @@ extern fn int Fl_Box.get_type(&self) @extern("Fl_Box.get_type");
 extern fn void Fl_Box.set_box(&self,int) @extern("Fl_Box_set_box");
 extern fn void* Fl_Box.user_data(&self) @extern("Fl_Box_user_data");
 extern fn void* Fl_Box.image(&self) @extern("Fl_Box_image");
+extern fn void Fl_Box.set_tooltip(&self,ZString) @extern("Fl_Box_set_tooltip");
+
+
 
 extern fn Fl_Button* button_new(int,int,int,int,ZString,) @extern("Fl_Button_new");
 extern fn void Fl_Button.handle(&self,Cb,void*) @extern("Fl_Button_handle");
@@ -391,6 +400,10 @@ extern fn ZString Fl_Button.label(&self) @extern("Fl_Button_label");
 extern fn void Fl_Button.set_label(&self,ZString) @extern("Fl_Button_set_label");
 extern fn void Fl_Button.deactivate(&self) @extern("Fl_Button_deactivate");
 extern fn void Fl_Button.activate(&self) @extern("Fl_Button_activate");
+extern fn void Fl_Button.set_tooltip(&self,ZString) @extern("Fl_Button_set_tooltip");
+extern fn void Fl_Button.set_label_font(&self,int) @extern("Fl_Button_set_label_font");
+extern fn void Fl_Button.set_label_size(&self,int) @extern("Fl_Button_set_label_size");
+extern fn void Fl_Button.label_size(&self,int) @extern("Fl_Button_label_size");
 
 
 extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
@@ -696,6 +709,36 @@ extern fn void background2(char,char,char) @extern("Fl_background2");
 extern fn Fl_Widget* foucus() @extern("Fl_focus");
 extern fn double version() @extern("Fl_version");
 extern fn int api_version() @extern("Fl_api_version");
+
+extern fn float tooltip_delay() @extern("Fl_Tooltip_delay");
+extern fn void tooltip_set_delay(float) @extern("Fl_Tooltip_set_delay");
+extern fn void tooltip_hidedelay() @extern("Fl_Tooltip_hidedelay");
+extern fn void tooltip_set_hidedelay(float) @extern("Fl_Tooltip_set_hidedelay");
+extern fn float tooltip_hoverdelay() @extern("Fl_Tooltip_hoverdelay");
+extern fn void tooltip_set_hoverdelay() @extern("Fl_Tooltip_set_hoverdelay");
+extern fn int tooltip_enabled() @extern("Fl_Tooltip_enabled");
+extern fn void tooltip_enable() @extern("Fl_Tooltip_enable");
+extern fn void tooltip_disable() @extern("Fl_Tooltip_disable");
+extern fn void tooltip_enter_area(Fl_Widget*,int,int,int,int,ZString) @extern("Fl_Tooltip_enter_area");
+extern fn void* tooltip_current_widget() @extern("Fl_Tooltiip_current_widget");
+extern fn void tooltip_current(Fl_Widget*) @extern("Fl_Tooltip_current");
+extern fn int tooltip_font() @extern("Fl_Tooltip_font");
+extern fn void tooltip_set_font(int) @extern("Fl_Tooltip_set_font");
+extern fn void tooltip_set_font_size(int) @extern("Fl_Tooltip_set_font_size");
+extern fn int tooltip_font_size() @extern("Fl_Tooltip_font_size");
+extern fn void tooltip_set_color(uint) @extern("Fl_Tooltip_set_color");
+extern fn int tooltip_color() @extern("Fl_Tooltip_color");
+extern fn void tooltip_set_text_color(uint) @extern("Fl_Tooltip_set_text_color");
+extern fn int tooltip_text_color() @extern("Fl_Tooltip_text_color");
+extern fn void tooltip_set_margin_width(int) @extern("Fl_Tooltip_set_margin_width");
+extern fn int tooltip_margin_width() @extern("Fl_Tooltip_magin_width");
+extern fn void tooltip_set_margin_height(int) @extern("Fl_Tooltip_set_margin_height");
+extern fn int tooltip_margin_height() @extern("Fl_Tooltip_margin_height");
+extern fn int tooltip_wrap_width() @extern("Fl_Tooltip_wrap_width");
+extern fn void tooltip_set_wrap_width(int) @extern("Fl_Tooltip_set_wrap_width");
+extern fn void* tooltip_current_window() @extern("Fl_Tooltip_current_window");
+
+
 
 
 extern fn int load_font(ZString) @extern("Fl_load_font");
