@@ -30,6 +30,7 @@ extern fn void Fl_Browser.set_format_char(&self,char) @extern("Fl_Browser_set_fo
 extern fn char Fl_Browser.column_char(&self) @extern("Fl_Browser_column_char");
 extern fn void Fl_Browser.set_column_char(&self,char) @extern("Fl_Browser_set_column_char");
 extern fn int* Fl_Browser.column_widths(&self) @extern("Fl_Browser_column_widths");
+extern fn void Fl_Browser.set_column_widths(&self,int*) @extern("Fl_Browser_set_column_widths");
 extern fn int Fl_Browser.displayed(&self,int) @extern("Fl_Browser_displayed");
 extern fn void Fl_Browser.make_visible(&self,int) @extern("Fl_Browser_make_visible");
 extern fn int Fl_Browser.position(&self) @extern("Fl_Browser_position");
@@ -49,7 +50,7 @@ extern fn void Fl_Browser.hide_line(&self,int) @extern("Fl_Broser_hide_line");
 
 
 extern fn void Fl_Browser.set_color(&self,int) @extern("Fl_Browser_set_color");
-extern fn void Fl_Browser.set_selection_color(&self,uint) @extern("Fl_Browser.set_selection_color");
+extern fn void Fl_Browser.set_selection_color(&self,uint) @extern("Fl_Browser_set_selection_color");
 extern fn void Fl_Browser.set_label_color(&self,int) @extern("Fl_Browser_set_label_color");
 extern fn void Fl_Browser.set_label(&self,ZString) @extern("Fl_Browser_set_label");
 extern fn int Fl_Browser.height(&self) @extern("Fl_Browser_height");
@@ -107,6 +108,7 @@ extern fn void Fl_Hold_Browser.set_format_char(&self,char) @extern("Fl_Hold_Brow
 extern fn char Fl_Hold_Browser.column_char(&self) @extern("Fl_Hold_Browser_column_char");
 extern fn void Fl_Hold_Browser.set_column_char(&self,char) @extern("Fl_Hold_Browser_set_column_char");
 extern fn int* Fl_Hold_Browser.column_widths(&self) @extern("Fl_Hold_Browser_column_widths");
+extern fn void Fl_Hold_Browser.set_column_widths(&self,int*) @extern("Fl_Hold_Browser_set_column_widths");
 extern fn int Fl_Hold_Browser.displayed(&self,int) @extern("Fl_Hold_Browser_displayed");
 extern fn void Fl_Hold_Browser.make_visible(&self,int) @extern("Fl_Hold_Browser_make_visible");
 extern fn int Fl_Hold_Browser.position(&self) @extern("Fl_Hold_Browser_position");
@@ -183,6 +185,7 @@ extern fn void Fl_Select_Browser.set_format_char(&self,char) @extern("Fl_Select_
 extern fn char Fl_Select_Browser.column_char(&self) @extern("Fl_Select_Browser_column_char");
 extern fn void Fl_Select_Browser.set_column_char(&self,char) @extern("Fl_Select_Browser_set_column_char");
 extern fn int* Fl_Select_Browser.column_widths(&self) @extern("Fl_Select_Browser_column_widths");
+extern fn void Fl_Select_Browser.set_column_widths(&self,int*) @extern("Fl_Select_Browser_set_column_widths");
 extern fn int Fl_Select_Browser.displayed(&self,int) @extern("Fl_Select_Browser_displayed");
 extern fn void Fl_Select_Browser.make_visible(&self,int) @extern("Fl_Select_Browser_make_visible");
 extern fn int Fl_Select_Browser.position(&self) @extern("Fl_Select_Browser_position");
@@ -259,6 +262,7 @@ extern fn void Fl_Multi_Browser.set_format_char(&self,char) @extern("Fl_Multi_Br
 extern fn char Fl_Multi_Browser.column_char(&self) @extern("Fl_Multi_Browser_column_char");
 extern fn void Fl_Multi_Browser.set_column_char(&self,char) @extern("Fl_Multi_Browser_set_column_char");
 extern fn int* Fl_Multi_Browser.column_widths(&self) @extern("Fl_Multi_Browser_column_widths");
+extern fn void Fl_Multi_Browser.set_column_widths(&self,int*) @extern("Fl_Multi_Browser_set_column_widths");
 extern fn int Fl_Multi_Browser.displayed(&self,int) @extern("Fl_Multi_Browser_displayed");
 extern fn void Fl_Multi_Browser.make_visible(&self,int) @extern("Fl_Multi_Browser_make_visible");
 extern fn int Fl_Multi_Browser.position(&self) @extern("Fl_Multi_Browser_position");
@@ -336,6 +340,7 @@ extern fn void Fl_File_Browser.set_format_char(&self,char) @extern("Fl_File_Brow
 extern fn char Fl_File_Browser.column_char(&self) @extern("Fl_File_Browser_column_char");
 extern fn void Fl_File_Browser.set_column_char(&self,char) @extern("Fl_File_Browser_set_column_char");
 extern fn int* Fl_File_Browser.column_widths(&self) @extern("Fl_File_Browser_column_widths");
+extern fn void Fl_File_Browser.set_column_widths(&self,int*) @extern("Fl_File_Browser_set_column_widths");
 extern fn int Fl_File_Browser.displayed(&self,int) @extern("Fl_File_Browser_displayed");
 extern fn void Fl_File_Browser.make_visible(&self,int) @extern("Fl_File_Browser_make_visible");
 extern fn int Fl_File_Browser.position(&self) @extern("Fl_File_Browser_position");
@@ -421,6 +426,7 @@ extern fn void Fl_Check_Browser.set_format_char(&self,char) @extern("Fl_Check_Br
 extern fn char Fl_Check_Browser.column_char(&self) @extern("Fl_Check_Browser_column_char");
 extern fn void Fl_Check_Browser.set_column_char(&self,char) @extern("Fl_Check_Browser_set_column_char");
 extern fn int* Fl_Check_Browser.column_widths(&self) @extern("Fl_Check_Browser_column_widths");
+extern fn void Fl_Check_Browser.set_column_widths(&self,int*) @extern("Fl_Check_Browser_set_column_widths");
 extern fn int Fl_Check_Browser.displayed(&self,int) @extern("Fl_Check_Browser_displayed");
 extern fn void Fl_Check_Browser.make_visible(&self,int) @extern("Fl_Check_Browser_make_visible");
 extern fn int Fl_Check_Browser.position(&self) @extern("Fl_Check_Browser_position");
