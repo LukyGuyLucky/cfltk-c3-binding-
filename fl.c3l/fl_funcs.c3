@@ -40,6 +40,7 @@ struct Fl_Simple_Counter{void* _data_;}
 struct Fl_Grid{void* _data_;}
 
 extern fn Fl_Window* window_new(int,int,int,int,ZString) @extern("Fl_Window_new");
+extern fn void* Fl_Window.parent(&self) @extern("Fl_Window_parent");
 extern fn Fl_Window* window_new_wh(int,int,ZString) @extern("Fl_Window_wh");
 extern fn void Fl_Window.begin(&self) @extern("Fl_Window_begin");
 extern fn void Fl_Window.end(&self) @extern("Fl_Window_end");
@@ -69,7 +70,9 @@ extern fn int Fl_Window.visible(&self) @extern("Fl_Window_visible");
 extern fn void Fl_Window.activate(&self) @extern("Fl_Window_activate");
 extern fn void Fl_Window.deactivate(&self) @extern("Fl_Window_deactivate");
 extern fn uint Fl_Window.active(&self) @extern("Fl_Window_active");
-
+extern fn void* Fl_Window.user_data(&self) @extern("Fl_Window_user_data");
+extern fn void Fl_Window.set_user_data(&self,void*) @extern("Fl_Window_set_user_data");
+extern fn void Fl_Window.redraw(&self) @extern("Fl_Window_redraw");
 
 
 extern fn Fl_Double_Window* double_window_new(int,int,int,int,ZString) @extern("Fl_Double_Window_new");
@@ -93,7 +96,8 @@ extern fn int Fl_Double_Window.shown(&self) @extern("Fl_Double_Window_shown");
 extern fn void Fl_Double_Window.redraw(&self) @extern("Fl_Double_Window_redraw");
 extern fn void Fl_Double_Window.size_range(&self,int,int,int,int) @extern("Fl_Double_Window_size_range");
 extern fn void Fl_Double_Window.set_callback(&self,CallbackVoid,void*) @extern("Fl_Window_set_callback");
-
+extern fn void* Fl_Double_Window.user_data(&self) @extern("Fl_Double_Window_user_data");
+extern fn void Fl_Double_Window.set_user_data(&self,void*) @extern("Fl_Double_Window_set_user_data");
 
 extern fn void Fl_Widget.set_color(&self,int) @extern("Fl_Widget_set_color");
 extern fn void Fl_Widget.set_selection_color(&self,uint) @extern("Fl_Widget.set_selection_color");
@@ -107,6 +111,7 @@ extern fn void Fl_Widget.resize(&self,int,int,int,int) @extern("Fl_Widget_resize
 extern fn void Fl_Widget.redraw(&self) @extern("Fl_Widget_redraw");
 extern fn void Fl_Widget.set_icon(&self,void*) @extern("Fl_Widget_set_icon");
 extern fn void* Fl_Widget.user_data(&self) @extern("Fl_Widget_user_data");
+extern fn void Fl_Widget.set_user_data(&self,void*) @extern("Fl_Widget_set_user_data");
 extern fn void* Fl_Widget.window(&self) @extern("Fl_Widget_window");
 //extern fn ZString Fl_Widget.value(&self) @extern("Fl_Widget_value");
 extern fn ZString Fl_Widget.label(&self) @extern("Fl_Widget_label");
@@ -120,6 +125,9 @@ extern fn void Fl_Widget.set_box(&self,int) @extern("Fl_Widget_set_box");
 //extern fn int Fl_Widget.value(&self) @extern("Fl_Widget_value");
 extern fn void Fl_Widget.set_image(&self,void*) @extern("Fl_Widget_set_image");
 extern fn void Fl_Widget.set_callback(&self,CallbackVoid,void*) @extern("Fl_Widget_set_callback");
+
+
+
 
 extern fn Fl_Group* group_current() @extern("Fl_Group_current");
 extern fn void group_set_current(Fl_Group*) @extern("Fl_Group_set_current");
@@ -361,9 +369,11 @@ extern fn void Fl_Box.set_callback(&self,Callback,void*) @extern("Fl_Box_set_cal
 extern fn void Fl_Box.draw(&self,Cb,void*) @extern("Fl_Box_draw");
 extern fn int Fl_Box.get_type(&self) @extern("Fl_Box.get_type");
 extern fn void Fl_Box.set_box(&self,int) @extern("Fl_Box_set_box");
+extern fn void* Fl_Box.user_data(&self) @extern("Fl_Box_user_data");
+extern fn void* Fl_Box.image(&self) @extern("Fl_Box_image");
 
 extern fn Fl_Button* button_new(int,int,int,int,ZString,) @extern("Fl_Button_new");
-extern fn void Fl_Button.handle(&self,Cb,Fl_Box*) @extern("Fl_Button_handle");
+extern fn void Fl_Button.handle(&self,Cb,void*) @extern("Fl_Button_handle");
 extern fn void Fl_Button.set_callback(&self,Callback,void*) @extern("Fl_Button_set_callback");
 extern fn void Fl_Button.set_deletion_callback(&self,Callback,void*) @extern("Fl_Button_set_deletion_callback");
 extern fn void Fl_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Button_set_type");
@@ -378,6 +388,9 @@ extern fn int Fl_Button.value(&self) @extern("Fl_Button_value");
 extern fn void Fl_Button.set_value(&self,int) @extern("Fl_Button_set_value");
 extern fn ZString Fl_Button.label(&self) @extern("Fl_Button_label");
 extern fn void Fl_Button.set_label(&self,ZString) @extern("Fl_Button_set_label");
+extern fn void Fl_Button.deactivate(&self) @extern("Fl_Button_deactivate");
+extern fn void Fl_Button.activate(&self) @extern("Fl_Button_activate");
+
 
 extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
 extern fn void Fl_Light_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Light_Button_set_type");
@@ -455,6 +468,12 @@ extern fn void Fl_Input.end(&self) @extern("Fl_Input_end");
 extern fn void Fl_Input.add(&self,void*) @extern("Fl_Input_add");
 extern fn void Fl_Input.set_label_size(&self,int) @extern("Fl_Input_set_label_size");
 extern fn void Fl_Input.set_align(&self,Fl_Align) @extern("Fl_Input_set_align");
+extern fn void Fl_Input.deactivate(&self) @extern("Fl_Input_deactivate");
+extern fn void Fl_Input.activate(&self) @extern("Fl_Input_activate");
+extern fn int Fl_Input.text_size(&self) @extern("Fl_Input_text_size");
+extern fn int Fl_Input.maximum_size(&self) @extern("Fl_Input_maximum_size");
+extern fn void Fl_Input.set_maximum_size(&self,int) @extern("Fl_Input_set_maximum");
+extern fn int Fl_Input.copy(&self,int) @extern("Fl_Input_copy");
 
 struct Fl_Int_Input{void* _data_;}
 extern fn Fl_Int_Input* int_input_new(int,int,int,int,ZString) @extern("Fl_Int_Input_new");
@@ -611,6 +630,7 @@ extern fn void Fl_Simple_Counter.set_range(&self,double,double) @extern("Fl_Simp
 extern fn void Fl_Simple_Counter.set_step(&self,double,int) @extern("Fl_Simple_Counter_set_step");
 extern fn void Fl_Simple_Counter.set_value(&self,double) @extern("Fl_Simple_Counter_set_value");
 
+/*
 struct Fl_File_Browser{void* _data_;}
 extern fn Fl_File_Browser* file_browser_new(int,int,int,int,ZString) @extern("Fl_File_Browser_new");
 extern fn void Fl_File_Browser.set_has_scrollbar(&self,char) @extern("Fl_File_Browser_set_has_scrollbar");
@@ -620,7 +640,7 @@ extern fn int Fl_File_Browser.size(&self) @extern("Fl_File_Browser_size");
 extern fn int Fl_File_Browser.value(&self) @extern("Fl_File_Browser_value");
 extern fn void Fl_File_Browser.set_filetype(&self,int) @extern("Fl_File_Browser_set_filetype");
 extern fn ZString Fl_File_Browser.text(&self,int) @extern("Fl_File_Browser_text");
-
+*/
 
 struct Fl_Help_View{void* _data_;}
 extern fn Fl_Help_View* help_view_new(int,int,int,int,ZString) @extern("Fl_Help_View_new");
@@ -637,7 +657,7 @@ extern fn void init_all() @extern("Fl_init_all");
 extern fn void register_images() @extern("Fl_register_images");
 extern fn int lock() @extern("Fl_lock");
 extern fn void set_scheme(ZString) @extern("Fl_set_scheme");
-extern fn void handle(int,Fl_Window*) @extern("Fl_handle");
+//extern fn void handle(int,Fl_Window*) @extern("Fl_handle");
 //extern fn void beep(int) @extern("Fl_beep");
 extern fn uint rgb_color(char r,char g,char b) @extern("Fl_rgb_color");
 extern fn int event() @extern("Fl_event");
@@ -649,8 +669,18 @@ extern fn int eventY() @extern("Fl_event_y");
 extern fn int event_y() @extern("Fl_event_y");
 extern fn int event_key() @extern("Fl_event_key");
 extern fn int check() @extern("Fl_check");
+
+extern fn int handle(int,void*) @extern("Fl_handle");
+extern fn int handle_(int,void*) @extern("Fl_handle_");
+
 extern fn int dnd() @extern("Fl_dnd");
 extern fn void copy(ZString,int,int) @extern("Fl_copy");
+
+extern fn void paste_text(Fl_Widget*,int) @extern("Fl_paste_text");
+extern fn void paste_image(Fl_Widget*,int) @extern("Fl_paste_image");
+
+
+
 extern fn void delete_widget(Fl_Widget*) @extern("Fl_delete_widget");
 
 extern fn void redraw() @extern("Fl_redraw");
@@ -680,6 +710,11 @@ extern fn void decode_uri(ZString) @extern("Fl_decode_uri");
 extern fn void repeat_timeout(double,VoidCallback,void*) @extern("Fl_repeat_timeout");
 extern fn void add_timeout(double,VoidCallback,void*) @extern("Fl_add_timeout");
 extern fn void flush() @extern("Fl_flush");
+
+
+
+
+
 
 
 struct Fl_File_Icon{void* _data_;}
@@ -714,12 +749,30 @@ extern fn void Fl_Image.label_widget(&self,void*) @extern("Fl_Image_label_widget
 extern fn void Fl_Image.label_menu_item(&self,void*) @extern("Fl_Image_label_menu_item");
 extern fn void image_set_scaling_algorithm(int) @extern("Fl_Image_set_scaling_algorithm");
 extern fn int image_scaling_algorightm() @extern("Fl_Image_scaling_algorithm");
+
+
+
+struct Fl_RGB_Image{void* _data_;}
+extern fn Fl_RGB_Image* rgb_image_from(char*) @extern("Fl_RGB_Image_from");
+extern fn Fl_RGB_Image* rgb_image_new(ZString) @extern("Fl_RGB_Image_new");
+extern fn Fl_RGB_Image* rgb_image_from_data(char*,int,int,int,int) @extern("Fl_RGB_Image_from_data");
+extern fn Fl_RGB_Image* rgb_image_from_pixmap(Fl_Pixmap*) @extern("Fl_RGB_Image_from_pixmap");
+extern fn void Fl_RGB_Image.draw(&self,int,int,int,int) @extern("Fl_RGB_Image_draw");
+extern fn void Fl_RGB_Image.draw_ext(&self,int,int,int,int,int,int) @extern("Fl_RGB_Image_draw_ext");
 extern fn void rgb_image_set_algorigthm(int) @extern("Fl_RGB_Image_set_scaling_algorithm");
+extern fn void* Fl_RGB_Image.user_data(&self) @extern("Fl_RGB_Image_user_data");
+extern fn char** Fl_RGB_Image.data(&self) @extern("Fl_RGB_Image_data");
+
 extern fn int rgb_image_scaling_algorithm() @extern("Fl_RGB_Image_scaling_algorithm");
+
+
 
 struct Fl_JPEG_Image{void* _data_;}
 extern fn Fl_JPEG_Image* jpeg_image_new(ZString) @extern("Fl_JPEG_Image_new");
 extern fn Fl_JPEG_Image* jpeg_image_from(char*) @extern("Fl_JPEG_Image_from");
+extern fn void Fl_JPEG_Image.draw(&self,int,int,int,int) @extern("Fl_JPEG_Image_draw");
+extern fn void Fl_JPEG_Image.draw_ext(&self,int,int,int,int,int,int) @extern("Fl_JPEG_Image_draw_ex");
+
 
 extern fn Fl_PNG_Image* png_image_new(ZString) @extern("Fl_PNG_Image_new");
 extern fn void Fl_PNG_Image.scale(&self,int,int,bool,bool) @extern("Fl_PNG_Image_scale");
@@ -766,10 +819,7 @@ extern fn Fl_PNM_Image* pnm_image_new(ZString) @extern("Fl_PNM_Image_new");
 struct Fl_Tiled_Image{void* _data_;}
 extern fn Fl_Tiled_Image* tiled_image_new(ZString) @extern("Fl_Tiled_Image_new");
 
-struct Fl_RGB_Image{void* _data_;}
-extern fn Fl_RGB_Image* rgb_image_new(ZString) @extern("Fl_RGB_Image_new");
-extern fn Fl_RGB_Image* rgb_image_from_data(char*,int,int,int,int) @extern("Fl_RGB_Image_from_data");
-extern fn Fl_RGB_Image* rgb_image_from_pixmap(Fl_Pixmap*) @extern("Fl_RGB_Image_from_pixmap");
+
 
 struct Fl_Shared_Image{void* _data_;}
 extern fn Fl_Shared_Image* shared_image_get(ZString,int,int) @extern("Fl_Shared_Image_get");
@@ -812,7 +862,8 @@ extern fn void point(int,int) @extern("Fl_point");
 extern fn void line(int,int,int,int) @extern("Fl_line");
 extern fn void arc(int,int,int,int,double,double) @extern("Fl_arc");
 extern fn void arc_with_radius(double,double,double,double,double) @extern("Fl_arc_with_radius");
-
+extern fn void circle(int,int,double) @extern("Fl_circle");
+extern fn void draw_circle(int,int,int,uint) @extern("Fl_draw_circle");
 extern fn void draw_box(int,int,int,int,int,uint) @extern("Fl_draw_box");
 extern fn void push_matrix() @extern("Fl_push_matrix");
 extern fn void pop_matrix() @extern("Fl_pop_matrix");
