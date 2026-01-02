@@ -1,4 +1,4 @@
-import std::io;
+﻿import std::io;
 import fl;
 
 fn void main() 
@@ -12,10 +12,13 @@ fn void main()
 fn void click_cb(Fl_Widget* obj,void* data)
 {
     int width,height,left,top,right,bottom,pageWidth,pageHeight;
+    int pageCount=1;
+    int fromPage=1;
+    int toPage=1;
     Fl_Printer* prt=fl::printer_new();
     if(prt)
     {
-        if(prt.begin_job(1,null,null,{})==0)
+        if(prt.begin_job(pageCount,&fromPage,&toPage,&&"Test string")==0)
         {
             if(prt.begin_page()==0)
             {
@@ -37,7 +40,7 @@ fn void click_cb(Fl_Widget* obj,void* data)
                 io::printfn("print size %s x %s cm",(double)width/dpi*2.54,(double)height/dpi*2.54);
 
                 width/=16;
-                height*=16;
+                width*=16;
 
                 height/=16;
                 height*=16;
