@@ -3,7 +3,7 @@ module fl;
 struct Fl_Printer{void* _data_;}
 extern fn Fl_Printer* printer_new() @extern("Fl_Printer_new");
 extern fn void Fl_Printer.delete(&self) @extern("Fl_Printer_delete");
-extern fn int Fl_Printer.begin_job(&self,int,int*,int*,ZString[]) @extern("Fl_Printer_begin_job");
+extern fn int Fl_Printer.begin_job(&self,int,int*,int*,ZString*) @extern("Fl_Printer_begin_job");
 extern fn int Fl_Printer.begin_page(&self) @extern("Fl_Printer_begin_page");
 extern fn int Fl_Printer.printable_rect(&self,int*,int*) @extern("Fl_Printer_printable_rect");
 extern fn void Fl_Printer.margins(&self,int*,int*,int*,int*) @extern("Fl_Printer_margins");
