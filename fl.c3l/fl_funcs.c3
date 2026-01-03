@@ -74,6 +74,9 @@ extern fn void* Fl_Window.user_data(&self) @extern("Fl_Window_user_data");
 extern fn void Fl_Window.set_user_data(&self,void*) @extern("Fl_Window_set_user_data");
 extern fn void Fl_Window.redraw(&self) @extern("Fl_Window_redraw");
 extern fn void Fl_Window.set_tooltip(&self,ZString) @extern("Fl_Window_set_tooltip");
+extern fn void* Fl_Window.as_window(&self) @extern("Fl_Window_as_window");
+
+
 
 extern fn Fl_Double_Window* double_window_new(int,int,int,int,ZString) @extern("Fl_Double_Window_new");
 extern fn Fl_Double_Window* double_window_new_wh(int,int,ZString) @extern("Fl_Double_Window_new_wh");
@@ -91,7 +94,7 @@ extern fn void Fl_Double_Window.set_icon(&self,void*) @extern("Fl_Double_Window_
 extern fn int Fl_Double_Window.width(&self) @extern("Fl_Double_Window_width");
 extern fn int Fl_Double_Window.height(&self) @extern("Fl_Double_Window_height");
 extern fn ZString Fl_Double_Window.label(&self) @extern("Fl_Double_Window_label");
-extern fn void Fl_Double_Window.draw(&self,Cb,void*) @extern("Fl_Double_Window_draw");
+extern fn void Fl_Double_Window.draw(&self,Custom_draw_callback,void*) @extern("Fl_Double_Window_draw");
 extern fn int Fl_Double_Window.shown(&self) @extern("Fl_Double_Window_shown");
 extern fn void Fl_Double_Window.redraw(&self) @extern("Fl_Double_Window_redraw");
 extern fn void Fl_Double_Window.size_range(&self,int,int,int,int) @extern("Fl_Double_Window_size_range");
@@ -100,7 +103,7 @@ extern fn void Fl_Double_Window.handle(&self,CallbackInt,void*) @extern("Fl_Doub
 extern fn void* Fl_Double_Window.user_data(&self) @extern("Fl_Double_Window_user_data");
 extern fn void Fl_Double_Window.set_user_data(&self,void*) @extern("Fl_Double_Window_set_user_data");
 extern fn void Fl_Double_Window.set_tooltip(&self,ZString) @extern("Fl_Double_Window_set_tooltip");
-
+extern fn void Fl_Double_Window.make_current(&self) @extern("Fl_Double_Window_make_current");
 
 
 extern fn void Fl_Widget.set_color(&self,int) @extern("Fl_Widget_set_color");
@@ -177,6 +180,37 @@ extern fn void Fl_Group.end(&self) @extern("Fl_Group_end");
 extern fn void Fl_Group.add(&self,void*) @extern("Fl_Group_add");
 extern fn void Fl_Group.resizable(&self,void*) @extern("Fl_Group_resizable");
 extern fn void Fl_Group.insert(&self,void*,int) @extern("Fl_Group_insert");
+
+struct Fl_Scroll{void* _data_;}
+extern fn Fl_Scroll* scroll_new(int,int,int,int,ZString) @extern("Fl_Scroll_new");
+extern fn void* Fl_Scroll.scrollbar(&self) @extern("Fl_Scroll_scrollbar");
+extern fn void* Fl_Scroll.hscrollbar(&self) @extern("Fl_Scroll_hscrollbar");
+extern fn int Fl_Scroll.xposition(&self) @extern("Fl_Scroll_xposition");
+extern fn int Fl_Scroll.yposition(&self) @extern("Fl_Scroll_yposition");
+extern fn void Fl_Scroll.scroll_to(&self,int,int) @extern("Fl_Scroll_scroll_to");
+extern fn void Fl_Scroll.set_scrollbar_size(&self,int) @extern("Fl_Scroll_set_scrollbar_size");
+extern fn int Fl_Scroll.scrollbar_size(&self) @extern("Fl_Scroll_scrollbar_size");
+extern fn void Fl_Scroll.set_align(&self,int) @extern("Fl_Scroll_set_align");
+extern fn void Fl_Scroll.set_color(&self,int) @extern("Fl_Scroll_set_color");
+extern fn uint Fl_Scroll.color(&self) @extern("Fl_Scroll_color"); 
+extern fn void Fl_Scroll.set_selection_color(&self,uint) @extern("Fl_Scroll_set_selection_color");
+extern fn uint Fl_Scroll.selection_color(&self) @extern("Fl_Scroll_selection_color");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 extern fn Fl_Grid* grid_new(int,int,int,int,ZString) @extern("Fl_Grid_new");
 extern fn void* Fl_Grid.set_widget(&self,Fl_Widget*,int,int,ushort) @extern("Fl_Grid_set_widget");
@@ -384,7 +418,7 @@ extern fn void Fl_Box.set_box(&self,int) @extern("Fl_Box_set_box");
 extern fn void* Fl_Box.user_data(&self) @extern("Fl_Box_user_data");
 extern fn void* Fl_Box.image(&self) @extern("Fl_Box_image");
 extern fn void Fl_Box.set_tooltip(&self,ZString) @extern("Fl_Box_set_tooltip");
-
+extern fn void* Fl_Box.parent(&self) @extern("Fl_Box_parent");
 
 
 extern fn Fl_Button* button_new(int,int,int,int,ZString,) @extern("Fl_Button_new");
@@ -393,8 +427,10 @@ extern fn void Fl_Button.set_callback(&self,Callback,void*) @extern("Fl_Button_s
 extern fn void Fl_Button.set_deletion_callback(&self,Callback,void*) @extern("Fl_Button_set_deletion_callback");
 extern fn void Fl_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Button_set_type");
 extern fn void Fl_Button.set_color(&self,int) @extern("Fl_Button_set_color");
+extern fn uint Fl_Button.color(&self) @extern("Fl_Button_color"); 
 extern fn void Fl_Button.set_label_color(&self,uint) @extern("Fl_Button_set_label_color");
 extern fn void Fl_Button.set_selection_color(&self,uint) @extern("Fl_Button_set_selection_color");
+extern fn uint Fl_Button.selection_color(&self) @extern("Fl_Button_selection_color");
 extern fn void Fl_Button.set_align(&self,Fl_Align) @extern("Fl_Button_set_align");
 extern fn void Fl_Button.set_image(&self,void*) @extern("Fl_Button_set_image");
 extern fn void Fl_Button.set_when(&self,int) @extern("Fl_Button_set_when");
@@ -418,6 +454,10 @@ extern fn int Fl_Button.x(&self) @extern("Fl_Button_x");
 extern fn int Fl_Button.y(&self) @extern("Fl_Button_y");
 extern fn int Fl_Button.height(&self) @extern("Fl_Button_height");
 extern fn int Fl_Button.width(&self) @extern("Fl_Button_width");
+
+
+
+
 
 
 extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
@@ -636,6 +676,23 @@ extern fn int Fl_Hor_Value_Slider.set_value(&self,double) @extern("Fl_Hor_Value_
 extern fn void* Fl_Hor_Value_Slider.user_data(&self) @extern("Fl_Hor_Value_Slider_user_data");
 extern fn double Fl_Hor_Value_Slider.value(&self) @extern("Fl_Hor_Value_Slider_value");
 extern fn void* Fl_Hor_Value_Slider.window(&self) @extern("Fl_Hor_Value_Slider_window");
+extern fn void Fl_Hor_Value_Slider.set_step(&self,double,int) @extern("Fl_Hor_Value_Slider_set_step");
+extern fn double Fl_Hor_Value_Slider.step(&self) @extern("Fl_Hor_Value_Slider_step");
+extern fn void Fl_Hor_Value_Slider.set_bounds(&self,double,double) @extern("Fl_Hor_Value_Slider_set_bounds");
+
+struct Fl_Hor_Nice_Slider{void* _data_;}
+extern fn Fl_Hor_Nice_Slider* hor_nice_slider_new(int,int,int,int,ZString) @extern("Fl_Hor_Nice_Slider_new");
+extern fn void Fl_Hor_Nice_Slider.set_callback(&self,Callback,void*) @extern("Fl_Hor_Nice_Slider_set_callback");
+extern fn void Fl_Hor_Nice_Slider.set_range(&self,double,double) @extern("Fl_Hor_Nice_Slider_set_range");
+extern fn int Fl_Hor_Nice_Slider.set_value(&self,double) @extern("Fl_Hor_Nice_Slider_set_value");
+extern fn void* Fl_Hor_Nice_Slider.user_data(&self) @extern("Fl_Hor_Nice_Slider_user_data");
+extern fn double Fl_Hor_Nice_Slider.value(&self) @extern("Fl_Hor_Nice_Slider_value");
+extern fn void* Fl_Hor_Nice_Slider.window(&self) @extern("Fl_Hor_Nice_Slider_window");
+extern fn void Fl_Hor_Nice_Slider.set_step(&self,double,int) @extern("Fl_Hor_Nice_Slider_set_step");
+extern fn double Fl_Hor_Nice_Slider.step(&self) @extern("Fl_Hor_Nice_Slider_step");
+extern fn void Fl_Hor_Nice_Slider.set_bounds(&self,double,double) @extern("Fl_Hor_Nice_Slider_set_bounds");
+
+
 
 extern fn Fl_Chart* chart_new(int,int,int,int,ZString) @extern("Fl_Chart_new");
 extern fn void Fl_Chart.add(&self,double,ZString,uint) @extern("Fl_Chart_add");
