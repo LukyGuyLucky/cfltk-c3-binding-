@@ -58,7 +58,7 @@ extern fn int Fl_Window.height(&self) @extern("Fl_Window_height");
 extern fn void Fl_Window.set_label(&self,ZString) @extern("Fl_Window_set_label");
 extern fn ZString Fl_Window.label(&self) @extern("Fl_Window_label");
 extern fn void Fl_Window.make_current(&self) @extern("Fl_Window_make_current");
-extern fn void Fl_Window.draw(&self,Cb,void*) @extern("Fl_Window_draw");
+extern fn void Fl_Window.draw(&self,Custom_draw_callback,void*) @extern("Fl_Window_draw");
 extern fn void Fl_Window.resizable(&self,void*) @extern("Fl_Window_resizable");
 extern fn void Fl_Window.set_callback(&self,CallbackVoid,void*) @extern("Fl_Window_set_callback");
 extern fn void Fl_Window.handle(&self,CallbackInt,void*) @extern("Fl_Window_handle");
@@ -130,10 +130,15 @@ extern fn void Fl_Widget.set_box(&self,int) @extern("Fl_Widget_set_box");
 extern fn void Fl_Widget.set_image(&self,void*) @extern("Fl_Widget_set_image");
 extern fn void Fl_Widget.set_callback(&self,CallbackVoid,void*) @extern("Fl_Widget_set_callback");
 extern fn void* Fl_Widget.as_window(&self) @extern("Fl_Widget_as_window");
+extern fn int Fl_Widget.handle_event(&self,int) @extern("Fl_Widget_handle_event");
+//extern fn int Fl_Widget.x(&self) @extern("Fl_Widget_x");
+//extern fn int Fl_Widget.y(&self) @extern("Fl_Widget_y");
 
 /*******************************************************************************/
 extern fn void Fl_Widget.set_tooltip(&self,ZString) @extern("Fl_Widget_set_tooltip");
 /*******************************************************************************/
+
+
 
 extern fn Fl_Group* group_current() @extern("Fl_Group_current");
 extern fn void group_set_current(Fl_Group*) @extern("Fl_Group_set_current");
@@ -373,7 +378,7 @@ extern fn void Fl_Box.set_image(&self,void*) @extern("Fl_Box_set_image");
 extern fn void Fl_Box.resize(&self,int,int,int,int) @extern("Fl_Box_resize");
 extern fn void Fl_Box.set_user_data(&self,void*) @extern("Fl_Box_set_user_data");
 extern fn void Fl_Box.set_callback(&self,Callback,void*) @extern("Fl_Box_set_callback");
-extern fn void Fl_Box.draw(&self,Cb,void*) @extern("Fl_Box_draw");
+extern fn void Fl_Box.draw(&self,Custom_draw_callback,void*) @extern("Fl_Box_draw");
 extern fn int Fl_Box.get_type(&self) @extern("Fl_Box.get_type");
 extern fn void Fl_Box.set_box(&self,int) @extern("Fl_Box_set_box");
 extern fn void* Fl_Box.user_data(&self) @extern("Fl_Box_user_data");
@@ -404,6 +409,15 @@ extern fn void Fl_Button.set_tooltip(&self,ZString) @extern("Fl_Button_set_toolt
 extern fn void Fl_Button.set_label_font(&self,int) @extern("Fl_Button_set_label_font");
 extern fn void Fl_Button.set_label_size(&self,int) @extern("Fl_Button_set_label_size");
 extern fn void Fl_Button.label_size(&self,int) @extern("Fl_Button_label_size");
+extern fn void Fl_Button.draw(&self,Custom_draw_callback,void*) @extern("Fl_Button_draw");
+extern fn void Fl_Button.set_user_data(&self,void*) @extern("Fl_Button_set_user_data");
+extern fn void* Fl_Button.user_data(&self) @extern("Fl_Button_user_data");
+extern fn int Fl_Button.handle_event(&self,int) @extern("Fl_Button_handle_event");
+extern fn void Fl_Button.redraw(&self) @extern("Fl_Button_redraw");
+extern fn int Fl_Button.x(&self) @extern("Fl_Button_x");
+extern fn int Fl_Button.y(&self) @extern("Fl_Button_y");
+extern fn int Fl_Button.height(&self) @extern("Fl_Button_height");
+extern fn int Fl_Button.width(&self) @extern("Fl_Button_width");
 
 
 extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
@@ -415,6 +429,9 @@ extern fn int Fl_Light_Button.is_on(&self) @extern("Fl_Light_Button_is_on");
 extern fn void Fl_Light_Button.turn_on(&self,int) @extern("Fl_Light_Button_turn_on");
 extern fn int Fl_Light_Button.value(&self) @extern("Fl_Light_Button_value");
 extern fn void Fl_Light_Button.set_value(&self,int) @extern("Fl_Light_Button_set_value");
+
+
+
 
 extern fn Fl_Round_Button* round_button_new(int,int,int,int,ZString) @extern("Fl_Round_Button_new");
 extern fn void Fl_Round_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Round_Button_set_type");

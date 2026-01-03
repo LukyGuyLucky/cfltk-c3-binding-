@@ -128,7 +128,7 @@ extern fn void Fl_Hold_Browser.hide_line(&self,int) @extern("Fl_Broser_hide_line
 
 
 extern fn void Fl_Hold_Browser.set_color(&self,int) @extern("Fl_Hold_Browser_set_color");
-extern fn void Fl_Hold_Browser.set_selection_color(&self,uint) @extern("Fl_Hold_Browser.set_selection_color");
+extern fn void Fl_Hold_Browser.set_selection_color(&self,uint) @extern("Fl_Hold_Browser_set_selection_color");
 extern fn void Fl_Hold_Browser.set_label_color(&self,int) @extern("Fl_Hold_Browser_set_label_color");
 extern fn void Fl_Hold_Browser.set_label(&self,ZString) @extern("Fl_Hold_Browser_set_label");
 extern fn int Fl_Hold_Browser.height(&self) @extern("Fl_Hold_Browser_height");
@@ -205,7 +205,7 @@ extern fn void Fl_Select_Browser.hide_line(&self,int) @extern("Fl_Broser_hide_li
 
 
 extern fn void Fl_Select_Browser.set_color(&self,int) @extern("Fl_Select_Browser_set_color");
-extern fn void Fl_Select_Browser.set_selection_color(&self,uint) @extern("Fl_Select_Browser.set_selection_color");
+extern fn void Fl_Select_Browser.set_selection_color(&self,uint) @extern("Fl_Select_Browser_set_selection_color");
 extern fn void Fl_Select_Browser.set_label_color(&self,int) @extern("Fl_Select_Browser_set_label_color");
 extern fn void Fl_Select_Browser.set_label(&self,ZString) @extern("Fl_Select_Browser_set_label");
 extern fn int Fl_Select_Browser.height(&self) @extern("Fl_Select_Browser_height");
@@ -282,7 +282,7 @@ extern fn void Fl_Multi_Browser.hide_line(&self,int) @extern("Fl_Broser_hide_lin
 
 
 extern fn void Fl_Multi_Browser.set_color(&self,int) @extern("Fl_Multi_Browser_set_color");
-extern fn void Fl_Multi_Browser.set_selection_color(&self,uint) @extern("Fl_Multi_Browser.set_selection_color");
+extern fn void Fl_Multi_Browser.set_selection_color(&self,uint) @extern("Fl_Multi_Browser_set_selection_color");
 extern fn void Fl_Multi_Browser.set_label_color(&self,int) @extern("Fl_Multi_Browser_set_label_color");
 extern fn void Fl_Multi_Browser.set_label(&self,ZString) @extern("Fl_Multi_Browser_set_label");
 extern fn int Fl_Multi_Browser.height(&self) @extern("Fl_Multi_Browser_height");
@@ -360,7 +360,7 @@ extern fn void Fl_File_Browser.hide_line(&self,int) @extern("Fl_Broser_hide_line
 
 
 extern fn void Fl_File_Browser.set_color(&self,int) @extern("Fl_File_Browser_set_color");
-extern fn void Fl_File_Browser.set_selection_color(&self,uint) @extern("Fl_File_Browser.set_selection_color");
+extern fn void Fl_File_Browser.set_selection_color(&self,uint) @extern("Fl_File_Browser_set_selection_color");
 extern fn void Fl_File_Browser.set_label_color(&self,int) @extern("Fl_File_Browser_set_label_color");
 extern fn void Fl_File_Browser.set_label(&self,ZString) @extern("Fl_File_Browser_set_label");
 extern fn int Fl_File_Browser.height(&self) @extern("Fl_File_Browser_height");
@@ -446,7 +446,7 @@ extern fn void Fl_Check_Browser.hide_line(&self,int) @extern("Fl_Broser_hide_lin
 
 
 extern fn void Fl_Check_Browser.set_color(&self,int) @extern("Fl_Check_Browser_set_color");
-extern fn void Fl_Check_Browser.set_selection_color(&self,uint) @extern("Fl_Check_Browser.set_selection_color");
+extern fn void Fl_Check_Browser.set_selection_color(&self,uint) @extern("Fl_Check_Browser_set_selection_color");
 extern fn void Fl_Check_Browser.set_label_color(&self,int) @extern("Fl_Check_Browser_set_label_color");
 extern fn void Fl_Check_Browser.set_label(&self,ZString) @extern("Fl_Check_Browser_set_label");
 extern fn int Fl_Check_Browser.height(&self) @extern("Fl_Check_Browser_height");

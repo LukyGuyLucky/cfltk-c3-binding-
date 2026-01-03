@@ -282,7 +282,7 @@ enum Fl_Color:const inline CInt {
     FL_COLOR_WHITE        =255,
 }
 
-enum Fl_Event:const inline CInt {
+enum Fl_Event:const inline CInt{
     FL_EVENT_NONE = 0,
     FL_EVENT_PUSH,
     FL_EVENT_RELEASED,
