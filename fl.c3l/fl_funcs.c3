@@ -402,7 +402,7 @@ extern fn void Fl_Box.set_label_color(&self,int) @extern("Fl_Box_set_label_color
 extern fn void Fl_Box.set_label_size(&self,int) @extern("Fl_Box_set_label_size");
 extern fn void Fl_Box.set_type(&self,int) @extern("Fl_Box_set_type");
 extern fn void Fl_Box.redraw(&self) @extern("Fl_Box_redraw");
-extern fn void Fl_Box.window(&self) @extern("Fl_Box_window");
+extern fn void* Fl_Box.window(&self) @extern("Fl_Box_window");
 extern fn int Fl_Box.x(&self) @extern("Fl_Box_x");
 extern fn int Fl_Box.y(&self) @extern("Fl_Box_y");
 extern fn int Fl_Box.width(&self) @extern("Fl_Box_width");
@@ -1043,6 +1043,14 @@ extern fn Fl_Tiled_Image* tiled_image_new(ZString) @extern("Fl_Tiled_Image_new")
 struct Fl_Shared_Image{void* _data_;}
 extern fn Fl_Shared_Image* shared_image_get(ZString,int,int) @extern("Fl_Shared_Image_get");
 extern fn Fl_Shared_Image* shared_image_from_rgb(Fl_RGB_Image*,int) @extern("Fl_Shared_Image_from_rgb");
+extern fn int Fl_Shared_Image.count(&self) @extern("Fl_Shared_Image_count");
+extern fn Fl_Shared_Image* Fl_Shared_Image.image(&self) @extern("Fl_Shared_Image_image");
+extern fn Fl_Shared_Image* Fl_Shared_Image.copy(&self) @extern("Fl_Shared_Image_copy");
+extern fn Fl_Shared_Image* Fl_Shared_Image.copy_sized(&self,int,int) @extern("Fl_Shared_Image_copy_sized");
+extern fn Fl_Shared_Image* from_dyn_ptr(Fl_Image*) @extern("Fl_Shared_Image_from_dyn_ptr");
+
+
+
 
 struct Fl_ICO_Image{void* _data_;}
 extern fn Fl_ICO_Image* ico_image_new(ZString,int) @extern("Fl_ICO_Image_new");
