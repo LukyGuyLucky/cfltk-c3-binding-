@@ -9,7 +9,7 @@ Fl_Box             *g_box = null;
 Fl_Terminal        *g_tty = null;
 
 // Append a date/time message to the terminal every 2 seconds
-fn void tick_cb(Fl_Terminal* obj,void *data) {
+fn void tick_cb(void* data) {
   Time_t lt = libc::time(null);
   g_tty.printf("नमस्ते दुनिया!👋🌎!Timer tick: \e[32m%s\e[0m\n", libc::ctime(&lt));
   fl::repeat_timeout(2.0, &tick_cb, data);
