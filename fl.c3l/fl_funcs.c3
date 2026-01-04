@@ -57,6 +57,60 @@ extern fn int Fl_Window.width(&self) @extern("Fl_Window_width");
 extern fn int Fl_Window.height(&self) @extern("Fl_Window_height");
 extern fn void Fl_Window.set_label(&self,ZString) @extern("Fl_Window_set_label");
 extern fn ZString Fl_Window.label(&self) @extern("Fl_Window_label");
+
+extern fn void Fl_Window.make_modal(&self,uint) @extern("Fl_Window_make_modal");
+extern fn void Fl_Window.fullscreen(&self,uint) @extern("Fl_Window_fullscreen");
+extern fn void* Fl_Window.icon(&self) @extern("Fl_Window_icon");
+extern fn void Fl_Window.set_cursor(&self,int) @extern("Fl_Window_set_cursor");
+extern fn int Fl_Window.shown(&self) @extern("Fl_Window_shown");
+extern fn void* Fl_Window.raw_handle(&self) @extern("Fl_Window_raw_handle");
+extern fn void Fl_Window.set_border(&self,int) @extern("Fl_Window_set_border");
+extern fn int Fl_Window.border(&self) @extern("Fl_Window_border");
+extern fn void* Fl_Window.region(&self) @extern("Fl_Window_region");
+extern fn void Fl_Window.set_region(&self,void*) @extern("Fl_Window_set_region");
+extern fn void Fl_Window.iconize(&self) @extern("Fl_Window_iconize");
+extern fn uint Fl_Window.fullscreen_active(&self) @extern("Fl_Window_fullscreen_active");
+extern fn void Fl_Window.free_position(&self) @extern("Fl_Window_free_position");
+extern fn int Fl_Window.decorated_w(&self) @extern("Fl_Window_decorated_w");
+extern fn int Fl_Window.decorated_h(&self) @extern("Fl_Window_decorated_h");
+extern fn void Fl_Window.hotspot(&self,Fl_Widget*) @extern("Fl_Window_hotspot");
+extern fn void Fl_Window.set_shape(&self,void*) @extern("Fl_Window_set_shape");
+extern fn void* Fl_Window.shape(&self) @extern("Fl_Window_shape");
+extern fn int Fl_Window.x_root(&self) @extern("Fl_Window_x_root");
+extern fn int Fl_Window.y_root(&self) @extern("Fl_Window_y_root");
+extern fn void Fl_Window.set_cursor_image(&self,void*,int,int) @extern("Fl_Window_set_cursor_image");
+extern fn void Fl_Window.default_cursor(&self,int) @extern("Fl_Window_default_cursor");
+extern fn int Fl_Window.screen_num(&self) @extern("Fl_Window_screen_num");
+extern fn void Fl_Window.set_screen_num(&self,int) @extern("Fl_Window_set_screen_num");
+extern fn void Fl_Window.wait_for_expose(&self) @extern("Fl_Window_wait_for_expose");
+extern fn void Fl_Window.set_alpha(&self,char) @extern("Fl_Window_set_alpha");
+extern fn char Fl_Window.alpha(&self) @extern("Fl_Window_alpha");
+extern fn void Fl_Window.force_position(&self,int) @extern("Fl_Window_force_position");
+extern fn ZString window_default_xclass() @extern("Fl_Window_default_xclass");
+extern fn ZString Fl_Window.xclass(&self) @extern("Fl_Window_xclass");
+extern fn void window_set_default_xclass(ZString) @extern("Fl_Window_set_default_xclass");
+extern fn void Fl_Window.set_xclass(&self,ZString) @extern("Fl_Window_set_xclass");
+extern fn void Fl_Window.clear_modal_states(&self) @extern("Fl_Window_clear_mode_states");
+extern fn void Fl_Window.set_override(&self) @extern("Fl_Window_set_override");
+extern fn int Fl_Window.override(&self) @extern("Fl_Window_override");
+extern fn  ZString Fl_Window.icon_label(&self) @extern("Fl_Window_icon_label");
+extern fn void Fl_Window.set_icon_label(&self,ZString) @extern("Fl_Window_set_icon_label");
+extern fn void Fl_Window.set_icons(&self,void*[],int) @extern("Fl_Window_set_icons");
+extern fn void Fl_Window.maximize(&self) @extern("Fl_Window_maximize");
+extern fn void Fl_Window.un_maximize(&self) @extern("Fl_Window_un_maximize");
+extern fn uint Fl_Window.maximize_active(&self) @extern("Fl_Window_maximize_active");
+extern fn void Fl_Window.allow_expand_outside_parent(&self) @extern("Fl_Window_allow_expand_outside_parent");
+extern fn uint Fl_Window.os_id(&self) @extern("Fl_Window_os_id");
+
+
+
+extern fn void* resolve_raw_handle(void*) @extern("resolve_raw_handle");
+extern fn void* display() @extern("Fl_display");
+extern fn void* gc() @extern("Fl_gc");
+extern fn void* cairo_gc() @extern("Fl_cairo_gc");
+
+
+
 extern fn void Fl_Window.make_current(&self) @extern("Fl_Window_make_current");
 extern fn void Fl_Window.draw(&self,Custom_draw_callback,void*) @extern("Fl_Window_draw");
 extern fn void Fl_Window.resizable(&self,void*) @extern("Fl_Window_resizable");
@@ -65,7 +119,6 @@ extern fn void Fl_Window.handle(&self,CallbackInt,void*) @extern("Fl_Window_hand
 extern fn void Fl_Window.set_visible_focus(&self) @extern("Fl_Window_set_visible_focus");
 extern fn void Fl_Window.visible_focus(&self,int) @extern("Fl_Window_visible_focus");
 extern fn int Fl_Window.has_visiable_focus(&self) @extern("Fl_Window_has_visiable_focus");
-extern fn int Fl_Window.shown(&self) @extern("Fl_Window_shown");
 extern fn int Fl_Window.visible(&self) @extern("Fl_Window_visible");
 extern fn void Fl_Window.activate(&self) @extern("Fl_Window_activate");
 extern fn void Fl_Window.deactivate(&self) @extern("Fl_Window_deactivate");
@@ -112,6 +165,51 @@ extern fn void Fl_Double_Window.resize(&self,int,int,int,int) @extern("Fl_Double
 extern fn int Fl_Double_Window.x(&self) @extern("Fl_Dobule_Window_x");
 extern fn int Fl_Double_Window.y(&self) @extern("Fl_Double_Window_y");
 extern fn void Fl_Double_Window.set_deletion_callback(&self,CallbackVoid,void*) @extern("Fl_Double_Window_set_deletion_callback");
+
+
+extern fn void Fl_Double_Window.make_modal(&self,uint) @extern("Fl_Double_Window_make_modal");
+extern fn void Fl_Double_Window.fullscreen(&self,uint) @extern("Fl_Double_Window_fullscreen");
+extern fn void* Fl_Double_Window.icon(&self) @extern("Fl_Double_Window_icon");
+extern fn void Fl_Double_Window.set_cursor(&self,int) @extern("Fl_Double_Window_set_cursor");
+extern fn void* Fl_Double_Window.raw_handle(&self) @extern("Fl_Double_Window_raw_handle");
+extern fn void Fl_Double_Window.set_border(&self,int) @extern("Fl_Double_Window_set_border");
+extern fn int Fl_Double_Window.border(&self) @extern("Fl_Double_Window_border");
+extern fn void* Fl_Double_Window.region(&self) @extern("Fl_Double_Window_region");
+extern fn void Fl_Double_Window.set_region(&self,void*) @extern("Fl_Double_Window_set_region");
+extern fn void Fl_Double_Window.iconize(&self) @extern("Fl_Double_Window_iconize");
+extern fn uint Fl_Double_Window.fullscreen_active(&self) @extern("Fl_Double_Window_fullscreen_active");
+extern fn void Fl_Double_Window.free_position(&self) @extern("Fl_Double_Window_free_position");
+extern fn int Fl_Double_Window.decorated_w(&self) @extern("Fl_Double_Window_decorated_w");
+extern fn int Fl_Double_Window.decorated_h(&self) @extern("Fl_Double_Window_decorated_h");
+extern fn void Fl_Double_Window.hotspot(&self,Fl_Widget*) @extern("Fl_Double_Window_hotspot");
+extern fn void Fl_Double_Window.set_shape(&self,void*) @extern("Fl_Double_Window_set_shape");
+extern fn void* Fl_Double_Window.shape(&self) @extern("Fl_Double_Window_shape");
+extern fn int Fl_Double_Window.x_root(&self) @extern("Fl_Double_Window_x_root");
+extern fn int Fl_Double_Window.y_root(&self) @extern("Fl_Double_Window_y_root");
+extern fn void Fl_Double_Window.set_cursor_image(&self,void*,int,int) @extern("Fl_Double_Window_set_cursor_image");
+extern fn void Fl_Double_Window.default_cursor(&self,int) @extern("Fl_Double_Window_default_cursor");
+extern fn int Fl_Double_Window.screen_num(&self) @extern("Fl_Double_Window_screen_num");
+extern fn void Fl_Double_Window.set_screen_num(&self,int) @extern("Fl_Double_Window_set_screen_num");
+extern fn void Fl_Double_Window.wait_for_expose(&self) @extern("Fl_Double_Window_wait_for_expose");
+extern fn void Fl_Double_Window.set_alpha(&self,char) @extern("Fl_Double_Window_set_alpha");
+extern fn char Fl_Double_Window.alpha(&self) @extern("Fl_Double_Window_alpha");
+extern fn void Fl_Double_Window.force_position(&self,int) @extern("Fl_Double_Window_force_position");
+extern fn ZString double_window_default_xclass() @extern("Fl_Double_Window_default_xclass");
+extern fn ZString Fl_Double_Window.xclass(&self) @extern("Fl_Double_Window_xclass");
+extern fn void double_window_set_default_xclass(ZString) @extern("Fl_Double_Window_set_default_xclass");
+extern fn void Fl_Double_Window.set_xclass(&self,ZString) @extern("Fl_Double_Window_set_xclass");
+extern fn void Fl_Double_Window.clear_modal_states(&self) @extern("Fl_Double_Window_clear_mode_states");
+extern fn void Fl_Double_Window.set_override(&self) @extern("Fl_Double_Window_set_override");
+extern fn int Fl_Double_Window.override(&self) @extern("Fl_Double_Window_override");
+extern fn  ZString Fl_Double_Window.icon_label(&self) @extern("Fl_Double_Window_icon_label");
+extern fn void Fl_Double_Window.set_icon_label(&self,ZString) @extern("Fl_Double_Window_set_icon_label");
+extern fn void Fl_Double_Window.set_icons(&self,void*[],int) @extern("Fl_Double_Window_set_icons");
+extern fn void Fl_Double_Window.maximize(&self) @extern("Fl_Double_Window_maximize");
+extern fn void Fl_Double_Window.un_maximize(&self) @extern("Fl_Double_Window_un_maximize");
+extern fn uint Fl_Double_Window.maximize_active(&self) @extern("Fl_Double_Window_maximize_active");
+extern fn void Fl_Double_Window.allow_expand_outside_parent(&self) @extern("Fl_Double_Window_allow_expand_outside_parent");
+extern fn uint Fl_Double_Window.os_id(&self) @extern("Fl_Double_Window_os_id");
+
 
 
 
@@ -465,7 +563,7 @@ extern fn int Fl_Button.height(&self) @extern("Fl_Button_height");
 extern fn int Fl_Button.width(&self) @extern("Fl_Button_width");
 extern fn int Fl_Button.active_r(&self) @extern("Fl_Button_active_r");
 extern fn int Fl_Button.active(&self) @extern("Fl_Button_active");
-
+extern fn void Fl_Button.set_box(&self,int) @extern("Fl_Button_set_box");
 
 
 
@@ -779,7 +877,11 @@ extern fn int run() @extern("Fl_run");
 extern fn void init_all() @extern("Fl_init_all");
 extern fn void register_images() @extern("Fl_register_images");
 extern fn int lock() @extern("Fl_lock");
-extern fn void set_scheme(ZString) @extern("Fl_set_scheme");
+extern fn void unlock() @extern("Fl_unlock");
+extern fn int set_scheme(ZString) @extern("Fl_set_scheme");
+extern fn int scheme() @extern("Fl_scheme");
+extern fn ZString scheme_string() @extern("Fl_scheme_string");
+extern fn int reload_scheme() @extern("Fl_reload_scheme");
 //extern fn void handle(int,Fl_Window*) @extern("Fl_handle");
 //extern fn void beep(int) @extern("Fl_beep");
 extern fn uint rgb_color(char r,char g,char b) @extern("Fl_rgb_color");
@@ -790,11 +892,85 @@ extern fn int eventX() @extern("Fl_event_x");
 extern fn int event_x() @extern("Fl_event_x");
 extern fn int eventY() @extern("Fl_event_y");
 extern fn int event_y() @extern("Fl_event_y");
+extern fn int event_dx() @extern("Fl_event_dx");
+extern fn int event_dy() @extern("Fl_event_dy");
+extern fn void get_mouse(int*,int*) @extern("Fl_get_mouse");
+extern fn int event_is_click() @extern("Fl_event_is_click");
+extern fn int event_length() @extern("Fl_event_length");
+extern fn int event_state() @extern("Fl_event_state");
 extern fn int event_key() @extern("Fl_event_key");
 extern fn int check() @extern("Fl_check");
+extern fn int ready() @extern("Fl_ready");
+extern fn int menu_linespacing() @extern("Fl_menu_linespacing");
+extern fn void set_menu_linespacing(int) @extern("Fl_set_menu_linespacing");
+extern fn void awake() @extern("Fl_awake");
+extern fn int scrollbar_size() @extern("Fl_scrollbar_size");
 
+
+extern fn int event_original_key() @extern("Fl_event_original_key");
+extern fn int event_key_down(int) @extern("Fl_event_key_down");
+
+extern fn int clicks() @extern("Fl_event_clicks");
+
+
+
+extern fn int event_x_root() @extern("Fl_event_x_root");
+extern fn int event_y_root() @extern("Fl_event_y_root");
+
+
+
+extern fn int h() @extern("Fl_h");
+extern fn int w() @extern("Fl_w");
+extern fn int compose(int*) @extern("Fl_compose");
+extern fn void compose_reset() @extern("Fl_compose_reset");
+extern fn int compose_state() @extern("Fl_compose_state");
+extern fn void set_box_type(int,int) @extern("Fl_set_box_type");
+
+extern fn void set_box_shadow_width() @extern("Fl_set_box_shadow_width");
+extern fn int box_shadow_width() @extern("Fl_box_shadow_width");
+extern fn int box_border_radius_max() @extern("Fl_box_border_radius_max");
+extern fn void set_box_border_radius_max(int) @extern("Fl_set_box_border_radius_max");
+extern fn uint get_rgb_color(uint,char,char,char) @extern("Fl_get_rgb_color");
+
+alias Evt_handler=fn int(int);
+extern fn void add_handler(Evt_handler) @extern("Fl_add_handler");
+extern fn void remove_timeout(Time_callback,void*) @extern("Fl_remove_timeout");
+extern fn int has_timeout(Time_callback,void*) @extern("Fl_has_timeout");
+extern fn void* grab() @extern("Fl_grab");
+extern fn void set_grab(void*) @extern("Fl_set_grab");
+extern fn void* next_window(void*) @extern("Fl_next_window");
+extern fn void* modal() @extern("Fl_modal");
+extern fn int should_program_quit() @extern("Fl_should_program_quit");
+extern fn void program_should_quit(int) @extern("Fl_program_should_quit");
+extern fn int event_inside(int,int,int,int) @extern("Fl_event_inside");
+extern fn Fl_Widget* Fl_Widget.belowmouse(&self) @extern("Fl_belowmouse");
 extern fn int handle(int,void*) @extern("Fl_handle");
 extern fn int handle_(int,void*) @extern("Fl_handle_");
+
+extern fn int event_shift() @extern("Fl_event_shift");
+extern fn int event_ctrl() @extern("Fl_event_ctrl");
+extern fn int event_command() @extern("Fl_event_command");
+extern fn int event_alt() @extern("Fl_event_alt");
+extern fn void set_damage(int) @extern("Fl_set_damage");
+extern fn int damage() @extern("Fl_damage");
+extern fn int visual(int) @extern("Fl_visual");
+extern fn void own_colormap() @extern("Fl_own_colormap");
+extern fn Fl_Widget* pushed() @extern("Fl_pushed");
+extern fn Fl_Widget* focus() @extern("Fl_focus");
+extern fn void set_focus(void*) @extern("Fl_set_focus");
+extern fn int abi_version() @extern("Fl_abi_version");
+extern fn void load_font(ZString) @extern("Fl_load_font");
+extern fn void unload_font(ZString) @extern("Fl_unload_font");
+extern fn void inactive_color(char,char,char) @extern("Fl_inactive_color");
+extern fn void get_system_color() @extern("Fl_get_system_color");
+extern fn void add_idle(VoidCallback,void*) @extern("Fl_add_idle");
+extern fn int has_idle(VoidCallback,void*) @extern("Fl_has_idle");
+extern fn void remove_idle(VoidCallback,void*) @extern("Fl_remove_idle");
+extern fn void add_check(VoidCallback,void*) @extern("Fl_add_check");
+extern fn int has_check(VoidCallback,void*) @extern("Fl_has_check");
+extern fn void remove_check(VoidCallback,void*) @extern("Fl_remove_check");
+extern fn float screen_scale(int) @extern("Fl_screen_scale");
+
 
 extern fn int dnd() @extern("Fl_dnd");
 extern fn void copy(ZString,int,int) @extern("Fl_copy");
@@ -807,11 +983,15 @@ extern fn void paste_image(Fl_Widget*,int) @extern("Fl_paste_image");
 extern fn void delete_widget(Fl_Widget*) @extern("Fl_delete_widget");
 
 extern fn void redraw() @extern("Fl_redraw");
-extern fn void set_focus() @extern("Fl_set_focus");
+
 extern fn void set_visible_focus(int) @extern("Fl_set_visible_focus");
 extern fn int visible_focus() @extern("Fl_visible_focus");
-extern fn int w() @extern("Fl_w");
-extern fn int h() @extern("Fl_h");
+
+
+extern fn int screen_x() @extern("Fl_screen_x");
+extern fn int screen_y() @extern("Fl_screen_y");
+extern fn int screen_w() @extern("Fl_screen_w");
+extern fn int screen_h() @extern("Fl_screen_h");
 extern fn void foreground(char,char,char) @extern("Fl_foreground");
 extern fn void background(char,char,char) @extern("Fl_background");
 extern fn void background2(char,char,char) @extern("Fl_background2");
@@ -850,7 +1030,7 @@ extern fn void* tooltip_current_window() @extern("Fl_Tooltip_current_window");
 
 
 
-extern fn int load_font(ZString) @extern("Fl_load_font");
+
 extern fn ZString get_font(int) @extern("Fl_get_font");
 extern fn ZString get_font_name(int) @extern("Fl_get_font_name");
 extern fn ZString get_font_name_with_attr(int,int*) @extern("Fl_get_font_name_with_attr");
@@ -862,7 +1042,7 @@ extern fn void set_font_size(int) @extern("Fl_set_font_size");
 extern fn int font_size() @extern("Fl_font_size");
 
 extern fn void set_screen_scale(int,float) @extern("Fl_set_screen_scale");
-extern fn float screen_scale(int) @extern("Fl_screen_scale");
+
 extern fn int screen_scaling_supported() @extern("Fl_screen_scaling_supported");
 extern fn int screen_count() @extern("Fl_screen_count");
 extern fn int screen_num(int,int) @extern("Fl_screen_num");
@@ -925,8 +1105,15 @@ extern fn void open_callback(Callback_name) @extern("Fl_open_callback");
 extern fn void disable_wayland() @extern("Fl_diable_wayland");
 
 struct Fl_Widget_Tracker{void* _data_;}
+extern fn Fl_Widget_Tracker* Fl_Widget.widget_tracker_new(&self) @extern("Fl_Widget_Tracker_new");
+extern fn int Fl_Widget_Tracker.deleted(&self) @extern("Fl_Widget_Tracker_deleted");
+extern fn void Fl_Widget_Tracker.delete(&self) @extern("Fl_Widget_Tracker_delete");
 extern fn Fl_Widget* Fl_Widget_Tracker.widget(&self) @extern("Fl_Widget_Tracker_widget");
 extern fn int Fl_Widget_Tracker.exists(&self) @extern("Fl_Widget_Tracker_exists");
+
+alias Fl_Awake_Handler=fn void(void*);
+extern fn int awake_callback(Fl_Awake_Handler,void*) @extern("Fl_awake_callback");
+
 
 extern fn void get_color_rgb(uint,char*,char*,char*) @extern("Fl_get_color_rgb");
 extern fn void* get_fl_msg() @extern("Fl_get_fl_msg");
@@ -956,7 +1143,7 @@ extern fn int wait() @extern("Fl_wait");
 extern fn double wait_for(double) @extern("Fl_wait_for");
 extern fn void set_color(uint,char,char,char) @extern("Fl_set_color");
 extern fn void set_color_with_alpha(uint,char,char,char,char) @extern("Fl_set_color_with_alpha");
-extern fn void set_box_type(int,int) @extern("Fl_set_box_type");
+
 extern fn int filename_expand(ZString,int,ZString) @extern("Fl_filename_expand");
 extern fn ZString type_name(void*) @extern("Fl_type_name");
 extern fn int open_uri(ZString,ZString,int) @extern("Fl_open_uri");
@@ -1109,30 +1296,118 @@ extern fn void Fl_Progress.set_deletion_callback(&self,CallbackVoid,void*) @exte
 
 
 extern fn void push_clip(int,int,int,int) @extern("Fl_push_clip");
+extern fn void push_noclip() @extern("Fl_push_noclip");
 extern fn void pop_clip() @extern("Fl_pop_clip");
+extern fn int not_clipped(int,int,int,int) @extern("Fl_not_clipped");
+extern fn int clip_box(int,int,int,int,int*,int*,int*,int*) @extern("Fl_clip_box");
+extern fn void restore_clip() @extern("Fl_restore_clip");
+extern fn void set_clip_region(void*) @extern("Fl_set_clip_region");
+extern fn void* clip_region() @extern("Fl_clip_region");
+
+
+extern fn void line_style(int,int,ZString) @extern("Fl_line_style");
+
+extern fn void focus_rect(int,int,int,int) @extern("Fl_focus_rect");
+
 extern fn void set_color_int(Fl_Color) @extern("Fl_set_color_int");
 extern fn void set_color_rgb(char r,char g,char b) @extern("Fl_set_color_rgb");
+extern fn int get_color() @extern("Fl_get_color");
 extern fn void rect(int,int,int,int) @extern("Fl_rect");
 extern fn void rectf(int,int,int,int) @extern("Fl_rectf");
 extern fn void rectf_with_color(int,int,int,int,Fl_Color) @extern("Fl_rectf_with_color");
 extern fn void rect_with_color(int,int,int,int,Fl_Color) @extern("Fl_rect_with_color");
 extern fn void rectf_with_rgb(int,int,int,int,char,char,char) @extern("Fl_rectf_with_rgb");
 extern fn void xyline(int,int,int) @extern("Fl_xyline");
+extern fn void xyline2(int,int,int,int) @extern("Fl_xyline2");
+extern fn void xyline3(int,int,int,int,int) @extern("Fl_xyline3");
 extern fn void yxline(int,int,int) @extern("Fl_yxline");
+extern fn void yxline2(int,int,int,int) @extern("fl_yxline2");
+extern fn void yxline3(int,int,int,int,int) @extern("Fl_yxline3");
 
 extern fn void draw(ZString,int,int) @extern("Fl_draw");
 extern fn void draw_text_angled(int,ZString,int,int) @extern("Fl_draw_text_angled");
+extern fn void rtl_draw(ZString,int,int,int) @extern("Fl_rtl_draw");
+extern fn void measure(ZString,int*,int*,int) @extern("Fl_measure");
+extern fn void draw5(ZString,int,int,int,int,int,void**,int) @extern("Fl_draw5");
+extern fn void frame(ZString,int,int,int,int) @extern("Fl_frame");
+extern fn void frame2(ZString,int,int,int,int) @extern("Fl_frame2");
+
 extern fn void set_draw_font(int,int) @extern("Fl_set_draw_font");
+extern fn int font() @extern("Fl_font");
+extern fn int size() @extern("Fl_size");
+extern fn int height() @extern("Fl_height");
+extern fn int set_height(int,int) @extern("Fl_set_height");//set font height
+extern fn int descent() @extern("Fl_descent");
+extern fn double width(ZString,int) @extern("Fl_width");
+extern fn double char_width(uint) @extern("Fl_char_width");
+extern fn void text_extents(ZString,int*,int*,int*,int*) @extern("Fl_text_extents");
+extern fn void text_extents_n(ZString,int,int*,int*,int*,int*) @extern("Fl_text_extents_n");
+extern fn ZString latin1_to_local(ZString,int) @extern("Fl_latin1_to_local");
+extern fn ZString local_to_latin1(ZString,int) @extern("Fl_local_to_latin1");
+extern fn ZString mac_roman_to_local(ZString,int) @extern("Fl_mac_roman_to_local");
+extern fn ZString local_to_mac_roman(ZString,int) @extern("Fl_local_to_mac_roman");
+
+
 extern fn void point(int,int) @extern("Fl_point");
 extern fn void line(int,int,int,int) @extern("Fl_line");
+extern fn void polyline(int,int,int,int,int,int) @extern("Fl_polyline");
+extern fn void loop(int,int,int,int,int,int) @extern("Fl_loop");
+extern fn void loop_4sided(int,int,int,int,int,int,int,int) @extern("Fl_loop_4sided");
+extern fn void polygon(int,int,int,int,int,int) @extern("Fl_polygon");
+extern fn void polygon_4sided(int,int,int,int,int,int,int,int) @extern("Fl_polygon_4sided");
+
 extern fn void arc(int,int,int,int,double,double) @extern("Fl_arc");
 extern fn void arc_with_radius(double,double,double,double,double) @extern("Fl_arc_with_radius");
 extern fn void circle(int,int,double) @extern("Fl_circle");
 extern fn void draw_circle(int,int,int,uint) @extern("Fl_draw_circle");
 extern fn void draw_box(int,int,int,int,int,uint) @extern("Fl_draw_box");
+extern fn void draw_image(char*,int,int,int,int,int,int) @extern("Fl_draw_image");
+extern fn void draw_mono(char*,int,int,int,int,int,int) @extern("Fl_draw_mono");
+extern fn char can_do_alpha_blending() @extern("Fl_can_do_alpha_blending");
+extern fn char* read_image(char*,int,int,int,int,int) @extern("Fl_read_image");
+extern fn char* capture_window_part(void*,int,int,int,int) @extern("Fl_capture_window_part");
+extern fn int draw_pixmap(char**,int,int,int) @extern("Fl_draw_pixmap");
+extern fn int draw_pixmap2(char**,int,int,int) @extern("Fl_draw_pixmap2");
+extern fn int measure_pixmap(char**,int*,int*) @extern("Fl_measure_pixmap");
+extern fn int measure_pixmap2(char**,int*,int*) @extern("Fl_measure_pixmap2");
+extern fn ZString shortcut_label(uint) @extern("Fl_shortcut_label");
+extern fn ZString shortcut_label2(uint, ZString[]) @extern("Fl_shortcut_label2");
+extern fn uint old_shortcut(ZString) @extern("Fl_old_shortcut");
+extern fn void overlay_rect(int,int,int,int) @extern("Fl_overlay_rect");
+extern fn void overlay_clear() @extern("Fl_overlay_clear");
+extern fn void set_cursor(int) @extern("Fl_set_cursor");
+extern fn void set_cursor_with_color(int,int,int) @extern("Fl_set_cursor_with_color");
+extern fn ZString expand_text(ZString,ZString,int,double,int*,double*,int,int) @extern("Fl_expand_text");
+extern fn void set_status(int,int,int,int) @extern("Fl_set_status");
+extern fn void set_spot(int,int,int,int,int,int,void*) @extern("Fl_set_spot");
+extern fn void reset_spot() @extern("Fl_reset_spot");
+extern fn uint show_colormap(uint) @extern("Fl_show_colormap");
+extern fn void copy_offscreen(int,int,int,int,void*,int,int) @extern("Fl_copy_offscreen");
+extern fn void* create_offscreen(int,int) @extern("Fl_create_offscreen");
+extern fn void begin_offscreen(void*) @extern("Fl_begin_offscreen");
+extern fn void end_offscreen() @extern("Fl_end_offscreen");
+extern fn void rescale_offscreen(void**) @extern("Fl_rescale_offscreen");
+extern fn void draw_text_boxed(ZString,int,int,int,int,int) @extern("Fl_draw_text_boxed");
+extern fn void draw_check(int,int,int,int,uint) @extern("Fl_draw_check");
+
+alias Drawit_callback=fn void(uint);
+extern fn void add_symbol(ZString,Drawit_callback,int) @extern("Fl_add_symbol");
+
+extern fn void rounded_rect(int,int,int,int,int) @extern("Fl_rounded_rect");
+extern fn void rounded_rectf(int,int,int,int,int) @extern("Fl_rounded_rectf");
+extern fn float override_scale() @extern("Fl_override_scale");
+extern fn void restore_scale(float) @extern("Fl_restore_scale");
+
+
 extern fn void push_matrix() @extern("Fl_push_matrix");
 extern fn void pop_matrix() @extern("Fl_pop_matrix");
 extern fn void scale(double) @extern("Fl_scale");
+extern fn void scale_xy(double,double) @extern("Fl_scale_xy");
+extern fn void translate(double,double) @extern("Fl_transalte");
+extern fn void rotate(double) @extern("Fl_rotate");
+extern fn void mult_matrix(double,double,double,double,double,double) @extern("Fl_mult_matrix");
+extern fn void begin_points() @extern("Fl_begin_points");
+extern fn void end_points() @extern("Fl_end_points");
 extern fn void begin_line() @extern("Fl_begin_line");
 extern fn void end_line() @extern("Fl_end_line");
 extern fn void begin_loop() @extern("Fl_begin_loop");
@@ -1142,6 +1417,18 @@ extern fn void end_polygon() @extern("Fl_end_polygon");
 extern fn void begin_complex_polygon() @extern("Fl_begin_complex_polygon");
 extern fn void end_complex_polygon() @extern("Fl_end_complex_polygon");
 extern fn void vertex(double,double) @extern("Fl_vertex");
+extern fn void curve(double,double,double,double,double,double,double,double) @extern("Fl_curve");
+extern fn void gap() @extern("Fl_gap");
+extern fn void transform_x(double,double) @extern("Fl_transform_x");
+extern fn void transform_y(double,double) @extern("Fl_transform_y");
+extern fn void transform_dx(double,double) @extern("Fl_transform_dx");
+extern fn void transform_dy(double,double) @extern("Fl_transform_dy");
+extern fn void transformed_vertex(double,double) @extern("Fl_transformed_vertex");
+
+
+
+
+
 
 alias VoidCallback=fn void(void*);
 alias Callback=fn void(Fl_Widget*,void*);
@@ -1152,4 +1439,4 @@ alias Fl_Callback=fn int(Fl_Widget*,int,void*);
 alias CallbackVoid=fn void(Fl_Widget*,void*);
 alias CallbackInt=fn int(Fl_Widget*,int,void*);
 
-//alias Time_callback=fn void(Fl_Terminal*,void*);
+alias Time_callback=fn void(void*);
