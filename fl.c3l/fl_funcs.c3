@@ -938,7 +938,7 @@ extern fn void remove_timeout(Time_callback,void*) @extern("Fl_remove_timeout");
 extern fn int has_timeout(Time_callback,void*) @extern("Fl_has_timeout");
 extern fn void* grab() @extern("Fl_grab");
 extern fn void set_grab(void*) @extern("Fl_set_grab");
-extern fn void* next_window(void*) @extern("Fl_next_window");
+
 extern fn void* modal() @extern("Fl_modal");
 extern fn int should_program_quit() @extern("Fl_should_program_quit");
 extern fn void program_should_quit(int) @extern("Fl_program_should_quit");
@@ -1029,7 +1029,8 @@ extern fn void* tooltip_current_window() @extern("Fl_Tooltip_current_window");
 
 
 
-
+extern fn void* first_window() @extern("Fl_first_window");
+extern fn void* next_window() @extern("Fl_next_window");
 
 extern fn ZString get_font(int) @extern("Fl_get_font");
 extern fn ZString get_font_name(int) @extern("Fl_get_font_name");
