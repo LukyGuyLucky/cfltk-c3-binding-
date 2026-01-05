@@ -851,17 +851,58 @@ extern fn void Fl_Simple_Counter.set_range(&self,double,double) @extern("Fl_Simp
 extern fn void Fl_Simple_Counter.set_step(&self,double,int) @extern("Fl_Simple_Counter_set_step");
 extern fn void Fl_Simple_Counter.set_value(&self,double) @extern("Fl_Simple_Counter_set_value");
 
-/*
-struct Fl_File_Browser{void* _data_;}
-extern fn Fl_File_Browser* file_browser_new(int,int,int,int,ZString) @extern("Fl_File_Browser_new");
-extern fn void Fl_File_Browser.set_has_scrollbar(&self,char) @extern("Fl_File_Browser_set_has_scrollbar");
-extern fn void Fl_File_Browser.set_filter(&self,ZString) @extern("Fl_File_Browser_set_filter");
-extern fn void Fl_File_Browser.load_file(&self,ZString) @extern("Fl_File_Browser_load_file");
-extern fn int Fl_File_Browser.size(&self) @extern("Fl_File_Browser_size");
-extern fn int Fl_File_Browser.value(&self) @extern("Fl_File_Browser_value");
-extern fn void Fl_File_Browser.set_filetype(&self,int) @extern("Fl_File_Browser_set_filetype");
-extern fn ZString Fl_File_Browser.text(&self,int) @extern("Fl_File_Browser_text");
-*/
+struct Fl_Preferences{void* _data_;}
+
+extern fn Fl_Preferences* preferences_new(int,ZString,ZString) @extern("Fl_Preferences_new");
+extern fn Fl_Preferences* preferences_from_path(ZString,ZString,ZString) @extern("Fl_Preferences_from_path");
+extern fn Fl_Preferences* Fl_Preferences.from_parent_group(&self,ZString) @extern("Fl_Preferences_from_parent_group");
+extern fn Fl_Preferences* Fl_Preferences.from_parent_idx(&self,int) @extern("Fl_Preferences_from_parent_idx");
+extern fn Fl_Preferences* Fl_Preferences.copy(&self) @extern("Fl_Preferences_copy");
+extern fn Fl_Preferences* preferences_from_id(void*) @extern("Fl_Preferences_from_id");
+
+extern fn void Fl_Preferences.delete(&self) @extern("Fl_Preferences_delete");
+
+extern fn int Fl_Preferences.filename(&self,ZString,ulong) @extern("Fl_Preferences_filename");
+extern fn char Fl_Preferences.get_userdata_path(&self,ZString,int) @extern("Fl_Preferences_get_userdata_path");
+
+extern fn void* Fl_Preferences.id(&self) @extern("Fl_Preferences_id");
+extern fn ZString Fl_Preferences.name(&self) @extern("Fl_Preferneces_name");
+extern fn ZString Fl_Preferences.path(&self) @extern("Fl_Preferences_path");
+extern fn int Fl_Preferences.groups(&self) @extern("Fl_Preferences_groups");
+extern fn ZString Fl_Preferences.group(&self,int) @extern("Fl_Preferences_group");
+extern fn char Fl_Preferences.group_exists(&self,ZString) @extern("Fl_Preferences_group_exists");
+extern fn char Fl_Preferences.delete_group(&self,ZString) @extern("Fl_Preferences_delete_group");
+extern fn char Fl_Preferences.delete_all_groups(&self) @extern("Fl_Preferences_delete_all_groups");
+
+extern fn int Fl_Preferences.entries(&self) @extern("Fl_Preferences_entries");
+extern fn ZString Fl_Preferences.entry(&self,int) @extern("Fl_Preferences_entry");
+extern fn char Fl_Preferences.entry_exists(&self,ZString) @extern("Fl_Preferences_entry_exists");
+extern fn char Fl_Preferences.delete_entry(&self,ZString) @extern("Fl_Preferences_delete_entry");
+extern fn char Fl_Preferences.delete_all_entries(&self) @extern("Fl_Preferences_delete_all_entries");
+
+extern fn char Fl_Preferences.clear(&self) @extern("Fl_Preferences_clear");
+
+extern fn char Fl_Preferences.seti(&self,ZString,int) @extern("Fl_Preferences_seti");
+extern fn char Fl_Preferences.setf(&self,ZString,float) @extern("Fl_Preferences_setf");
+extern fn ZString Fl_Preferences.setfp(&self,ZString,float,int) @extern("Fl_Preferences_setfp");
+extern fn char Fl_Preferences.setd(&self,ZString,double) @extern("Fl_Preferences_setd");
+extern fn char Fl_Preferences.setdp(&self,ZString,double,int) @extern("Fl_Preferences_setdp");
+extern fn char Fl_Preferences.sets(&self,ZString,char*) @extern("Fl_Preferences_sets");
+extern fn char Fl_Preferences.setv(&self,ZString,void*,int) @extern("Fl_Preferences_setv");
+extern fn char Fl_Preferences.geti(&self,ZString,int*,int) @extern("Fl_Preferences_geti");
+extern fn char Fl_Preferences.getf(&self,ZString,float*,float) @extern("Fl_Preferences_getf");
+extern fn char Fl_Preferences.getd(&self,ZString,double*,double) @extern("Fl_Preferences_getd");
+extern fn char Fl_Preferences.gets(&self,ZString,char*,char*,int) @extern("Fl_Preferences_gets");
+extern fn char Fl_Preferences.getv(&self,ZString,void*,void*,int,int) @extern("Fl_Preferences_getv");
+extern fn char Fl_Preferences.getv2(&self,ZString,void*,void*,int,int*) @extern("Fl_Preferences_getv2");
+
+extern fn int Fl_Preferences.size(&self,ZString) @extern("Fl_Preferences_size");
+
+extern fn void preferences_set_file_access(uint) @extern("Fl_Preferences_set_file_access");
+extern fn uint preferences_file_access() @extern("Fl_Preferences_file_access");
+extern fn char preferences_remove(void*) @extern("Fl_Preferences_remove");
+
+
 
 struct Fl_Help_View{void* _data_;}
 extern fn Fl_Help_View* help_view_new(int,int,int,int,ZString) @extern("Fl_Help_View_new");
@@ -1204,9 +1245,11 @@ extern fn void Fl_RGB_Image.draw_ext(&self,int,int,int,int,int,int) @extern("Fl_
 extern fn void rgb_image_set_algorigthm(int) @extern("Fl_RGB_Image_set_scaling_algorithm");
 extern fn void* Fl_RGB_Image.user_data(&self) @extern("Fl_RGB_Image_user_data");
 extern fn char** Fl_RGB_Image.data(&self) @extern("Fl_RGB_Image_data");
-
+extern fn int Fl_RGB_Image.width(&self) @extern("Fl_RGB_Image_width");
+extern fn int Fl_RGB_Image.height(&self) @extern("Fl_RGB_Image_height");
+extern fn int Fl_RGB_Image.d(&self) @extern("Fl_RGB_Image_d");
 extern fn int rgb_image_scaling_algorithm() @extern("Fl_RGB_Image_scaling_algorithm");
-
+extern fn void Fl_RGB_Image.delete(&self) @extern("Fl_RGB_Image_delete");
 
 
 struct Fl_JPEG_Image{void* _data_;}
