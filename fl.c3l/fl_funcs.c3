@@ -162,7 +162,7 @@ extern fn void Fl_Double_Window.set_user_data(&self,void*) @extern("Fl_Double_Wi
 extern fn void Fl_Double_Window.set_tooltip(&self,ZString) @extern("Fl_Double_Window_set_tooltip");
 extern fn void Fl_Double_Window.make_current(&self) @extern("Fl_Double_Window_make_current");
 extern fn void Fl_Double_Window.resize(&self,int,int,int,int) @extern("Fl_Double_Window_resize");
-extern fn int Fl_Double_Window.x(&self) @extern("Fl_Dobule_Window_x");
+extern fn int Fl_Double_Window.x(&self) @extern("Fl_Double_Window_x");
 extern fn int Fl_Double_Window.y(&self) @extern("Fl_Double_Window_y");
 extern fn void Fl_Double_Window.set_deletion_callback(&self,CallbackVoid,void*) @extern("Fl_Double_Window_set_deletion_callback");
 
@@ -244,6 +244,8 @@ extern fn int Fl_Widget.handle_event(&self,int) @extern("Fl_Widget_handle_event"
 //extern fn int Fl_Widget.x(&self) @extern("Fl_Widget_x");
 //extern fn int Fl_Widget.y(&self) @extern("Fl_Widget_y");
 extern fn void Fl_Widget.set_deletion_callback(&self,CallbackVoid,void*) @extern("Fl_Widget_set_deletion_callback");
+extern fn void Fl_Widget.activate(&self) @extern("Fl_Widget_activate");
+extern fn void Fl_Widget.deactivate(&self) @extern("Fl_Widget_deactivate");
 /*******************************************************************************/
 extern fn void Fl_Widget.set_tooltip(&self,ZString) @extern("Fl_Widget_set_tooltip");
 /*******************************************************************************/
@@ -278,6 +280,7 @@ extern fn int Fl_Group.when(&self) @extern("Fl_Group_when");
 extern fn void Fl_Group.set_box(&self,int) @extern("Fl_Group_set_box");
 //extern fn int Fl_Group.value(&self) @extern("Fl_Group_value");
 extern fn void Fl_Group.set_image(&self,void*) @extern("Fl_Group_set_image");
+extern fn void Fl_Group.set_align(&self,int) @extern("Fl_Group_set_align");
 
 //extern fn void Fl_Group.redraw(&self) @extern("Fl_Group_redraw");
 //extern fn void Fl_Group.set_color(&self,int) @extern("Fl_Group_set_color");
@@ -374,7 +377,8 @@ extern fn void Fl_Flex.set_callback(&self,Callback,void*) @extern("Fl_Flex_set_c
 extern fn void Fl_Flex.draw(&self,Cb,void*) @extern("Fl_Flex_draw");
 extern fn int Fl_Flex.get_type(&self) @extern("Fl_Flex.get_type");
 extern fn void Fl_Flex.set_box(&self,int) @extern("Fl_Flex_set_box");
-
+extern fn void Fl_Flex.begin(&self) @extern("Fl_Flex_begin");
+extern fn void Fl_Flex.end(&self) @extern("Fl_Flex_end");
 
 struct Fl_Color_Chooser{void* _data_;}
 extern fn Fl_Color_Chooser* color_chooser_new(int,int,int,int,ZString) @extern("Fl_Color_Chooser_new");
@@ -564,8 +568,10 @@ extern fn int Fl_Button.width(&self) @extern("Fl_Button_width");
 extern fn int Fl_Button.active_r(&self) @extern("Fl_Button_active_r");
 extern fn int Fl_Button.active(&self) @extern("Fl_Button_active");
 extern fn void Fl_Button.set_box(&self,int) @extern("Fl_Button_set_box");
-
-
+extern fn void* Fl_Button.window(&self) @extern("Fl_Button_window");
+extern fn void* Fl_Button.parent(&self) @extern("Fl_Button_parent");
+extern fn void Fl_Button.set_shortcut(&self,int) @extern("Fl_Button_set_shortcut");
+extern fn int Fl_Button.shortcut(&self) @extern("Fl_Button_shortcut");
 
 extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
 extern fn void Fl_Light_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Light_Button_set_type");
@@ -1291,6 +1297,7 @@ extern fn int Fl_Anim_GIF_Image.playing(&self) @extern("Fl_Anim_GIF_Image_playin
 
 
 extern fn Fl_Pixmap* pixmap_new(char**) @extern("Fl_Pixmap_new");
+extern fn char** Fl_Pixmap.data(&self) @extern("Fl_Pixmap_data");
 
 struct Fl_XPM_Image{void* _data_;}
 extern fn Fl_XPM_Image* xpm_image_new(ZString) @extern("Fl_XPM_Image_new");
@@ -1302,7 +1309,7 @@ struct Fl_PNM_Image{void* _data_;}
 extern fn Fl_PNM_Image* pnm_image_new(ZString) @extern("Fl_PNM_Image_new");
 
 struct Fl_Tiled_Image{void* _data_;}
-extern fn Fl_Tiled_Image* tiled_image_new(ZString) @extern("Fl_Tiled_Image_new");
+extern fn Fl_Tiled_Image* tiled_image_new(Fl_Image*,int,int) @extern("Fl_Tiled_Image_new");
 
 
 
@@ -1399,6 +1406,8 @@ extern fn void loop(int,int,int,int,int,int) @extern("Fl_loop");
 extern fn void loop_4sided(int,int,int,int,int,int,int,int) @extern("Fl_loop_4sided");
 extern fn void polygon(int,int,int,int,int,int) @extern("Fl_polygon");
 extern fn void polygon_4sided(int,int,int,int,int,int,int,int) @extern("Fl_polygon_4sided");
+
+extern fn void pie(int,int,int,int,double,double) @extern("Fl_pie");
 
 extern fn void arc(int,int,int,int,double,double) @extern("Fl_arc");
 extern fn void arc_with_radius(double,double,double,double,double) @extern("Fl_arc_with_radius");

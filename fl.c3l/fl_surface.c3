@@ -5,7 +5,7 @@ struct Fl_Surface_Device{void* _data_;}
 extern fn void Fl_Surface_Device.set_current(&self) @extern("Fl_Surface_Device_set_current");
 extern fn int Fl_Surface_Device.is_current(&self) @extern("Fl_Surface_Device_is_current");
 extern fn Fl_Surface_Device* Fl_Surface_Device.surface(&self) @extern("Fl_Surface_Device_surface");
-extern fn void Fl_Surface_Device.push_current(&self) @extern("Fl_Surface_Device_push_current");
+extern fn void surface_device_push_current(Fl_Surface_Device*) @extern("Fl_Surface_Device_push_current");
 extern fn Fl_Surface_Device* surface_device_pop_current() @extern("Fl_Surface_Device_pop_current");
 
 
@@ -22,6 +22,9 @@ extern fn void Fl_Image_Surface.set_origin(&self,int,int) @extern("Fl_Image_Surf
 extern fn void Fl_Image_Surface.rescale(&self) @extern("Fl_Image_Surface_rescale");
 extern fn void Fl_Image_Surface.draw(&self,void*,int,int) @extern("Fl_Image_Surface_draw");
 extern fn void Fl_Image_Surface.draw_decorated_window(&self,void*,int,int) @extern("Fl_Image_Surface_draw_decorated_window");
+
+
+
 
 struct Fl_SVG_File_Surface{void* _data_;}
 
