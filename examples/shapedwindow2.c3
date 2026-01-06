@@ -1,41 +1,74 @@
 import fl;
+import std::io;
+
 
 const int WIN_WIDTH=200;
-Fl_Button* be;
+
+struct MainForm
+{
+    inline Fl_Double_Window* win;
+    float factor;
+    Fl_Button* btnEnlarge;
+    Fl_Button* btnShrink;
+    Fl_Button* btnClose;
+}
+fn MainForm* new_mainform()
+{
+    Fl_Double_Window* win=fl::double_window_new(100,100,WIN_WIDTH,WIN_WIDTH,"Testing");
+    MainForm* result=mem::new(MainForm,{win,1.3f,null,null,null});
+        result.factor=1.3f;
+        Fl_RGB_Image* img=prepare_shape(WIN_WIDTH);
+        result.win.set_shape(img);
+
+            //practice on activate btnEnlarge again when the window is in minmum size;
+            //a simpler way is direct set in shrink_cb
+        result.win.handle(&size_cb,result.btnEnlarge);
+
+        Fl_Box* box=fl::box_new(0,0,result.win.width(),result.win.height(),null);
+        box.handle(&key_cb,result.win);
+
+        Fl_Pixmap* pxm=fl::pixmap_new((char**)TILE_XPM);
+
+        Fl_RGB_Image* temp=fl::rgb_image_from_pixmap(pxm);
+        box.set_image(fl::tiled_image_new((Fl_Image*)temp,box.width(),box.height()));
+                
+        result.btnClose=fl::button_new(60,20,80,20,"Close");
+        result.btnClose.set_callback(&cb,null);
+
+        result.btnShrink=fl::button_new(60,100,80,20,"Shrink");
+        result.btnShrink.set_callback(&shrink,&WIN_WIDTH);
+        result.btnShrink.deactivate();
+                
+        result.btnEnlarge=fl::button_new(60,150,80,20,"Enlarge");
+                
+        result.btnEnlarge.set_callback(&enlarge,result.btnShrink);
+        result.btnEnlarge.activate();
+
+    result.win.end();
+    result.win.resizable(result.win);
+        
+    return result;
+}
+
+MainForm* win;
 fn void main()
 {
-        fl::init_all();
-        fl::register_images();
-        int dim=200;
-        Fl_Double_Window* win=fl::double_window_new(100,100,dim,dim,"Testing");
-        Fl_RGB_Image* img=prepare_shape(WIN_WIDTH);
-        win.set_shape(img);
+    fl::init_all();
+    fl::register_images();
+        
+    win=new_mainform();
+    win.win.show();
 
-            Fl_Box* box=fl::box_new(0,0,win.width(),win.height(),null);
-            box.handle(&key_cb,win);
+    fl::run();
 
-            Fl_Pixmap* pxm=fl::pixmap_new((char**)TILE_XPM);
-
-            Fl_RGB_Image* temp=fl::rgb_image_from_pixmap(pxm);
-            box.set_image(fl::tiled_image_new((Fl_Image*)temp,box.width(),box.height()));
-                
-                Fl_Button* b=fl::button_new(60,20,80,20,"Close");
-                b.set_callback(&cb,null);
-
-                Fl_Button* bs=fl::button_new(60,100,80,20,"Shrink");
-                bs.set_callback(&shrink,&WIN_WIDTH);
-                bs.deactivate();
-                
-                be=fl::button_new(60,150,80,20,"Enlarge");
-                
-                be.set_callback(&enlarge,bs);
-
-        win.end();
-        win.resizable(win);
-        win.show();
-
-        fl::run();
-
+}
+fn int size_cb(Fl_Widget* obj,int e,void* data)
+{
+    if(!win.btnEnlarge.active() && win.win.width()<=WIN_WIDTH*win.factor) 
+    {
+        win.btnEnlarge.activate();
+    }
+    return 1;
 }
 fn void cb(Fl_Widget* obj,void* data)
 {
@@ -43,24 +76,25 @@ fn void cb(Fl_Widget* obj,void* data)
     Fl_Double_Window* win=btn.window();
     win.hide();
 }
-fn int key_cb(Fl_Widget* obj,int e,void* data)
+fn int key_cb(Fl_Widget* obj,int event,void* data)
 {
-    Fl_Double_Window* w=(Fl_Double_Window*)data;
-
     static int xStart,yStart;
     int ret=0;
-    switch(e)
+    switch(event)
     {
         case Fl_Event.FL_EVENT_PUSH:
-            xStart=w.x()-fl::event_x();
-            yStart=w.y()-fl::event_y();
+            xStart=win.win.x()-fl::event_x();
+            yStart=win.win.y()-fl::event_y();
             ret=1;
         case Fl_Event.FL_EVENT_DRAG:
 
-            w.resize(xStart+fl::event_x(),yStart+fl::event_y(),w.width(),w.height());
+            win.win.resize(xStart+fl::event_x(),
+                           yStart+fl::event_y(),
+                           win.win.width(),
+                           win.win.height());
             ret=1;
         case Fl_Event.FL_EVENT_RELEASED:
-            w.redraw();
+            win.win.redraw();
             fl::redraw();
             ret=1;
         default:
@@ -68,14 +102,16 @@ fn int key_cb(Fl_Widget* obj,int e,void* data)
             break;
     }
     return ret;
+
+    // fltk/example shaped window below code doesn't work
     /*
     static int fromx,fromy,winx,winy;
     if(event==Fl_Event.FL_EVENT_PUSH)
     {
         fromx=fl::event_x_root();
         fromy=fl::event_y_root();
-        winx=win.x_root();
-        winy=win.y_root();
+        winx=win.win.x_root();
+        winy=win.win.y_root();
 
         return 1;
     }
@@ -84,12 +120,14 @@ fn int key_cb(Fl_Widget* obj,int e,void* data)
         int deltax=fl::event_x_root()-fromx;
         int deltay=fl::event_y_root()-fromy;
 
-        win.resize(winx+deltax,winy+deltay,win.width(),win.height());
+        win.win.resize(winx+deltax,winy+deltay,
+                        win.win.width(),
+                        win.win.height());
 
         return 1;
     }else if(event=Fl_Event.FL_EVENT_RELEASED)
     {
-        win.redraw();
+        win.win.redraw();
         fl::redraw();
 
         return 1;
@@ -99,26 +137,39 @@ fn int key_cb(Fl_Widget* obj,int e,void* data)
         return 0;
     }
     */
-
 }
-const FACTOR=1.3f;
+
 fn void shrink(Fl_Widget* obj,void* data)
 {
-    Fl_Double_Window* win=obj.window();
-    int old=win.width();
-    win.resize(win.x(),win.y(),(int)(old/FACTOR),(int)(old/FACTOR));
-    if(win.width()<=*(int*)data) obj.deactivate();
+    Fl_Button* btnShrink=(Fl_Button*)obj;
+    
+    Fl_Double_Window* dwin=(Fl_Double_Window*)(btnShrink.window());
 
-    be.activate();
+    io::printfn("btnShrink=%x\nbtnEnlarge=%x\ndwin=%x",
+            btnShrink,win.btnEnlarge,dwin);
+    int old=win.win.width();
+    win.win.resize(win.win.x(),win.win.y(),
+            (int)(old/win.factor),(int)(old/win.factor));
+    if(win.win.width()<=*(int*)data) obj.deactivate();
+
+    //another way is set in window's handle callback
+    //win.btnEnlarge.activate();
+
 }
 fn void enlarge(Fl_Widget* obj,void* data)
 {
-    Fl_Button* btn=(Fl_Button*)obj;
-    Fl_Double_Window* win=btn.window();
-    int old=win.width();
+    Fl_Button* btnEnlarge=(Fl_Button*)obj;
+    Fl_Button* btnShrink=(Fl_Button*)data;
+    Fl_Double_Window* dwin=(Fl_Double_Window*)(btnEnlarge.window());
+    io::printfn("Fl_Double_Window win=%x",dwin);
 
-    win.resize(win.x(),win.y(),(int)(old*FACTOR),(int)(old*FACTOR));
-    if(win.width()>WIN_WIDTH*FACTOR) obj.deactivate();
+    MainForm win={dwin,1.3f,btnEnlarge,btnShrink,{}};
+    int old=win.win.width();
+    io::printfn("old=%d",old);
+
+    win.win.resize(win.win.x(),win.win.y(),
+            (int)(old*win.factor),(int)(old*win.factor));
+    if(win.win.width()>WIN_WIDTH*win.factor) obj.deactivate();
     ((Fl_Widget*)data).activate();
 
 }
