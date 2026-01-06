@@ -57,6 +57,9 @@ extern fn int Fl_Window.width(&self) @extern("Fl_Window_width");
 extern fn int Fl_Window.height(&self) @extern("Fl_Window_height");
 extern fn void Fl_Window.set_label(&self,ZString) @extern("Fl_Window_set_label");
 extern fn ZString Fl_Window.label(&self) @extern("Fl_Window_label");
+extern fn void Fl_Window.set_image(&self,void*) @extern("Fl_Window_set_image");
+
+extern fn void Fl_Window.set_when(&self,int) @extern("Fl_Window_set_when");
 
 extern fn void Fl_Window.make_modal(&self,uint) @extern("Fl_Window_make_modal");
 extern fn void Fl_Window.fullscreen(&self,uint) @extern("Fl_Window_fullscreen");
@@ -101,7 +104,6 @@ extern fn void Fl_Window.un_maximize(&self) @extern("Fl_Window_un_maximize");
 extern fn uint Fl_Window.maximize_active(&self) @extern("Fl_Window_maximize_active");
 extern fn void Fl_Window.allow_expand_outside_parent(&self) @extern("Fl_Window_allow_expand_outside_parent");
 extern fn uint Fl_Window.os_id(&self) @extern("Fl_Window_os_id");
-
 
 
 extern fn void* resolve_raw_handle(void*) @extern("resolve_raw_handle");
@@ -165,6 +167,9 @@ extern fn void Fl_Double_Window.resize(&self,int,int,int,int) @extern("Fl_Double
 extern fn int Fl_Double_Window.x(&self) @extern("Fl_Double_Window_x");
 extern fn int Fl_Double_Window.y(&self) @extern("Fl_Double_Window_y");
 extern fn void Fl_Double_Window.set_deletion_callback(&self,CallbackVoid,void*) @extern("Fl_Double_Window_set_deletion_callback");
+extern fn void Fl_Double_Window.set_image(&self,void*) @extern("Fl_Double_Window_set_image");
+extern fn void* Fl_Double_Window.parent(&self) @extern("Fl_Double_Window_parent");
+extern fn void Fl_Double_Window.set_when(&self,int) @extern("Fl_Double_Window_set_when");
 
 
 extern fn void Fl_Double_Window.make_modal(&self,uint) @extern("Fl_Double_Window_make_modal");
@@ -1321,7 +1326,7 @@ extern fn Fl_Shared_Image* Fl_Shared_Image.image(&self) @extern("Fl_Shared_Image
 extern fn Fl_Shared_Image* Fl_Shared_Image.copy(&self) @extern("Fl_Shared_Image_copy");
 extern fn Fl_Shared_Image* Fl_Shared_Image.copy_sized(&self,int,int) @extern("Fl_Shared_Image_copy_sized");
 extern fn Fl_Shared_Image* from_dyn_ptr(Fl_Image*) @extern("Fl_Shared_Image_from_dyn_ptr");
-
+extern fn char** Fl_Shared_Image.data(&self) @extern("Fl_Shared_Image_data");
 
 
 
