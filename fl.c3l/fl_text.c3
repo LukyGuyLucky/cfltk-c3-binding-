@@ -81,7 +81,7 @@ struct Fl_Text_Display{void* _data_;}
 
 extern fn Fl_Text_Display* text_display_new(int,int,int,int,ZString) @extern("Fl_Text_Display_new");
 extern fn Fl_Text_Buffer* Fl_Text_Display.get_buffer(&self) @extern("Fl_Text_Display_get_buffer");
-extern fn void Fl_Text_Buffer.set_buffer(&self,Fl_Text_Buffer*) @extern("Fl_Text_Display_set_buffer");
+extern fn void Fl_Text_Display.set_buffer(&self,Fl_Text_Buffer*) @extern("Fl_Text_Display_set_buffer");
 extern fn Fl_Text_Buffer* Fl_Text_Display.get_style_buffer(&self) @extern("Fl_Text_Display_get_style_buffer");
 
 extern fn int Fl_Text_Display.text_font( &self) @extern("Fl_Text_Display_text_font");                                    
@@ -187,7 +187,7 @@ extern fn     void Fl_Text_Display.set_text_font(&self, int s) @extern("Fl_Text_
 
 
 extern fn void Fl_Text_Display.set_color(&self,int) @extern("Fl_Text_Display_set_color");
-extern fn void Fl_Text_Display.set_selection_color(&self,uint) @extern("Fl_Text_Display.set_selection_color");
+extern fn void Fl_Text_Display.set_selection_color(&self,uint) @extern("Fl_Text_Display_set_selection_color");
 extern fn void Fl_Text_Display.set_label_color(&self,int) @extern("Fl_Text_Display_set_label_color");
 extern fn void Fl_Text_Display.set_label(&self,ZString) @extern("Fl_Text_Display_set_label");
 extern fn int Fl_Text_Display.height(&self) @extern("Fl_Text_Display_height");
@@ -377,7 +377,7 @@ extern fn     void Fl_Text_Editor.set_text_font(&self, int s) @extern("Fl_Text_E
 
 
 extern fn void Fl_Text_Editor.set_color(&self,int) @extern("Fl_Text_Editor_set_color");
-extern fn void Fl_Text_Editor.set_selection_color(&self,uint) @extern("Fl_Text_Editor.set_selection_color");
+extern fn void Fl_Text_Editor.set_selection_color(&self,uint) @extern("Fl_Text_Editor_set_selection_color");
 extern fn void Fl_Text_Editor.set_label_color(&self,int) @extern("Fl_Text_Editor_set_label_color");
 extern fn void Fl_Text_Editor.set_label(&self,ZString) @extern("Fl_Text_Editor_set_label");
 extern fn int Fl_Text_Editor.height(&self) @extern("Fl_Text_Editor_height");
@@ -543,7 +543,7 @@ extern fn     void Fl_Simple_Terminal.set_text_font(&self, int s) @extern("Fl_Si
 
 
 extern fn void Fl_Simple_Terminal.set_color(&self,int) @extern("Fl_Simple_Terminal_set_color");
-extern fn void Fl_Simple_Terminal.set_selection_color(&self,uint) @extern("Fl_Simple_Terminal.set_selection_color");
+extern fn void Fl_Simple_Terminal.set_selection_color(&self,uint) @extern("Fl_Simple_Terminal_set_selection_color");
 extern fn void Fl_Simple_Terminal.set_label_color(&self,int) @extern("Fl_Simple_Terminal_set_label_color");
 extern fn void Fl_Simple_Terminal.set_label(&self,ZString) @extern("Fl_Simple_Terminal_set_label");
 extern fn int Fl_Simple_Terminal.height(&self) @extern("Fl_Simple_Terminal_height");
