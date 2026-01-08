@@ -46,7 +46,7 @@ extern fn void Fl_Window.begin(&self) @extern("Fl_Window_begin");
 extern fn void Fl_Window.end(&self) @extern("Fl_Window_end");
 extern fn void Fl_Window.show(&self) @extern("Fl_Window_show");
 extern fn void Fl_Window.hide(&self) @extern("Fl_Window_hide");
-extern fn void Fl_Window.show_with_args(&self,int argc,ZString[] argv) @extern("Fl_Window_show_with_args");
+extern fn void Fl_Window.show_with_args(&self,int argc,char** argv) @extern("Fl_Window_show_with_args");
 extern fn Fl_Window* Fl_Window.find_by_handle(&self,void*) @extern("Fl_Window_find_by_handle");
 extern fn void Fl_Window.size_range(&self,int,int,int,int) @extern("Fl_Window_size_range");
 extern fn void Fl_Window.set_box(&self,int) @extern("Fl_Window_set_box");
@@ -145,7 +145,7 @@ extern fn void Fl_Double_Window.resizable(&self,void*) @extern("Fl_Double_Window
 extern fn void Fl_Double_Window.end(&self) @extern("Fl_Double_Window_end");
 extern fn void Fl_Double_Window.show(&self) @extern("Fl_Double_Window_show");
 extern fn void Fl_Double_Window.hide(&self) @extern("Fl_Double_Window_hide");
-extern fn void Fl_Double_Window.show_with_args(&self,int argc,ZString[] argv) @extern("Fl_Window_Double_show_with_args");
+extern fn void Fl_Double_Window.show_with_args(&self,int argc,char** argv) @extern("Fl_Double_Window_show_with_args");
 extern fn void Fl_Double_Window.set_label(&self,ZString) @extern("Fl_Double_Window_set_label");
 extern fn void Fl_Double_Window.set_color(&self,int) @extern("Fl_Double_Window_set_color");
 extern fn void Fl_Double_Window.set_selection_color(&self,uint) @extern("Fl_Double_Window.set_selection_color");
@@ -547,7 +547,7 @@ extern fn uint Fl_Button.color(&self) @extern("Fl_Button_color");
 extern fn void Fl_Button.set_label_color(&self,uint) @extern("Fl_Button_set_label_color");
 extern fn void Fl_Button.set_selection_color(&self,uint) @extern("Fl_Button_set_selection_color");
 extern fn uint Fl_Button.selection_color(&self) @extern("Fl_Button_selection_color");
-extern fn void Fl_Button.set_align(&self,Fl_Align) @extern("Fl_Button_set_align");
+extern fn void Fl_Button.set_align(&self,int) @extern("Fl_Button_set_align");
 extern fn void Fl_Button.set_image(&self,void*) @extern("Fl_Button_set_image");
 extern fn void Fl_Button.set_when(&self,int) @extern("Fl_Button_set_when");
 extern fn int Fl_Button.when(&self) @extern("Fl_Button_when");
@@ -577,6 +577,11 @@ extern fn void* Fl_Button.window(&self) @extern("Fl_Button_window");
 extern fn void* Fl_Button.parent(&self) @extern("Fl_Button_parent");
 extern fn void Fl_Button.set_shortcut(&self,int) @extern("Fl_Button_set_shortcut");
 extern fn int Fl_Button.shortcut(&self) @extern("Fl_Button_shortcut");
+extern fn int Fl_Button.align(&self) @extern("Fl_Button_align");
+extern fn void Fl_Button.set_deimage(&self,void*) @extern("Fl_Button_set_deimage");
+
+
+
 
 extern fn Fl_Light_Button* light_button_new(int,int,int,int,ZString) @extern("Fl_Light_Button_new");
 extern fn void Fl_Light_Button.set_type(&self,Fl_ButtonType) @extern("Fl_Light_Button_set_type");
@@ -646,9 +651,14 @@ extern fn void Fl_Choice.set_callback(&self,CallbackVoid,void*) @extern("Fl_Choi
 extern fn Fl_Menu_Item* Fl_Choice.at(&self,int) @extern("Fl_Choice_at");
 extern fn Fl_Menu_Item* Fl_Choice.mvalue(&self) @extern("Fl_Choice_mvalue");
 
+
+
+
+
+
 extern fn Fl_Input* input_new(int,int,int,int,ZString) @extern("Fl_Input_new");
-extern fn void Fl_Input.set_value(&self,ZString) @extern("Fl_Input_set_value");
-extern fn ZString Fl_Input.value(&self) @extern("Fl_Input_value");
+
+
 extern fn void Fl_Input.set_when(&self,int) @extern("Fl_Input_set_when");
 extern fn int Fl_Input.when(&self) @extern("Fl_Input_when");
 extern fn void Fl_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_Input_set_callback");
@@ -659,73 +669,335 @@ extern fn void Fl_Input.set_label_size(&self,int) @extern("Fl_Input_set_label_si
 extern fn void Fl_Input.set_align(&self,Fl_Align) @extern("Fl_Input_set_align");
 extern fn void Fl_Input.deactivate(&self) @extern("Fl_Input_deactivate");
 extern fn void Fl_Input.activate(&self) @extern("Fl_Input_activate");
-extern fn int Fl_Input.text_size(&self) @extern("Fl_Input_text_size");
-extern fn int Fl_Input.maximum_size(&self) @extern("Fl_Input_maximum_size");
-extern fn void Fl_Input.set_maximum_size(&self,int) @extern("Fl_Input_set_maximum");
-extern fn int Fl_Input.copy(&self,int) @extern("Fl_Input_copy");
+
+extern fn int Fl_Input.set_value(&sef, ZString) @extern("Fl_Input_set_value");                            
+extern fn     ZString Fl_Input.value(&sef) @extern("Fl_Input_value");                                      
+extern fn     int Fl_Input.maximum_size(&sef) @extern("Fl_Input_maximum_size");                                       
+extern fn     void Fl_Input.set_maximum_size(&sef, int m) @extern("Fl_Input_set_maximum_size");                           
+ extern fn    int Fl_Input.position(&sef) @extern("Fl_Input_position");                                           
+extern fn     int Fl_Input.set_position(&sef, int p) @extern("Fl_Input_set_position");                                
+extern fn     int Fl_Input.set_mark(&sef, int m) @extern("Fl_Input_set_mark");                                    
+extern fn     int Fl_Input.mark(&sef) @extern("Fl_Input_mark");                                               
+ extern fn    int Fl_Input.replace(&sef, int b, int e, ZString text, int ilen) @extern("Fl_Input_replace");  
+extern fn     int Fl_Input.insert(&sef, ZString t, int l) @extern("Fl_Input_insert");                       
+extern fn     int Fl_Input.append(&sef, ZString t, int l, char keep_selection) @extern("Fl_Input_append");  
+ extern fn    int Fl_Input.copy(&sef, int clipboard) @extern("Fl_Input_copy");                                
+ extern fn    int Fl_Input.undo(&sef) @extern("Fl_Input_undo");                                               
+ extern fn    int Fl_Input.copy_cuts(&sef) @extern("Fl_Input_copy_cuts");                                          
+ extern fn    uint Fl_Input.cursor_color( &sef) @extern("Fl_Input_cursor_color");                        
+ extern fn    void Fl_Input.set_cursor_color(&sef, uint s) @extern("Fl_Input_set_cursor_color");                  
+  extern fn   int Fl_Input.text_font(&sef) @extern("Fl_Input_text_font");                                          
+  extern fn   void Fl_Input.set_text_font(&sef, int s) @extern("Fl_Input_set_text_font");                              
+  extern fn   uint Fl_Input.text_color(&sef) @extern("Fl_Input_text_color");                                
+ extern fn    void Fl_Input.set_text_color(&sef, uint s) @extern("Fl_Input_set_text_color");                    
+ extern fn    int Fl_Input.text_size(&sef) @extern("Fl_Input_text_size");                                          
+  extern fn   void Fl_Input.set_text_size(&sef, int s) @extern("Fl_Input_set_text_size");                              
+  extern fn   int Fl_Input.readonly(&sef) @extern("Fl_Input_readonly");                                           
+  extern fn   void Fl_Input.set_readonly(&sef, int boolean) @extern("Fl_Input_set_readonly");                         
+  extern fn   int Fl_Input.wrap(&sef) @extern("Fl_Input_wrap");                                               
+ extern fn    void Fl_Input.set_wrap(&sef, int boolean) @extern("Fl_Input_set_wrap");                             
+  extern fn   void Fl_Input.set_tab_nav(&sef, int flag) @extern("Fl_Input_set_tab_nav");                             
+ extern fn    int Fl_Input.tab_nav( &sef) @extern("Fl_Input_tab_nav");
+
+
+
+
+
 
 struct Fl_Int_Input{void* _data_;}
 extern fn Fl_Int_Input* int_input_new(int,int,int,int,ZString) @extern("Fl_Int_Input_new");
 extern fn void Fl_Int_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_Int_Input_set_callback");
 extern fn void Fl_Int_Input.set_when(&self,int) @extern("Fl_Int_Input_set_when");
-extern fn void Fl_Int_Input.set_value(&sefl,ZString) @extern("Fl_Int_Input_set_value");
-extern fn ZString Fl_Int_Input.value(&self) @extern("Fl_Int_Input_value");
+
+
 extern fn void Fl_Int_Input.set_label_size(&self,int) @extern("Fl_Int_Input_set_label_size");
 extern fn void Fl_Int_Input.set_align(&self,Fl_Align) @extern("Fl_Int_Input_set_align");
+
+extern fn int Fl_Int_Input.set_value(&sef, ZString) @extern("Fl_Int_Input_set_value");                            
+extern fn     ZString Fl_Int_Input.value(&sef) @extern("Fl_Int_Input_value");                                      
+extern fn     int Fl_Int_Input.maximum_size(&sef) @extern("Fl_Int_Input_maximum_size");                                       
+extern fn     void Fl_Int_Input.set_maximum_size(&sef, int m) @extern("Fl_Int_Input_set_maximum_size");                           
+ extern fn    int Fl_Int_Input.position(&sef) @extern("Fl_Int_Input_position");                                           
+extern fn     int Fl_Int_Input.set_position(&sef, int p) @extern("Fl_Int_Input_set_position");                                
+extern fn     int Fl_Int_Input.set_mark(&sef, int m) @extern("Fl_Int_Input_set_mark");                                    
+extern fn     int Fl_Int_Input.mark(&sef) @extern("Fl_Int_Input_mark");                                               
+ extern fn    int Fl_Int_Input.replace(&sef, int b, int e, ZString text, int ilen) @extern("Fl_Int_Input_replace");  
+extern fn     int Fl_Int_Input.insert(&sef, ZString t, int l) @extern("Fl_Int_Input_insert");                       
+extern fn     int Fl_Int_Input.append(&sef, ZString t, int l, char keep_selection) @extern("Fl_Int_Input_append");  
+ extern fn    int Fl_Int_Input.copy(&sef, int clipboard) @extern("Fl_Int_Input_copy");                                
+ extern fn    int Fl_Int_Input.undo(&sef) @extern("Fl_Int_Input_undo");                                               
+ extern fn    int Fl_Int_Input.copy_cuts(&sef) @extern("Fl_Int_Input_copy_cuts");                                          
+ extern fn    uint Fl_Int_Input.cursor_color( &sef) @extern("Fl_Int_Input_cursor_color");                        
+ extern fn    void Fl_Int_Input.set_cursor_color(&sef, uint s) @extern("Fl_Int_Input_set_cursor_color");                  
+  extern fn   int Fl_Int_Input.text_font(&sef) @extern("Fl_Int_Input_text_font");                                          
+  extern fn   void Fl_Int_Input.set_text_font(&sef, int s) @extern("Fl_Int_Input_set_text_font");                              
+  extern fn   uint Fl_Int_Input.text_color(&sef) @extern("Fl_Int_Input_text_color");                                
+ extern fn    void Fl_Int_Input.set_text_color(&sef, uint s) @extern("Fl_Int_Input_set_text_color");                    
+ extern fn    int Fl_Int_Input.text_size(&sef) @extern("Fl_Int_Input_text_size");                                          
+  extern fn   void Fl_Int_Input.set_text_size(&sef, int s) @extern("Fl_Int_Input_set_text_size");                              
+  extern fn   int Fl_Int_Input.readonly(&sef) @extern("Fl_Int_Input_readonly");                                           
+  extern fn   void Fl_Int_Input.set_readonly(&sef, int boolean) @extern("Fl_Int_Input_set_readonly");                         
+  extern fn   int Fl_Int_Input.wrap(&sef) @extern("Fl_Int_Input_wrap");                                               
+ extern fn    void Fl_Int_Input.set_wrap(&sef, int boolean) @extern("Fl_Int_Input_set_wrap");                             
+  extern fn   void Fl_Int_Input.set_tab_nav(&sef, int flag) @extern("Fl_Int_Input_set_tab_nav");                             
+ extern fn    int Fl_Int_Input.tab_nav( &sef) @extern("Fl_Int_Input_tab_nav");
+
+
+
+
 
 struct Fl_Float_Input{void* _data_;}
 extern fn Fl_Float_Input* float_input_new(int,int,int,int,ZString) @extern("Fl_Float_Input_new");
 extern fn void Fl_Float_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_Float_Input_set_callback");
 extern fn void Fl_Float_Input.set_when(&self,int) @extern("Fl_Float_Input_set_when");
-extern fn ZString Fl_Float_Input.value(&self) @extern("Fl_Float_Input_value");
-extern fn void Fl_Float_Input.set_value(&sefl,ZString) @extern("Fl_Float_Input_set_value");
+
+
 extern fn void Fl_Float_Input.set_label_size(&self,int) @extern("Fl_Float_Input_set_label_size");
 extern fn void Fl_Float_Input.set_align(&self,Fl_Align) @extern("Fl_Float_Input_set_align");
+
+extern fn int Fl_Float_Input.set_value(&sef, ZString) @extern("Fl_Float_Input_set_value");                            
+extern fn     ZString Fl_Float_Input.value(&sef) @extern("Fl_Float_Input_value");                                      
+extern fn     int Fl_Float_Input.maximum_size(&sef) @extern("Fl_Float_Input_maximum_size");                                       
+extern fn     void Fl_Float_Input.set_maximum_size(&sef, int m) @extern("Fl_Float_Input_set_maximum_size");                           
+ extern fn    int Fl_Float_Input.position(&sef) @extern("Fl_Float_Input_position");                                           
+extern fn     int Fl_Float_Input.set_position(&sef, int p) @extern("Fl_Float_Input_set_position");                                
+extern fn     int Fl_Float_Input.set_mark(&sef, int m) @extern("Fl_Float_Input_set_mark");                                    
+extern fn     int Fl_Float_Input.mark(&sef) @extern("Fl_Float_Input_mark");                                               
+ extern fn    int Fl_Float_Input.replace(&sef, int b, int e, ZString text, int ilen) @extern("Fl_Float_Input_replace");  
+extern fn     int Fl_Float_Input.insert(&sef, ZString t, int l) @extern("Fl_Float_Input_insert");                       
+extern fn     int Fl_Float_Input.append(&sef, ZString t, int l, char keep_selection) @extern("Fl_Float_Input_append");  
+ extern fn    int Fl_Float_Input.copy(&sef, int clipboard) @extern("Fl_Float_Input_copy");                                
+ extern fn    int Fl_Float_Input.undo(&sef) @extern("Fl_Float_Input_undo");                                               
+ extern fn    int Fl_Float_Input.copy_cuts(&sef) @extern("Fl_Float_Input_copy_cuts");                                          
+ extern fn    uint Fl_Float_Input.cursor_color( &sef) @extern("Fl_Float_Input_cursor_color");                        
+ extern fn    void Fl_Float_Input.set_cursor_color(&sef, uint s) @extern("Fl_Float_Input_set_cursor_color");                  
+  extern fn   int Fl_Float_Input.text_font(&sef) @extern("Fl_Float_Input_text_font");                                          
+  extern fn   void Fl_Float_Input.set_text_font(&sef, int s) @extern("Fl_Float_Input_set_text_font");                              
+  extern fn   uint Fl_Float_Input.text_color(&sef) @extern("Fl_Float_Input_text_color");                                
+ extern fn    void Fl_Float_Input.set_text_color(&sef, uint s) @extern("Fl_Float_Input_set_text_color");                    
+ extern fn    int Fl_Float_Input.text_size(&sef) @extern("Fl_Float_Input_text_size");                                          
+  extern fn   void Fl_Float_Input.set_text_size(&sef, int s) @extern("Fl_Float_Input_set_text_size");                              
+  extern fn   int Fl_Float_Input.readonly(&sef) @extern("Fl_Float_Input_readonly");                                           
+  extern fn   void Fl_Float_Input.set_readonly(&sef, int boolean) @extern("Fl_Float_Input_set_readonly");                         
+  extern fn   int Fl_Float_Input.wrap(&sef) @extern("Fl_Float_Input_wrap");                                               
+ extern fn    void Fl_Float_Input.set_wrap(&sef, int boolean) @extern("Fl_Float_Input_set_wrap");                             
+  extern fn   void Fl_Float_Input.set_tab_nav(&sef, int flag) @extern("Fl_Float_Input_set_tab_nav");                             
+ extern fn    int Fl_Float_Input.tab_nav( &sef) @extern("Fl_Float_Input_tab_nav");
+
+
+
+
 
 struct Fl_Multiline_Input{void* _data_;}
 extern fn Fl_Multiline_Input* multiline_input_new(int,int,int,int,ZString) @extern("Fl_Multiline_Input_new");
 extern fn void Fl_Multiline_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_Multiline_Input_set_callback");
 extern fn void Fl_Multiline_Input.set_when(&self,int) @extern("Fl_Multiline_Input_set_when");
-extern fn void Fl_Multiline_Input.set_value(&sefl,ZString) @extern("Fl_Multiline_input_set_value");
-extern fn ZString Fl_Multiline_Input.value(&self) @extern("Fl_Multiline_Input_value");
+
+
 extern fn void Fl_Multiline_Input.set_label_size(&self,int) @extern("Fl_Multiline_Input_set_label_size");
 extern fn void Fl_Multiline_Input.set_align(&self,Fl_Align) @extern("Fl_Multiline_Input_set_align");
+
+extern fn int Fl_Multiline_Input.set_value(&sef, ZString) @extern("Fl_Multiline_Input_set_value");                            
+extern fn     ZString Fl_Multiline_Input.value(&sef) @extern("Fl_Multiline_Input_value");                                      
+extern fn     int Fl_Multiline_Input.maximum_size(&sef) @extern("Fl_Multiline_Input_maximum_size");                                       
+extern fn     void Fl_Multiline_Input.set_maximum_size(&sef, int m) @extern("Fl_Multiline_Input_set_maximum_size");                           
+ extern fn    int Fl_Multiline_Input.position(&sef) @extern("Fl_Multiline_Input_position");                                           
+extern fn     int Fl_Multiline_Input.set_position(&sef, int p) @extern("Fl_Multiline_Input_set_position");                                
+extern fn     int Fl_Multiline_Input.set_mark(&sef, int m) @extern("Fl_Multiline_Input_set_mark");                                    
+extern fn     int Fl_Multiline_Input.mark(&sef) @extern("Fl_Multiline_Input_mark");                                               
+ extern fn    int Fl_Multiline_Input.replace(&sef, int b, int e, ZString text, int ilen) @extern("Fl_Multiline_Input_replace");  
+extern fn     int Fl_Multiline_Input.insert(&sef, ZString t, int l) @extern("Fl_Multiline_Input_insert");                       
+extern fn     int Fl_Multiline_Input.append(&sef, ZString t, int l, char keep_selection) @extern("Fl_Multiline_Input_append");  
+ extern fn    int Fl_Multiline_Input.copy(&sef, int clipboard) @extern("Fl_Multiline_Input_copy");                                
+ extern fn    int Fl_Multiline_Input.undo(&sef) @extern("Fl_Multiline_Input_undo");                                               
+ extern fn    int Fl_Multiline_Input.copy_cuts(&sef) @extern("Fl_Multiline_Input_copy_cuts");                                          
+ extern fn    uint Fl_Multiline_Input.cursor_color( &sef) @extern("Fl_Multiline_Input_cursor_color");                        
+ extern fn    void Fl_Multiline_Input.set_cursor_color(&sef, uint s) @extern("Fl_Multiline_Input_set_cursor_color");                  
+  extern fn   int Fl_Multiline_Input.text_font(&sef) @extern("Fl_Multiline_Input_text_font");                                          
+  extern fn   void Fl_Multiline_Input.set_text_font(&sef, int s) @extern("Fl_Multiline_Input_set_text_font");                              
+  extern fn   uint Fl_Multiline_Input.text_color(&sef) @extern("Fl_Multiline_Input_text_color");                                
+ extern fn    void Fl_Multiline_Input.set_text_color(&sef, uint s) @extern("Fl_Multiline_Input_set_text_color");                    
+ extern fn    int Fl_Multiline_Input.text_size(&sef) @extern("Fl_Multiline_Input_text_size");                                          
+  extern fn   void Fl_Multiline_Input.set_text_size(&sef, int s) @extern("Fl_Multiline_Input_set_text_size");                              
+  extern fn   int Fl_Multiline_Input.readonly(&sef) @extern("Fl_Multiline_Input_readonly");                                           
+  extern fn   void Fl_Multiline_Input.set_readonly(&sef, int boolean) @extern("Fl_Multiline_Input_set_readonly");                         
+  extern fn   int Fl_Multiline_Input.wrap(&sef) @extern("Fl_Multiline_Input_wrap");                                               
+ extern fn    void Fl_Multiline_Input.set_wrap(&sef, int boolean) @extern("Fl_Multiline_Input_set_wrap");                             
+  extern fn   void Fl_Multiline_Input.set_tab_nav(&sef, int flag) @extern("Fl_Multiline_Input_set_tab_nav");                             
+ extern fn    int Fl_Multiline_Input.tab_nav( &sef) @extern("Fl_Multiline_Input_tab_nav");
+
+
+
+
 
 struct Fl_Secret_Input{void* _data_;}
 extern fn Fl_Secret_Input* secret_input_new(int,int,int,int,ZString) @extern("Fl_Secret_Input_new");
 extern fn void Fl_Secret_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_Secret_Input_set_callback");
 extern fn void Fl_Secret_Input.set_when(&self,int) @extern("Fl_Secret_Input_set_when");
-extern fn void Fl_Secret_Input.set_value(&sefl,ZString) @extern("Fl_Secret_Input_set_value");
-extern fn ZString Fl_Secret_Input.value(&self) @extern("Fl_Secret_Input_value");
+
+
 extern fn void Fl_Secret_Input.set_label_size(&self,int) @extern("Fl_Secret_Input_set_label_size");
 extern fn void Fl_Secret_Input.set_align(&self,Fl_Align) @extern("Fl_Secret_Input_set_align");
+
+extern fn int Fl_Secret_Input.set_value(&sef, ZString) @extern("Fl_Secret_Input_set_value");                            
+extern fn     ZString Fl_Secret_Input.value(&sef) @extern("Fl_Secret_Input_value");                                      
+extern fn     int Fl_Secret_Input.maximum_size(&sef) @extern("Fl_Secret_Input_maximum_size");                                       
+extern fn     void Fl_Secret_Input.set_maximum_size(&sef, int m) @extern("Fl_Secret_Input_set_maximum_size");                           
+ extern fn    int Fl_Secret_Input.position(&sef) @extern("Fl_Secret_Input_position");                                           
+extern fn     int Fl_Secret_Input.set_position(&sef, int p) @extern("Fl_Secret_Input_set_position");                                
+extern fn     int Fl_Secret_Input.set_mark(&sef, int m) @extern("Fl_Secret_Input_set_mark");                                    
+extern fn     int Fl_Secret_Input.mark(&sef) @extern("Fl_Secret_Input_mark");                                               
+ extern fn    int Fl_Secret_Input.replace(&sef, int b, int e, ZString text, int ilen) @extern("Fl_Secret_Input_replace");  
+extern fn     int Fl_Secret_Input.insert(&sef, ZString t, int l) @extern("Fl_Secret_Input_insert");                       
+extern fn     int Fl_Secret_Input.append(&sef, ZString t, int l, char keep_selection) @extern("Fl_Secret_Input_append");  
+ extern fn    int Fl_Secret_Input.copy(&sef, int clipboard) @extern("Fl_Secret_Input_copy");                                
+ extern fn    int Fl_Secret_Input.undo(&sef) @extern("Fl_Secret_Input_undo");                                               
+ extern fn    int Fl_Secret_Input.copy_cuts(&sef) @extern("Fl_Secret_Input_copy_cuts");                                          
+ extern fn    uint Fl_Secret_Input.cursor_color( &sef) @extern("Fl_Secret_Input_cursor_color");                        
+ extern fn    void Fl_Secret_Input.set_cursor_color(&sef, uint s) @extern("Fl_Secret_Input_set_cursor_color");                  
+  extern fn   int Fl_Secret_Input.text_font(&sef) @extern("Fl_Secret_Input_text_font");                                          
+  extern fn   void Fl_Secret_Input.set_text_font(&sef, int s) @extern("Fl_Secret_Input_set_text_font");                              
+  extern fn   uint Fl_Secret_Input.text_color(&sef) @extern("Fl_Secret_Input_text_color");                                
+ extern fn    void Fl_Secret_Input.set_text_color(&sef, uint s) @extern("Fl_Secret_Input_set_text_color");                    
+ extern fn    int Fl_Secret_Input.text_size(&sef) @extern("Fl_Secret_Input_text_size");                                          
+  extern fn   void Fl_Secret_Input.set_text_size(&sef, int s) @extern("Fl_Secret_Input_set_text_size");                              
+  extern fn   int Fl_Secret_Input.readonly(&sef) @extern("Fl_Secret_Input_readonly");                                           
+  extern fn   void Fl_Secret_Input.set_readonly(&sef, int boolean) @extern("Fl_Secret_Input_set_readonly");                         
+  extern fn   int Fl_Secret_Input.wrap(&sef) @extern("Fl_Secret_Input_wrap");                                               
+ extern fn    void Fl_Secret_Input.set_wrap(&sef, int boolean) @extern("Fl_Secret_Input_set_wrap");                             
+  extern fn   void Fl_Secret_Input.set_tab_nav(&sef, int flag) @extern("Fl_Secret_Input_set_tab_nav");                             
+ extern fn    int Fl_Secret_Input.tab_nav( &sef) @extern("Fl_Secret_Input_tab_nav");
+
+
+
+
 
 struct Fl_File_Input{void* _data_;}
 extern fn Fl_File_Input* file_input_new(int,int,int,int,ZString) @extern("Fl_File_Input_new");
 extern fn void Fl_File_Input.set_callback(&self,CallbackVoid,void*) @extern("Fl_File_Input_set_callback");
 extern fn void Fl_File_Input.set_when(&self,int) @extern("Fl_Secret_Input_set_when");
-extern fn void Fl_File_Input.set_value(&sefl,ZString) @extern("Fl_File_Input_set_value");
-extern fn ZString Fl_File_Input.value(&self) @extern("Fl_File_Input_value");
+
+
 extern fn void Fl_File_Input.set_label_size(&self,int) @extern("Fl_File_Input_set_label_size");
 extern fn void Fl_File_Input.set_align(&self,Fl_Align) @extern("Fl_File_Input_set_align");
+
+extern fn int Fl_File_Input.set_value(&sef, ZString) @extern("Fl_File_Input_set_value");                            
+extern fn     ZString Fl_File_Input.value(&sef) @extern("Fl_File_Input_value");                                      
+extern fn     int Fl_File_Input.maximum_size(&sef) @extern("Fl_File_Input_maximum_size");                                       
+extern fn     void Fl_File_Input.set_maximum_size(&sef, int m) @extern("Fl_File_Input_set_maximum_size");                           
+ extern fn    int Fl_File_Input.position(&sef) @extern("Fl_File_Input_position");                                           
+extern fn     int Fl_File_Input.set_position(&sef, int p) @extern("Fl_File_Input_set_position");                                
+extern fn     int Fl_File_Input.set_mark(&sef, int m) @extern("Fl_File_Input_set_mark");                                    
+extern fn     int Fl_File_Input.mark(&sef) @extern("Fl_File_Input_mark");                                               
+ extern fn    int Fl_File_Input.replace(&sef, int b, int e, ZString text, int ilen) @extern("Fl_File_Input_replace");  
+extern fn     int Fl_File_Input.insert(&sef, ZString t, int l) @extern("Fl_File_Input_insert");                       
+extern fn     int Fl_File_Input.append(&sef, ZString t, int l, char keep_selection) @extern("Fl_File_Input_append");  
+ extern fn    int Fl_File_Input.copy(&sef, int clipboard) @extern("Fl_File_Input_copy");                                
+ extern fn    int Fl_File_Input.undo(&sef) @extern("Fl_File_Input_undo");                                               
+ extern fn    int Fl_File_Input.copy_cuts(&sef) @extern("Fl_File_Input_copy_cuts");                                          
+ extern fn    uint Fl_File_Input.cursor_color( &sef) @extern("Fl_File_Input_cursor_color");                        
+ extern fn    void Fl_File_Input.set_cursor_color(&sef, uint s) @extern("Fl_File_Input_set_cursor_color");                  
+  extern fn   int Fl_File_Input.text_font(&sef) @extern("Fl_File_Input_text_font");                                          
+  extern fn   void Fl_File_Input.set_text_font(&sef, int s) @extern("Fl_File_Input_set_text_font");                              
+  extern fn   uint Fl_File_Input.text_color(&sef) @extern("Fl_File_Input_text_color");                                
+ extern fn    void Fl_File_Input.set_text_color(&sef, uint s) @extern("Fl_File_Input_set_text_color");                    
+ extern fn    int Fl_File_Input.text_size(&sef) @extern("Fl_File_Input_text_size");                                          
+  extern fn   void Fl_File_Input.set_text_size(&sef, int s) @extern("Fl_File_Input_set_text_size");                              
+  extern fn   int Fl_File_Input.readonly(&sef) @extern("Fl_File_Input_readonly");                                           
+  extern fn   void Fl_File_Input.set_readonly(&sef, int boolean) @extern("Fl_File_Input_set_readonly");                         
+  extern fn   int Fl_File_Input.wrap(&sef) @extern("Fl_File_Input_wrap");                                               
+ extern fn    void Fl_File_Input.set_wrap(&sef, int boolean) @extern("Fl_File_Input_set_wrap");                             
+  extern fn   void Fl_File_Input.set_tab_nav(&sef, int flag) @extern("Fl_File_Input_set_tab_nav");                             
+ extern fn    int Fl_File_Input.tab_nav( &sef) @extern("Fl_File_Input_tab_nav");
+
+
+
+
 
 extern fn Fl_Multiline_Output* multiline_output_new(int,int,int,int,ZString) @extern("Fl_Multiline_Output_new");
 extern fn void Fl_Multiline_Output.set_label_size(&self,int) @extern("Fl_Multiline_Output_set_label_size");
 extern fn void Fl_Multiline_Output.set_align(&self,Fl_Align) @extern("Fl_Multiline_Output_set_align");
-extern fn void Fl_Multiline_Output.set_value(&sefl,ZString) @extern("Fl_Multiline_Output_set_value");
+
 extern fn void Fl_Multiline_Output.set_callback(&sefl,CallbackVoid,void*) @extern("Fl_Multiline_Output_set_callback");
 extern fn void Fl_Multiline_Output.set_when(&self,int) @extern("Fl_Multiline_Output_set_when");
-extern fn ZString Fl_Multiline_Output.value(&self) @extern("Fl_Multiline_Output_value");
+
+
+extern fn int Fl_Multiline_Output.set_value(&sef, ZString) @extern("Fl_Multiline_Output_set_value");                            
+extern fn     ZString Fl_Multiline_Output.value(&sef) @extern("Fl_Multiline_Output_value");                                      
+extern fn     int Fl_Multiline_Output.maximum_size(&sef) @extern("Fl_Multiline_Output_maximum_size");                                       
+extern fn     void Fl_Multiline_Output.set_maximum_size(&sef, int m) @extern("Fl_Multiline_Output_set_maximum_size");                           
+ extern fn    int Fl_Multiline_Output.position(&sef) @extern("Fl_Multiline_Output_position");                                           
+extern fn     int Fl_Multiline_Output.set_position(&sef, int p) @extern("Fl_Multiline_Output_set_position");                                
+extern fn     int Fl_Multiline_Output.set_mark(&sef, int m) @extern("Fl_Multiline_Output_set_mark");                                    
+extern fn     int Fl_Multiline_Output.mark(&sef) @extern("Fl_Multiline_Output_mark");                                               
+ extern fn    int Fl_Multiline_Output.replace(&sef, int b, int e, ZString text, int ilen) @extern("Fl_Multiline_Output_replace");  
+extern fn     int Fl_Multiline_Output.insert(&sef, ZString t, int l) @extern("Fl_Multiline_Output_insert");                       
+extern fn     int Fl_Multiline_Output.append(&sef, ZString t, int l, char keep_selection) @extern("Fl_Multiline_Output_append");  
+ extern fn    int Fl_Multiline_Output.copy(&sef, int clipboard) @extern("Fl_Multiline_Output_copy");                                
+ extern fn    int Fl_Multiline_Output.undo(&sef) @extern("Fl_Multiline_Output_undo");                                               
+ extern fn    int Fl_Multiline_Output.copy_cuts(&sef) @extern("Fl_Multiline_Output_copy_cuts");                                          
+ extern fn    uint Fl_Multiline_Output.cursor_color( &sef) @extern("Fl_Multiline_Output_cursor_color");                        
+ extern fn    void Fl_Multiline_Output.set_cursor_color(&sef, uint s) @extern("Fl_Multiline_Output_set_cursor_color");                  
+  extern fn   int Fl_Multiline_Output.text_font(&sef) @extern("Fl_Multiline_Output_text_font");                                          
+  extern fn   void Fl_Multiline_Output.set_text_font(&sef, int s) @extern("Fl_Multiline_Output_set_text_font");                              
+  extern fn   uint Fl_Multiline_Output.text_color(&sef) @extern("Fl_Multiline_Output_text_color");                                
+ extern fn    void Fl_Multiline_Output.set_text_color(&sef, uint s) @extern("Fl_Multiline_Output_set_text_color");                    
+ extern fn    int Fl_Multiline_Output.text_size(&sef) @extern("Fl_Multiline_Output_text_size");                                          
+  extern fn   void Fl_Multiline_Output.set_text_size(&sef, int s) @extern("Fl_Multiline_Output_set_text_size");                              
+  extern fn   int Fl_Multiline_Output.readonly(&sef) @extern("Fl_Multiline_Output_readonly");                                           
+  extern fn   void Fl_Multiline_Output.set_readonly(&sef, int boolean) @extern("Fl_Multiline_Output_set_readonly");                         
+  extern fn   int Fl_Multiline_Output.wrap(&sef) @extern("Fl_Multiline_Output_wrap");                                               
+ extern fn    void Fl_Multiline_Output.set_wrap(&sef, int boolean) @extern("Fl_Multiline_Output_set_wrap");                             
+  extern fn   void Fl_Multiline_Output.set_tab_nav(&sef, int flag) @extern("Fl_Multiline_Output_set_tab_nav");                             
+ extern fn    int Fl_Multiline_Output.tab_nav( &sef) @extern("Fl_Multiline_Output_tab_nav");
+
+
+
 
 
 struct Fl_Output{void* _data_;}
 extern fn Fl_Output* output_new(int,int,int,int,ZString) @extern("Fl_Output_new");
 extern fn void Fl_Output.set_label_size(&self,int) @extern("Fl_Output_set_label_size");
 extern fn void Fl_Output.set_align(&self,Fl_Align) @extern("Fl_Output_set_align");
-extern fn void Fl_Output.set_value(&sefl,ZString) @extern("Fl_Output_set_value");
+
 extern fn void Fl_Output.set_callback(&sefl,CallbackVoid,void*) @extern("Fl_Output_set_callback");
 extern fn void Fl_Output.set_when(&self,int) @extern("Fl_Output_set_when");
-extern fn ZString Fl_Output.value(&self) @extern("Fl_Output_value");
+
+
+extern fn int Fl_Output.set_value(&sef, ZString) @extern("Fl_Output_set_value");                            
+extern fn     ZString Fl_Output.value(&sef) @extern("Fl_Output_value");                                      
+extern fn     int Fl_Output.maximum_size(&sef) @extern("Fl_Output_maximum_size");                                       
+extern fn     void Fl_Output.set_maximum_size(&sef, int m) @extern("Fl_Output_set_maximum_size");                           
+ extern fn    int Fl_Output.position(&sef) @extern("Fl_Output_position");                                           
+extern fn     int Fl_Output.set_position(&sef, int p) @extern("Fl_Output_set_position");                                
+extern fn     int Fl_Output.set_mark(&sef, int m) @extern("Fl_Output_set_mark");                                    
+extern fn     int Fl_Output.mark(&sef) @extern("Fl_Output_mark");                                               
+ extern fn    int Fl_Output.replace(&sef, int b, int e, ZString text, int ilen) @extern("Fl_Output_replace");  
+extern fn     int Fl_Output.insert(&sef, ZString t, int l) @extern("Fl_Output_insert");                       
+extern fn     int Fl_Output.append(&sef, ZString t, int l, char keep_selection) @extern("Fl_Output_append");  
+ extern fn    int Fl_Output.copy(&sef, int clipboard) @extern("Fl_Output_copy");                                
+ extern fn    int Fl_Output.undo(&sef) @extern("Fl_Output_undo");                                               
+ extern fn    int Fl_Output.copy_cuts(&sef) @extern("Fl_Output_copy_cuts");                                          
+ extern fn    uint Fl_Output.cursor_color( &sef) @extern("Fl_Output_cursor_color");                        
+ extern fn    void Fl_Output.set_cursor_color(&sef, uint s) @extern("Fl_Output_set_cursor_color");                  
+  extern fn   int Fl_Output.text_font(&sef) @extern("Fl_Output_text_font");                                          
+  extern fn   void Fl_Output.set_text_font(&sef, int s) @extern("Fl_Output_set_text_font");                              
+  extern fn   uint Fl_Output.text_color(&sef) @extern("Fl_Output_text_color");                                
+ extern fn    void Fl_Output.set_text_color(&sef, uint s) @extern("Fl_Output_set_text_color");                    
+ extern fn    int Fl_Output.text_size(&sef) @extern("Fl_Output_text_size");                                          
+  extern fn   void Fl_Output.set_text_size(&sef, int s) @extern("Fl_Output_set_text_size");                              
+  extern fn   int Fl_Output.readonly(&sef) @extern("Fl_Output_readonly");                                           
+  extern fn   void Fl_Output.set_readonly(&sef, int boolean) @extern("Fl_Output_set_readonly");                         
+  extern fn   int Fl_Output.wrap(&sef) @extern("Fl_Output_wrap");                                               
+ extern fn    void Fl_Output.set_wrap(&sef, int boolean) @extern("Fl_Output_set_wrap");                             
+  extern fn   void Fl_Output.set_tab_nav(&sef, int flag) @extern("Fl_Output_set_tab_nav");                             
+ extern fn    int Fl_Output.tab_nav( &sef) @extern("Fl_Output_tab_nav");
+
+
+
+
+
+
 
 
 extern fn Fl_Scrollbar* scrollbar_new(int,int,int,int,ZString) @extern("Fl_Scrollbar_new");
@@ -1299,6 +1571,9 @@ extern fn int Fl_Anim_GIF_Image.start(&self) @extern("Fl_Anim_GIF_Image_start");
 extern fn int Fl_Anim_GIF_Image.stop(&self) @extern("Fl_Anim_GIF_Image_stop");
 extern fn int Fl_Anim_GIF_Image.next(&self) @extern("Fl_Anim_GIF_Image_next");
 extern fn int Fl_Anim_GIF_Image.playing(&self) @extern("Fl_Anim_GIF_Image_playing");
+extern fn void* Fl_Anim_GIF_Image.copy(&self) @extern("Fl_Anim_GIF_Image_copy");
+extern fn void Fl_Anim_GIF_Image.inactive(&self) @extern("Fl_Anim_GIF_Image_inactive");
+
 
 
 extern fn Fl_Pixmap* pixmap_new(char**) @extern("Fl_Pixmap_new");
