@@ -32,14 +32,14 @@ ZString[*] mFl_EventNames = {
     "Fl_Event_Resize",
 };
 
-enum Fl_BrowserType:const inline CInt {
+constdef Fl_BrowserType: inline CInt {
     FL_BROWSERTYPE_NORMAL = 0,
     FL_BROWSERTYPE_SELECT = 1,
     FL_BROWSERTYPE_HOLD   = 2,
     FL_BROWSERTYPE_MULTI  = 3,
 }
 
-enum Fl_BrowserScrollbar:const inline CInt {
+constdef Fl_BrowserScrollbar: inline CInt {
     FL_BROWSERSCROLLBAR_NONE             = 0,
     FL_BROWSERSCROLLBAR_HORIZONTAL       = 1,
     FL_BROWSERSCROLLBAR_VERTICAL         = 2,
@@ -50,19 +50,19 @@ enum Fl_BrowserScrollbar:const inline CInt {
     FL_BROWSERSCROLLBAR_BOTHALWAYS       = 7,
 }
 
-enum Fl_FileType:const inline CInt {
+constdef Fl_FileType: inline CInt {
     FL_FILETYPE_FILES = 0,
     FL_FILETYPE_DIRS,
 }
 
-enum Fl_ButtonType:const inline CInt {
+constdef Fl_ButtonType: inline CInt {
     FL_BUTTONTYPE_NORMAL = 0,
     FL_BUTTONTYPE_TOGGLE = 1,
     FL_BUTTONTYPE_RADIO  = 102,
     FL_BUTTONTYPE_HIDDEN = 3,
 }
 
-enum Fl_FileDialogType:const inline CInt {
+constdef Fl_FileDialogType: inline CInt {
     FL_FILEDIALOGTYPE_BROWSEFILE = 0,
     FL_FILEDIALOGTYPE_BROWSEDIR,
     FL_FILEDIALOGTYPE_BROWSEMULTIFILE,
@@ -71,7 +71,7 @@ enum Fl_FileDialogType:const inline CInt {
     FL_FILEDIALOGTYPE_BROWSESAVEDIR,
 }
 
-enum Fl_FileDialogOptions:const inline CInt {
+constdef Fl_FileDialogOptions: inline CInt {
     FL_FILEDIALOGOPTIONS_NOOPTIONS     = 0,
     FL_FILEDIALOGOPTIONS_SAVEASCONFIRM = 1,
     FL_FILEDIALOGOPTIONS_NEWFOLDER     = 2,
@@ -79,7 +79,7 @@ enum Fl_FileDialogOptions:const inline CInt {
     FL_FILEDIALOGOPTIONS_USEFILTEREXT  = 8,
 }
 
-enum Fl_BeepType:const inline CInt {
+constdef Fl_BeepType: inline CInt {
     FL_BEEPTYPE_DEFAULT = 0,
     FL_BEEPTYPE_MESSAGE,
     FL_BEEPTYPE_ERROR,
@@ -88,14 +88,14 @@ enum Fl_BeepType:const inline CInt {
     FL_BEEPTYPE_NOTIFICATION,
 }
 
-enum Fl_FileChooserType:const inline CInt {
+constdef Fl_FileChooserType: inline CInt {
     FL_FILECHOOSERTYPE_SINGLE    = 0,
     FL_FILECHOOSERTYPE_MULTI     = 1,
     FL_FILECHOOSERTYPE_CREATE    = 2,
     FL_FILECHOOSERTYPE_DIRECTORY = 4,
 }
 
-enum Fl_NativeFileChooserType:const inline CInt {
+constdef Fl_NativeFileChooserType: inline CInt {
     FL_NATIVEFILECHOOSERTYPE_BROWSEFILE = 0,
     FL_NATIVEFILECHOOSERTYPE_BROWSEDIRECTORY,
     FL_NATIVEFILECHOOSERTYPE_MULTIFILE,
@@ -104,7 +104,7 @@ enum Fl_NativeFileChooserType:const inline CInt {
     FL_NATIVEFILECHOOSERTYPE_SAVEDIRECTORY
 }
 
-enum Fl_NativeFileChooserOption:const inline CInt {
+constdef Fl_NativeFileChooserOption: inline CInt {
     FL_NATIVEFILECHOOSEROPTION_NOOPTIONS     = 0X0000,
     FL_NATIVEFILECHOOSEROPTION_SAVEASCONFIRM = 0X0001,
     FL_NATIVEFILECHOOSEROPTION_NEWFOLDER     = 0X0002,
@@ -112,7 +112,7 @@ enum Fl_NativeFileChooserOption:const inline CInt {
     FL_NATIVEFILECHOOSEROPTION_USEFILTEREXT  = 0X0008
 }
 
-enum Fl_LineStyle:const inline CInt {
+constdef Fl_LineStyle: inline CInt {
     FL_LINESTYLE_SOLID = 0,
     FL_LINESTYLE_DASH,
     FL_LINESTYLE_DOT,
@@ -126,7 +126,7 @@ enum Fl_LineStyle:const inline CInt {
     FL_LINESTYLE_JOINBEVEL = 3000,
 }
 
-enum Fl_LabelType:const inline CInt {
+constdef Fl_LabelType: inline CInt {
     FL_LABELTYPE_NORMAL = 0,
     FL_LABELTYPE_NONE,
     FL_LABELTYPE_SHADOW,
@@ -138,7 +138,7 @@ enum Fl_LabelType:const inline CInt {
     FL_LABELTYPE_FREETYPE,
 }
 
-enum Fl_BoxType:const inline CInt {
+constdef Fl_BoxType: inline CInt {
     FL_BOXTYPE_NOBOX = 0,
     FL_BOXTYPE_FLATBOX,
     FL_BOXTYPE_UPBOX,
@@ -198,7 +198,7 @@ enum Fl_BoxType:const inline CInt {
     FL_BOXTYPE_FREEBOXTYPE,
 }
 
-enum Fl_Align:const inline CInt {
+constdef Fl_Align: inline CInt {
     FL_ALIGN_CENTER          = 0X0000,
     FL_ALIGN_TOP             = 0X0001,
     FL_ALIGN_BOTTOM          = 0X0002,
@@ -225,7 +225,7 @@ enum Fl_Align:const inline CInt {
     FL_ALIGN_IMAGEMASK       = 0X0320,
 }
 
-enum Fl_Font:const inline CInt {
+constdef Fl_Font: inline CInt {
     FL_FONT_HELVETICA           = 0,
     FL_FONT_HELVETICABOLD       = 1,
     FL_FONT_HELVETICAITALIC     = 2,
@@ -243,13 +243,13 @@ enum Fl_Font:const inline CInt {
     FL_FONT_SCREENBOLD          = 14,
     FL_FONT_ZAPFDINGBATS        = 15,
 }
-enum Fl_FontType:const inline CInt {
+constdef Fl_FontType: inline CInt {
     FL_BOLD			=1,
     FL_ITALIC			=2,
     FL_BOLD_ITALIC		=3,
 
 }
-enum Fl_Color:const inline CInt {
+constdef Fl_Color: inline CInt {
     FL_COLOR_FOREGROUND   = 0,
     FL_COLOR_FOREGROUND2   = 0,
     FL_COLOR_BACKGROUND  = 7,
@@ -282,7 +282,7 @@ enum Fl_Color:const inline CInt {
     FL_COLOR_WHITE        =255,
 }
 
-enum Fl_Event:const inline CInt{
+constdef Fl_Event: inline CInt{
     FL_EVENT_NONE = 0,
     FL_EVENT_PUSH,
     FL_EVENT_RELEASED,
@@ -314,7 +314,7 @@ enum Fl_Event:const inline CInt{
     FL_EVENT_RESIZE,
 }
 
-enum Fl_Key:const inline CInt {
+constdef Fl_Key: inline CInt {
     FL_KEY_NONE          = 0,
     FL_KEY_BUTTON        = 0XFEE8,
     FL_KEY_BACKSPACE     = 0XFF08,
@@ -369,7 +369,7 @@ enum Fl_Key:const inline CInt {
     FL_KEY_DELETE        = 0XFFFF,
 }
 
-enum Fl_Shortcut:const inline CInt {
+constdef Fl_Shortcut: inline CInt {
     FL_SHORTCUT_NONE     = 0,
     FL_SHORTCUT_SHIFT    = 0X00010000,
     FL_SHORTCUT_CAPSLOCK = 0X00020000,
@@ -382,7 +382,7 @@ enum Fl_Shortcut:const inline CInt {
     FL_SHORTCUT_BUTTONS  = 0X7F000000,
 }
 
-enum Fl_CallbackTrigger:const inline CInt {
+constdef Fl_CallbackTrigger: inline CInt {
     FL_CALLBACKTRIGGER_NEVER           = 0,
     FL_CALLBACKTRIGGER_CHANGED         = 1,
     FL_CALLBACKTRIGGER_NOTCHANGED      = 2,
@@ -393,7 +393,7 @@ enum Fl_CallbackTrigger:const inline CInt {
     FL_CALLBACKTRIGGER_ENTERKEYCHANGED = 11,
 }
 
-enum Fl_TextCursor:const inline CInt {
+constdef Fl_TextCursor: inline CInt {
     FL_TEXTCURSOR_NORMAL,
     FL_TEXTCURSOR_CARET,
     FL_TEXTCURSOR_DIM,
@@ -402,7 +402,7 @@ enum Fl_TextCursor:const inline CInt {
     FL_TEXTCURSOR_SIMPLE,
 }
 
-enum Fl_Cursor:const inline CInt {
+constdef Fl_Cursor: inline CInt {
     FL_CURSOR_DEFAULT = 0,
     FL_CURSOR_ARROW   = 35,
     FL_CURSOR_CROSS   = 66,
@@ -426,7 +426,7 @@ enum Fl_Cursor:const inline CInt {
     FL_CURSOR_NONE    = 255,
 }
 
-enum Fl_Mode:const inline CInt {
+constdef Fl_Mode: inline CInt {
     FL_MODE_RGB         = 0,
     FL_MODE_INDEX       = 1,
     FL_MODE_DOUBLE      = 2,
@@ -441,12 +441,12 @@ enum Fl_Mode:const inline CInt {
     FL_MODE_OPENGL3     = 1024,
 }
 
-enum Fl_PackType:const inline CInt {
+constdef Fl_PackType: inline CInt {
     FL_PACKTYPE_VERTICAL   = 0,
     FL_PACKTYPE_HORIZONTAL = 1,
 }
 
-enum Fl_ScrollType:const inline CInt {
+constdef Fl_ScrollType: inline CInt {
     FL_SCROLLTYPE_NONE             = 0,
     FL_SCROLLTYPE_HORIZONTAL       = 1,
     FL_SCROLLTYPE_VERTICAL         = 2,
@@ -457,7 +457,7 @@ enum Fl_ScrollType:const inline CInt {
     FL_SCROLLTYPE_BOTHALWAYS       = 7,
 }
 
-enum Fl_InputType:const inline CInt {
+constdef Fl_InputType: inline CInt {
     FL_INPUTTYPE_NORMAL    = 0,
     FL_INPUTTYPE_FLOAT     = 1,
     FL_INPUTTYPE_INT       = 2,
@@ -468,12 +468,12 @@ enum Fl_InputType:const inline CInt {
     FL_INPUTTYPE_WRAP      = 16,
 }
 
-enum Fl_OutputType:const inline CInt {
+constdef Fl_OutputType: inline CInt {
     FL_OUTPUTTYPE_NORMAL    = 8,
     FL_OUTPUTTYPE_MULTILINE = 12,
 }
 
-enum Fl_MenuFlag:const inline CInt {
+constdef Fl_MenuFlag: inline CInt {
     FL_MENUFLAG_NORMAL         = 0,
     FL_MENUFLAG_INACTIVE       = 1,
     FL_MENUFLAG_TOGGLE         = 2,
@@ -486,7 +486,7 @@ enum Fl_MenuFlag:const inline CInt {
     FL_MENUFLAG_MENUHORIZONTAL = 0X100,
 }
 
-enum Fl_ChartType:const inline CInt {
+constdef Fl_ChartType: inline CInt {
     FL_CHARTTYPE_BAR           = 0,
     FL_CHARTTYPE_HORIZONTALBAR = 1,
     FL_CHARTTYPE_LINE          = 2,
@@ -496,12 +496,12 @@ enum Fl_ChartType:const inline CInt {
     FL_CHARTTYPE_SPECIALPIE    = 6,
 }
 
-enum Fl_ClockType:const inline CInt {
+constdef Fl_ClockType: inline CInt {
     FL_CLOCKTYPE_SQUARE = 0,
     FL_CLOCKTYPE_ROUND  = 1,
 }
 
-enum Fl_TableContext:const inline CInt {
+constdef Fl_TableContext: inline CInt {
     FL_TABLECONTEXT_NONE      = 0,
     FL_TABLECONTEXT_STARTPAGE = 0X01,
     FL_TABLECONTEXT_ENDPAGE   = 0X02,
@@ -512,38 +512,38 @@ enum Fl_TableContext:const inline CInt {
     FL_TABLECONTEXT_RCRESIZE  = 0X40,
 }
 
-enum Fl_TableRowSelectMode:const inline CInt {
+constdef Fl_TableRowSelectMode: inline CInt {
     FL_TABLEROWSELECTMODE_NONE,
     FL_TABLEROWSELECTMODE_SINGLE,
     FL_TABLEROWSELECTMODE_MULTI,
 }
 
-enum Fl_TreeSort:const inline CInt {
+constdef Fl_TreeSort: inline CInt {
     FL_TREESORT_NONE       = 0,
     FL_TREESORT_ASCENDING  = 1,
     FL_TREESORT_DESCENDING = 2,
 }
 
-enum Fl_TreeConnectorStyle:const inline CInt {
+constdef Fl_TreeConnectorStyle: inline CInt {
     FL_TREECONNECTORSTYLE_NONE   = 0,
     FL_TREECONNECTORSTYLE_DOTTED = 1,
     FL_TREECONNECTORSTYLE_SOLID  = 2,
 }
 
-enum Fl_TreeSelect:const inline CInt {
+constdef Fl_TreeSelect: inline CInt {
     FL_TREESELECT_NONE            = 0,
     FL_TREESELECT_SINGLE          = 1,
     FL_TREESELECT_MULTI           = 2,
     FL_TREESELECT_SINGLEDRAGGABLE = 3,
 }
 
-enum Fl_TreeItemSelect:const inline CInt {
+constdef Fl_TreeItemSelect: inline CInt {
     FL_TREEITEMSELECT_DESELECT = 0,
     FL_TREEITEMSELECT_SELECT   = 1,
     FL_TREEITEMSELECT_TOGGLE   = 2,
 }
 
-enum Fl_TreeReason:const inline CInt {
+constdef Fl_TreeReason: inline CInt {
     FL_TREEREASON_NONE = 0,
     FL_TREEREASON_SELECTED,
     FL_TREEREASON_DESELECTED,
@@ -553,18 +553,18 @@ enum Fl_TreeReason:const inline CInt {
     FL_TREEREASON_DRAGGED,
 }
 
-enum Fl_TreeItemReselectMode:const inline CInt {
+constdef Fl_TreeItemReselectMode: inline CInt {
     FL_TREEITEMRESELECTMODE_ONCE = 0,
     FL_TREEITEMRESELECTMODE_ALWAYS,
 }
 
-enum Fl_TreeItemDrawMode:const inline CInt {
+constdef Fl_TreeItemDrawMode: inline CInt {
     FL_TREEITEMDRAWMODE_DEFAULT          = 0,
     FL_TREEITEMDRAWMODE_LABELANDWIDGET   = 1,
     FL_TREEITEMDRAWMODE_HEIGHTFROMWIDGET = 2,
 }
 
-enum Fl_SliderType:const inline CInt {
+constdef Fl_SliderType: inline CInt {
     FL_SLIDERTYPE_VERTICAL       = 0,
     FL_SLIDERTYPE_HORIZONTAL     = 1,
     FL_SLIDERTYPE_VERTICALFILL   = 2,
@@ -573,18 +573,18 @@ enum Fl_SliderType:const inline CInt {
     FL_SLIDERTYPE_HORIZONTALNICE = 5,
 }
 
-enum Fl_DialType:const inline CInt {
+constdef Fl_DialType: inline CInt {
     FL_DIALTYPE_NORMAL = 0,
     FL_DIALTYPE_LINE   = 1,
     FL_DIALTYPE_FILL   = 2,
 }
 
-enum Fl_CounterType:const inline CInt {
+constdef Fl_CounterType: inline CInt {
     FL_COUNTERTYPE_NORMAL = 0,
     FL_COUNTERTYPE_SIMPLE = 1,
 }
 
-enum Fl_ScrollbarType:const inline CInt {
+constdef Fl_ScrollbarType: inline CInt {
     FL_SCROLLBARTYPE_VERTICAL       = 0,
     FL_SCROLLBARTYPE_HORIZONTAL     = 1,
     FL_SCROLLBARTYPE_VERTICALFILL   = 2,
@@ -593,19 +593,19 @@ enum Fl_ScrollbarType:const inline CInt {
     FL_SCROLLBARTYPE_HORIZONTALNICE = 5,
 }
 
-enum Fl_WindowType:const inline CInt {
+constdef Fl_WindowType: inline CInt {
     FL_WINDOWTYPE_NORMAL = 240,
     FL_WINDOWTYPE_DOUBLE = 241,
 }
 
-enum Fl_WrapMode:const inline CInt {
+constdef Fl_WrapMode: inline CInt {
     FL_WRAP_NONE,
     FL_WRAP_AT_COLUMN,
     FL_WRAP_AT_PIXEL,
     FL_WRAP_AT_BOUNDS,
 }
 
-enum Fl_DragType:const inline CInt {
+constdef Fl_DragType: inline CInt {
     FL_DRAG_NONE      = -2,
     FL_DRAG_START_DND = -1,
     FL_DRAG_CHAR      = 0,
@@ -613,7 +613,7 @@ enum Fl_DragType:const inline CInt {
     FL_DRAG_LINE      = 2,
 }
 
-enum Fl_Damage:const inline CInt {
+constdef Fl_Damage: inline CInt {
     FL_DAMAGE_CHILD   = 0X01, /**< A CHILD NEEDS TO BE REDRAWN. */
     FL_DAMAGE_EXPOSE  = 0X02, /**< THE WINDOW WAS EXPOSED. */
     FL_DAMAGE_SCROLL  = 0X04, /**< THE FL_SCROLL WIDGET WAS SCROLLED. */
@@ -623,7 +623,7 @@ enum Fl_Damage:const inline CInt {
     FL_DAMAGE_ALL     = 0X80  /**< EVERYTHING NEEDS TO BE REDRAWN. */
 }
 
-enum Fl_MenuButtonType:const inline CInt {
+constdef Fl_MenuButtonType: inline CInt {
     POPUP1 = 1,
     POPUP2,
     POPUP12,
@@ -633,20 +633,28 @@ enum Fl_MenuButtonType:const inline CInt {
     POPUP123,
 }
 
-enum Fl_FlexType:const inline CInt {
+constdef Fl_FlexType: inline CInt {
     FL_FLEXTYPE_COLUMN = 0,
     FL_FLEXTYPE_ROW,
 }
 
-enum Fl_RgbScaling:const inline CInt {
+constdef Fl_RgbScaling: inline CInt {
     FL_RGBSCALING_NEAREST = 0,
     FL_RGBSCALING_BILINEAR,
 }
 
-enum Fl_Table_ResizeFlag :const inline CInt {
+constdef Fl_Table_ResizeFlag : inline CInt {
     FL_TABLE_RESIZE_NONE      = 0,
     FL_TABLE_RESIZE_COL_LEFT  = 1,
     FL_TABLE_RESIZE_COL_RIGHT = 2,
     FL_TABLE_RESIZE_ROW_ABOVE = 3,
     FL_TABLE_RESIZE_ROW_BELOW = 4
+}
+constdef Fl_Anim_GIF_ImageFlag: inline CInt{
+    START=1,
+    DONTRESIZECANVAS=2,
+    DONTSETASIMAGE=4,
+    OPTIMIZEMEMORY=8,
+    LOG=64,
+    DEBUG=128
 }
